@@ -1,0 +1,46 @@
+% ------------------------------------------------------------------------------
+% preamble
+% ------------------------------------------------------------------------------
+% our class file establishes our document class, defines fundamental 
+% environments, and includes all of our required packages
+\documentclass{./preamble/dissertation}
+
+% we define our own package for anything involving notation or macros
+\usepackage{./preamble/macros}
+
+% our document class requires the following variables to be established
+\title{Large deviations of affine processes}
+\author{Matthew Varble}
+\date{\today}
+
+% ------------------------------------------------------------------------------
+% document
+% ------------------------------------------------------------------------------
+\begin{document}
+
+% title page
+\maketitle
+
+% abstract and acknowledgment in `src/frontmatter/`
+\frontmatter
+\import{src/frontmatter/}{index}
+
+% table of contents
+\tableofcontents
+
+% introduction in `src/introduction/`
+\import{src/introduction/}{index}
+
+% all the chapters are in `src/mainmatter/`
+\mainmatter
+\import{src/mainmatter/}{index}
+
+% appendix contents in `src/appendix/`
+\appendix
+\import{src/appendix/}{index}
+
+% bibliography top-level file
+\clearpage
+\bibliography{references}
+
+\end{document}

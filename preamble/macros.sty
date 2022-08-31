@@ -1,0 +1,220 @@
+% balls
+\newcommand{\ball}[2]{{B(#1,#2)}}
+
+% colon equals for definitions
+\usepackage{mathtools}
+\newcommand{\eqdef}{\eqqcolon}
+\newcommand{\defeq}{\coloneqq}
+
+% letter styles
+\usepackage{pgffor,amssymb,mathrsfs}
+\foreach \x in {A,B,...,Z,a,b,...,z} 
+{
+  \expandafter\xdef\csname cal\x\endcsname{\noexpand 
+	\ensuremath{\noexpand\mathcal{\x}}}
+  \expandafter\xdef\csname scr\x\endcsname{\noexpand 
+	\ensuremath{\noexpand\mathscr{\x}}}
+  \expandafter\xdef\csname bb\x\endcsname{\noexpand 
+	\ensuremath{\noexpand\mathbb{\x}}}
+  \expandafter\xdef\csname rm\x\endcsname{\noexpand 
+	\ensuremath{\noexpand\mathrm{\x}}}
+  \expandafter\xdef\csname bf\x\endcsname{\noexpand 
+	\ensuremath{\noexpand\mbf{\x}}}
+}
+
+% imaginary unit
+\newcommand{\im}{{\rm i}}
+
+% pushforward
+\newcommand{\push}[2]{{{#2}_\#{#1}}}
+
+% probability and expectation
+\newcommand{\Exp}{{\operatorname{E}}}
+\newcommand{\Prb}{{\operatorname{P}}}
+
+% stochastic integrals
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\newcommand{\shortInt}{\mathpalette\bigcdot@{0.5}}
+\newcommand{\leb}{\lambda}
+
+%-------------------------------------------------------------------------------
+% *SPACES*
+%
+% Matthew's general suggestions (MATTI: let's debate this?):
+%
+% Rule:                                    | Examples:
+% ------------------------------------------------------------------------------
+% Spaces are blackboard font               | \mathbb{X}, \mathbb{Y}, \mathbb{Z}
+% Elements of spaces are lowercase         | x, y, z
+% Random quantities are uppercase          | X, Y, Z
+% Sample paths are Greek                   | \xi, \upsilon, \zeta
+% Sigma algebras are script font           | \mathscr{X}, \mathscr{Y}, \mathscr{Z}
+% Other such families are caligriphy font  | \mathcal{X}, \mathcal{Y}, \mathcal{Z}
+% Space name is `\contextSpace`            | \vecSpace, \stateSpace, \markSpace
+% Element name is `\contextVar`            | \vecVar, \stateVar, \markVar
+% Sigma algebra name is `\contextAlg`      | \vecAlg, \stateAlg, \markAlg
+%-------------------------------------------------------------------------------
+
+%
+% Our stochastic processes must reside in an inner-product space
+%
+\newcommand{\vecSpace}{\bbV}
+\newcommand{\vecVar}{v}
+\newcommand{\basisVec}{e}
+\newcommand{\vecAlg}{\scrB(\vecSpace)} % MATTI: maybe `\scrV`?
+\newcommand{\ip}[2]{{\langle #1 , #2 \rangle}}
+\newcommand{\prj}[2]{{\langle #1 , #2 \rangle}}
+\newcommand{\bprj}[2]{{\big\langle #1 , #2 \big\rangle}}
+\newcommand{\Bprj}[2]{{\Big\langle #1 , #2 \Big\rangle}}
+
+%
+% We may restrict our process to a subset of the vector space.
+%
+\newcommand{\stateSpace}{\bbX}
+\newcommand{\stateVar}{x}
+\newcommand{\stateAlg}{\scrX}
+
+%
+% Space in which jumps occur ("mark space") is the vector space without 0
+%
+\newcommand{\markSpace}{{\vecSpace_0}}
+\newcommand{\markVar}{\vecVar}
+\newcommand{\markAlg}{\scrB(\markSpace)}
+
+%
+% Spaces of functions:
+%   Arguments `I` and `X` in space `F(I,X)` should be domain and codomain, 
+%   respectively.
+%
+
+% cadlag
+\newcommand{\pathSpace}[2]{\bbD(#1,#2)}   
+
+% continuous
+\newcommand{\cpathSpace}[2]{\bbC(#1,#2)}
+
+% absolutely continuous
+\newcommand{\acpathSpace}[2]{\bbA(#1,#2)}
+
+% variable the same, regardless of regularity
+\newcommand{\pathVar}{\xi}
+
+%
+% Spaces of measures: 
+%   Argument `X` in space `M(X)` should be sigma algebra on which measures are 
+%   defined. 
+%
+\newcommand{\signedMeasSpace}[1]{\bbM_s(#1)} 
+\newcommand{\measSpace}[1]{\bbM(#1)} 
+\newcommand{\probSpace}[1]{\bbM_1(#1)} 
+\newcommand{\measVar}{m}
+
+%-------------------------------------------------------------------------------
+% *PROCESSES*
+%
+% Matthew's general suggestions (MATTI: let's debate this?):
+% 
+% Rule:                                             | Example:
+% ------------------------------------------------------------------------------
+% Notation of affine function should match parts    | if `\alpha` is the affine 
+%                                                   | function, then it should
+%                                                   | be weighted sum of `a`s
+%                                                   |
+% Any affine function will take some `\name` and    | drift function will be 
+% it will be a weighted sum of `\namePart`s.        | `\affDrift` and it will be
+%                                                   | a sum of `\affDriftPart`s
+%-------------------------------------------------------------------------------
+
+%
+% Our affine processes
+%
+\newcommand{\X}{X}
+\newcommand{\Xe}{\epsilon\X^\epsilon}
+\newcommand{\Xee}{\X^\epsilon}
+\newcommand{\epX}{Y_\upep}            % MATTI: maybe superscript?
+
+%
+% Moment functions
+%
+\newcommand{\aff}{\Psi}     % (time, moment, state)
+\newcommand{\affPart}{\psi} % (time, moment)
+
+%
+% Moment spaces
+%
+\newcommand{\boundedSpace}{\calU}
+\newcommand{\momentSpace}{\calD_\aff}
+\newcommand{\momentVar}{u}
+
+%
+% ODE functions
+%
+\newcommand{\system}{\operatorname{system}}
+\newcommand{\ode}{\Lambda}  % (function, state)
+\newcommand{\odeSpace}{\calD_\Lambda}  % (function, state)
+\newcommand{\odePart}{L}    % (function)
+
+%
+% Parameters
+%
+\newcommand{\affDiff}{\alpha}  % diffusion
+\newcommand{\affDiffPart}{a}
+\newcommand{\affDrift}{\beta}  % drift
+\newcommand{\affDriftPart}{b}
+\newcommand{\affJump}{\mu}     % jumps
+\newcommand{\affJumpPart}{m}
+\newcommand{\affInt}{\lambda}     % jumps
+\newcommand{\affIntPart}{\ell}
+\newcommand{\affDist}{\kappa}     % jumps
+\newcommand{\affDistPart}{k}
+
+%
+% Special semimartingales:
+%   This abstraction allows us to look at the affine process from a broad
+%   perspective of the form:
+%    
+%       process = initial + predictable FV + local martingale
+%                                (I)              (II)
+% 
+%   process (I) is determined by the drift, while (II) is determined by
+%   the diffusion and jump functions.
+
+% local martingale in (II)
+\newcommand{\mgTerm}{Z}                    % (II)
+
+% the purely discontinuous component is an integral against a compensated 
+% jump measure
+\newcommand{\jumpMeas}{q}
+\newcommand{\predproj}[1]{\hat#1}
+\newcommand{\compensate}[1]{\tilde#1}
+
+%
+% Semimartingales: need a truncation function
+%
+\newcommand{\trunc}{\chi}
+
+% Jump diffusions: write in terms of Brownian motion and Poisson random measure
+\newcommand{\poisRM}{p}
+\newcommand{\W}{W}
+\newcommand{\thinner}{\delta}
+\newcommand{\affDiffSqrt}{\sigma}
+
+%-------------------------------------------------------------------------------
+% *LDPs*
+%-------------------------------------------------------------------------------
+
+% our proof involves a bunch of martingale changes of measure
+\newcommand{\affShift}{\varphi}
+\newcommand{\Gm}{G}
+\newcommand{\twistVar}{\theta}
+\newcommand{\twistFunc}{h}
+\newcommand{\twistSpace}{\calH_\ode}
+
+% our LDP happens on a finite time horizon 
+\newcommand{\TT}{T}
+
+% our rate function
+\newcommand{\rf}{I}
+
+% rate function is an integral of a transform of the ode function
+\newcommand{\diffVar}{\dot\stateVar}

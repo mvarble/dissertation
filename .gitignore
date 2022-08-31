@@ -1,0 +1,10 @@
+**/*.swo
+**/*.swp
+.lvimrc
+dissertation.aux
+dissertation.bbl
+dissertation.blg
+dissertation.log
+dissertation.out
+dissertation.pdf
+dissertation.toc

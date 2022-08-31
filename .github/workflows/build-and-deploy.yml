@@ -1,0 +1,57 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout most recent Git commit
+      uses: actions/checkout@v3
+    - name: Compile LaTeX
+      uses: xu-cheng/texlive-action/full@v1
+      with:
+        run: ./bundle.sh
+    - name: Make bundle
+      run: |
+        mkdir output
+        mv dissertation.pdf ./output/
+        git rev-parse --short HEAD > ./output/commit_hash_short
+        git rev-parse HEAD > ./output/commit_hash_long
+    - name: Upload bundle
+      uses: actions/upload-artifact@master
+      with:
+        name: output
+        path: ./output
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout GitHub-Pages branch
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.PAT }}
+        ref: 'gh-pages'
+    - name: Download most recent build
+      uses: actions/download-artifact@master
+      with:
+        name: output
+        path: ./tmp
+    - name: Update latest build
+      run: |
+        cp ./tmp/dissertation.pdf ./$(cat ./tmp/commit_hash_long).pdf
+        cp ./tmp/dissertation.pdf ./latest.pdf
+        SHA_SHORT="$(cat ./tmp/commit_hash_short)"
+        rm -r ./tmp
+    - name: Push changes
+      run: |
+        git config user.email "bot@rodent.club"
+        git config user.name "ratbotgenius"
+        git add -A
+        git commit -m "automatic build from commit $SHA_SHORT"
+        git push
