@@ -1,0 +1,32 @@
+\begin{theorem}
+  Fix an affine process $\X$ on $\stateSpace$.
+  There exists affine functions $\affDrift^\trunc, \affDiff, \affJump$ of the form,
+  \begin{align}
+    % drift
+    \affDrift^\trunc(\stateVar) 
+    &\defeq \affDriftPart^\trunc_0 + \sum_{i=1}^d \stateVar^i \affDriftPart^\trunc_i,
+    & \affDriftPart^\trunc_0, \ldots, \affDriftPart^\trunc_d \in \vecSpace \\
+    % diffusion
+    \affDiff(\stateVar) 
+    &\defeq \affDiffPart_0 + \sum_{i=1}^d \stateVar^i \affDiffPart_i,
+    & \affDiffPart_0, \ldots, \affDiffPart_d \in \linSpace(\vecSpace) \\
+    % jumps
+    \affJump(\stateVar, \rmd\markVar) 
+    &\defeq \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \affJumpPart_i(\rmd\markVar),
+    & \affJumpPart_0, \ldots, \affJumpPart_d \in \probSpace{\scrB(\vecSpace)}
+  \end{align}
+  which induce $\aff$ as follows.
+  For each $\momentVar \in \boundedSpace$, we have affine function $\ode(\momentVar, \cdot): \stateSpace \rightarrow \bbR$, defined by
+  \begin{gather}
+    \ode(\momentVar, \stateVar) 
+    \defeq \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} + \frac12\bprj{\momentVar}{\affDiff(\stateVar)\momentVar} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJump(\stateVar, \rmd\markVar) \\
+    \trunc(\markVar) 
+    \defeq \markVar1_{|\markVar|\leq 1}
+  \end{gather}
+  \begin{gather}
+    \forall\stateVar \in \stateSpace \qquad \left\{\begin{aligned}
+      \dot\aff(t, \momentVar, \stateVar) &= \ode\big(\affPart(t, \momentVar), \stateVar \big) & t \geq 0 \\
+      \aff(0, \momentVar, \stateVar) &= \prj{\momentVar}{\stateVar}
+    \end{aligned}\right. \\
+  \end{gather}
+\end{theorem}

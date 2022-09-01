@@ -1,0 +1,25 @@
+\begin{remark}
+  \label{remark:odeParts}
+  Seeing as $0 \in \stateSpace$, we may define the following map $\odePart_0: \odeSpace \rightarrow \bbR$.
+  \begin{equation}
+    \odePart_0(\momentVar) 
+    \defeq \ode(\momentVar, 0) 
+    = \prj{\momentVar}{\affDriftPart^\trunc_0} + \frac12 \prj{\momentVar}{\affDiffPart_0\momentVar} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJumpPart_0(\rmd\markVar)
+  \end{equation}
+  Fix $i = 1, \ldots, d$.
+  Because $\operatorname{span}\stateSpace = \vecSpace$, we may produce a linear combination of elements of $\stateSpace$ to produce our standard basis vector $\basisVec_i$, say $\basisVec_i \eqdef \sum_{\ell=1}^m \gamma_\ell \stateVar_\ell$.
+  From here, we may define $\odePart_i: \odeSpace \rightarrow \bbR$ as follows.
+  \begin{equation}
+    \begin{aligned}[t]
+      \odePart_i(\momentVar) 
+      &\defeq \sum_{\ell=1}^m \gamma_\ell \big( \ode(\momentVar, \stateVar_\ell) - \ode(\momentVar, 0) \big) \\
+      &= \prj{\momentVar}{\affDriftPart^\trunc_i} + \frac12 \prj{\momentVar}{\affDiffPart_i\momentVar} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJumpPart_i(\rmd\markVar)
+    \end{aligned}
+  \end{equation}
+  In other words, the affine structure of our maps $\affDrift, \affDiff, \affJump$ and the linear assumptions on $\stateSpace$ allow us to extract component maps $\odePart_0: \odeSpace \rightarrow \bbR$, $\odePart: \odeSpace \rightarrow \vecSpace$ which build $\ode$.
+  \begin{equation}
+    \ode(\momentVar, \stateVar) 
+    = \odePart_0(\momentVar) + \bprj{\odePart(\momentVar)}{\stateVar} 
+    = \odePart_0(\momentVar) + \sum_{i=1}^d \stateVar^i \odePart_i(\momentVar)
+  \end{equation}
+\end{remark}

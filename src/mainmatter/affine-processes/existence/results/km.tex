@@ -1,0 +1,24 @@
+\begin{theorem}[see {\cite[Theorem 2.14]{keller2015}}]
+  \label{theorem:KM}
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      \label{theorem:KM:1}
+      There exists a map $\aff: \momentSpace \times \stateSpace \rightarrow \bbR$ of the form
+      \begin{equation}
+        \aff(t,\momentVar,\stateVar) = \affPart_0(t,\momentVar) + \bprj{\affPart(t,\momentVar)}{\stateVar}
+      \end{equation}
+      such that, for each $(\tau,\momentVar) \in \momentSpace$, $\aff(\cdot,\momentVar,\cdot)$ is a solution to $\system(\ode,\tau,\momentVar)$ dominated by all other such solutions.
+      Moreover, this map satisfies the following for each $(\tau, \momentVar) \in \momentSpace$ and $\stateVar \in \stateSpace$.
+      \begin{equation}
+        \label{theorem:KM-moments}
+        \Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_t} = \exp\aff(t, \momentVar, \stateVar), \quad t \in [0,\tau]
+      \end{equation}
+    \item
+      \label{theorem:KM:2}
+      If $\tau \geq 0$, $\momentVar \in \vecSpace$, and $\stateVar \in \stateSpace^\circ$ are such that
+      \begin{equation}
+        \Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_\tau} < \infty,
+      \end{equation}
+      then $(\tau, \momentVar) \in \momentSpace$.
+  \end{enumerate}
+\end{theorem}

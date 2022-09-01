@@ -1,0 +1,13 @@
+\begin{remark}
+  \label{remark:riccati-system}
+  Just as in Remark \ref{remark:odeParts}, the nature of $\stateSpace$ allows us to extract the maps $q^\momentVar_0, q^\momentVar$ from a solution $Q^\momentVar$ to $\system(\ode,\tau,\momentVar)$.
+  By linearity of our differential operator and initial condition, $\system(\ode,\tau,\momentVar)$ is thus equivalent to finding a solution $(q^\momentVar_0,q^\momentVar)$ to the following generalized Riccati system.
+  \begin{align}
+    \left\{\begin{aligned}
+      \dot q^\momentVar_0(t) &= \odePart_0\big(q^\momentVar(t)\big), & t \in [0,\tau] \\
+      \dot q^\momentVar(t) &= \odePart\big(q^\momentVar(t)\big), & t \in [0,\tau] \\
+      q^\momentVar_0(0) &= 0 \\
+      q^\momentVar(0) &= \momentVar
+    \end{aligned}\right.
+  \end{align}
+\end{remark}

@@ -1,0 +1,30 @@
+\begin{proof}
+  \label{proof:lemma:S-injection}
+  Fix $\underline\twistVar \in \prod_{k=1}^{|\underline t|} \momentSpace(\Delta t_k)$, and denote $n \defeq |\underline t|$ and $\underline\momentVar \defeq S_{\underline t}(\underline\twistVar)$.
+  We will now show that $T_{\underline t}(\underline\momentVar) = \underline\twistVar$ by induction on the component.
+  The base case is immediate.
+  \begin{equation}
+    T_{\underline t, n}(\momentVar_{n:n}) = \momentVar_n = S_{\underline t, n}(\twistVar_n) = \twistVar_n
+  \end{equation}
+  Suppose we have $k = n -1, \ldots, 1$ such that
+  \begin{equation}
+    T_{\underline t, k + 1}(\momentVar_{k+1:n}) = \twistVar_{k+1} 
+  \end{equation}
+  and observe that this provides us with the following.
+  \begin{align}
+    T_{\underline t, k}(\underline\momentVar_{k:n}) 
+    &= \momentVar_k + \affPart\big(\Delta t_{k+1},T_{\underline t, k+1}(\underline\momentVar_{k+1:n})\big) \\
+    &= S_{\underline t,k}(\twistVar_k, \twistVar_{k+1}) + \affPart(\Delta t_{k+1}, \twistVar_{k+1}) \\
+    &= \twistVar_k - \affPart(\Delta t_{k+1}, \twistVar_{k+1}) + \affPart(\Delta t_{k+1}, \twistVar_{k+1}) \\
+    &= \twistVar_k
+  \end{align}
+  By induction, we now have $T_{\underline t}(S_{\underline t}(\underline\twistVar)) = T_{\underline t}(\underline\momentVar) = \underline\twistVar$.
+  In other words, $T_{\underline t}$ is the left-inverse of $S_{\underline t}$ and thus $S_{\underline t}$ is an injection.
+
+  On the topic of continuity, it is clear that $S_{\underline t}$ is continuous by continuity of each $\affPart(\Delta t^k, \cdot)$.
+  Continuity of $T_{\underline t}$ on $\momentSpace(\underline t)$ is a simple matter of induction.
+  Continuity of the identity map $T_{\underline t, n}$ is our base case, while an inductive hypothesis of $T_{\underline t, k+1}$ being continuous for $k = n-1,\ldots,1$ provides us continuity of $T_{\underline t, k}$ via composition.
+  \begin{equation}
+    T_{\underline t, k}(\underline\momentVar^{k:n}) = \momentVar^k + \affPart\big( \Delta t^{k+1}, T_{\underline t, k+1}(\momentVar^{k+1:n}) \big)
+  \end{equation}
+\end{proof}

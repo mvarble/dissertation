@@ -1,0 +1,42 @@
+\begin{proof}
+  \label{proof:theorem:jump-diffusion}
+  We first show that $|\operatorname{id}_\vecSpace - \trunc| \ast \predproj{\jumpMeas^\X}$ is a locally-integrable increasing process of finite variation for probability-filtration pair $(\Prb_\stateVar,\scrF)$.
+  For the following localization sequence $(T_n)_{n\in\bbN}$ of stopping times,
+  \begin{equation}
+    T_n = \Big\{ t \geq 0 : |\X_t| > n \Big\} \wedge n,
+  \end{equation}
+  we have the following bound.
+  \begin{align}
+    \Exp_{\Prb_\stateVar} |\operatorname{id}_\vecSpace - \trunc | \ast \predproj{\jumpMeas^\X}_{T_n}
+    &= \Exp_{\Prb_\stateVar} \int_0^{T_n} \left( \int_\vecSpace |\markVar - \trunc(\markVar)| \affJump(\X_{t-}, \rmd\markVar) \right) \rmd t \\
+    &\leq n \cdot \sup_{|\stateVar| \leq n}\int_\vecSpace |\markVar-\trunc(\markVar)| \affJump(\stateVar, \rmd\markVar)
+  \end{align}
+  By Lemma \ref{lemma:no-truncation}, having $0 \in \odeSpace^\circ$ makes the final expression above is finite, and so \cite[Proposition II.1.28]{jacod2003} tells us $\operatorname{id}_\vecSpace - \trunc \in G_{loc}(\jumpMeas^\X)$ and
+  \begin{equation}
+    (\operatorname{id}_\vecSpace - \trunc) \ast \compensate{\jumpMeas^\X} = 
+    (\operatorname{id}_\vecSpace - \trunc) \ast \jumpMeas^\X -
+    (\operatorname{id}_\vecSpace - \trunc) \ast \predproj{\jumpMeas^\X}.
+  \end{equation}
+  Adding and subtracting this expression to the canonical semimartingale decomposition (\ref{eq:semimartingale-decomposition}) of Theorem \ref{theorem:semimartingale} now yields the following.
+  \begin{align}
+    \X_t
+    &= \stateVar + \affDrift^\trunc(\X_-) \shortInt \leb_t + (\operatorname{id}_\vecSpace - \trunc) \ast \predproj{\jumpMeas^\X}_t + \X^c_t + \operatorname{id}_\vecSpace \ast \compensate{\jumpMeas^\X}_t \\
+    &= \stateVar + \int_0^t \left( \affDrift^\trunc(\X_{s-}) + \int_\vecSpace \big(\markVar - \trunc(\markVar)\big) \affJump(\X_{s-}, \rmd\markVar) \right) \rmd s + \X^c_t + \operatorname{id}_\vecSpace \ast \compensate{\jumpMeas^\X}_t \\
+    &= \stateVar + \affDrift(\X_-) \shortInt \leb_t + \X^c_t + \operatorname{id}_\vecSpace \ast \compensate{\jumpMeas^\X}_t
+  \end{align}
+  This offers a decomposition of $\X$ into a sum of an initial value $\stateVar$, a predictable and finite variation process $\affDrift \shortInt \leb$, and a local martingale $\X^c + \operatorname{id}_\vecSpace \ast \compensate{\jumpMeas^\X}$.
+  In other words, $\X$ is a special semimartingale.
+
+  The selection of functions $\affDiffSqrt, \thinner$ which satisfy (\ref{eq:affDiffSqrt})-(\ref{eq:thinner}) and the dynamics (\ref{eq:dynamics}) are demonstrated in \cite[Theorem III.2.26 and Remark III.2.28]{jacod2003}, which reduces the calculations to those of the characteristics.
+  \begin{gather}
+    \langle \X^{i,c}, \X^{j,c} \rangle 
+    = \affDiff_{ij}(\X_-) \shortInt \ell
+    = \affDiffSqrt\affDiffSqrt^*_{ij}(\X_-) \shortInt \ell
+    = \big\langle (\affDiffSqrt(\X_-) \shortInt W)^i, (\affDiffSqrt(\X_-) \shortInt W)^j \big\rangle \\
+    \begin{aligned}[t]
+      H \ast \predproj{\jumpMeas^\X} = \left( \int_\vecSpace H(\cdot, s, \markVar) \affJump(\X_{s-}, \rmd\markVar) \right) \shortInt \ell
+      &= \left( \int_\vecSpace H\big(\cdot, s, \thinner(\X_{s-}, \vecVar)\big) \rmd\vecVar \right) \shortInt \ell \\
+      &= H\big(\cdot, s, \thinner(\X_{s-},\operatorname{id}_\vecSpace)\big)  \ast \predproj{\poisRM}
+    \end{aligned}
+  \end{gather}
+\end{proof}

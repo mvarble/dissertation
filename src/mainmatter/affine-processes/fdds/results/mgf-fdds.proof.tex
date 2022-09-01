@@ -1,0 +1,65 @@
+\begin{proof}
+  \label{proof:theorem:mgf-fdds}
+  Let us first prove \ref{theorem:mgf-fdds:1}.
+  Fix some $\underline t \vdash [0,\infty)$ and $\underline\momentVar \in \momentSpace(\underline t)$, denoting $n \defeq |\underline t|$ for brevity.
+  Fix $\underline\twistVar \in \prod_{k=1}^n \momentSpace(\Delta t_k)$ such that $S_{\underline t}(\underline\twistVar) = \underline\momentVar$.
+  Observe that the chain-rule and pull-out properties of the conditional expectation, the time-homogeneous Markov property of $\X$, Theorem \ref{theorem:KM}, and Lemma \ref{lemma:S-injection} give us the following identities.
+  \begin{align}
+    &\log\Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} \tag*{} \\
+    &=\log\Exp_{\Prb_\stateVar} \exp\sum_{k=1}^n \prj{\momentVar_k}{\X_{t_k}} \\
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \exp\bprj{S_{\underline t,n}(\twistVar_n)}{\X_{t_n}} \right) \\
+    \label{eq:tower-start}
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \exp\bprj{\twistVar_n}{\X_{t_n}} \right) \\
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \Exp_{\Prb_\stateVar}\Big(\exp\bprj{\twistVar_n}{\X_{t_n}} |\scrF_{t_{n-1}} \Big) \right) \\
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \Exp_{\Prb_{\X_{t_{n-1}}}}\exp\bprj{\twistVar_n}{\X_{\Delta t_n}}  \right) \\
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \exp\aff(\Delta t_n, \twistVar_n, \X_{t_{n-1}})\right) \\
+    &= \begin{aligned}[t]
+      &\affPart_0(\Delta t_n, \twistVar_n\big) \\
+      &+ \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \exp\Big( \bprj{\affPart(\Delta t_n, \twistVar_n)}{\X_{t_{n-1}}} \Big)   \right) 
+    \end{aligned}\\
+    \label{eq:tower-end}
+    &= \begin{aligned}[t]
+      &\affPart_0\big(\Delta t_n, T_{\underline t,n}(\underline\momentVar_{n:n})\big) \\
+      &+ \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-2} \prj{S_{\underline t, k}(\twistVar_k, \twistVar_{k+1})}{\X_{t_k}} \cdot \exp\Big( \bprj{\twistVar_{n-1}}{\X_{t_{n-1}}} \Big)   \right) 
+    \end{aligned}
+  \end{align}
+  From here, we may inductively apply the equalities (\ref{eq:tower-start})-(\ref{eq:tower-end}), changing $k = n, \ldots, 1$, to arrive at the following identity.
+  \begin{equation}
+    \log\Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} = \sum_{k=1}^n \affPart_0\big(\Delta t_k, T_{\underline t,k}(\underline\momentVar_{k:n})\big) + \Bprj{\affPart\big(\Delta t_1, T_{\underline t,1}(\underline\momentVar_{1:n}) \big)}{\stateVar}
+  \end{equation}
+  In other words, 
+  \begin{equation}
+    \Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} = \exp\aff(\underline t, \underline\momentVar, \stateVar).
+  \end{equation}
+
+  It now remains to prove \ref{theorem:mgf-fdds:2}.
+  We will do so by contrapositive, so fix some $\underline\momentVar \in \vecSpace^n \setminus \momentSpace(\underline t)$ and $\stateVar \in \stateSpace^\circ$ with intent to show $\Exp_{\Prb_\stateVar}\exp\prj{\underline\momentVar}{\X_{\underline t}} = \infty$.
+  Note that we have the following implication.
+  \begin{equation}
+    T_{\underline t}(\underline\momentVar) \in \prod_{k=1}^n\momentSpace(\Delta t_k) 
+    \quad\Rightarrow\quad
+    \underline\momentVar = S_{\underline t}\big(T_{\underline t}(\underline\momentVar)\big) \in S_{\underline t} \prod_{k=1}^n \momentSpace(\Delta t_k) = \momentSpace(\underline t)
+  \end{equation}
+  Seeing as $T_{\underline t,n}(\underline\momentVar_{n:n}) = \momentVar_n$, the above tells us that there is some $\ell \in \{1, \ldots, n\}$ for which the following holds.
+  \begin{align}
+    \twistVar_k &\defeq T_{\underline t, k}(\underline\momentVar_{k:n}) \in \momentSpace(\Delta t_k), & k = n, \ldots, \ell + 1 \\
+    \twistVar_\ell &\defeq T_{\underline t,\ell}(\underline\momentVar_{\ell:n}) \in \vecSpace^n \setminus \momentSpace(\Delta t_\ell),
+    \label{eq:ell-definition}
+  \end{align}
+  We now repeat the work as in (\ref{eq:tower-start})-(\ref{eq:tower-end}) to get the following identity.
+  \begin{align}
+    &\hspace{-1em}\log\Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} \tag*{} \\
+    &= \sum_{k=\ell+1}^n \affPart_0(\Delta t_k, \twistVar_k) + \log\Exp_{\Prb_\stateVar}\exp\Big(\sum_{k=1}^{\ell-1} \prj{\momentVar_k}{\X_{t_k}} + \prj{\twistVar_\ell}{\X_{t_\ell}} \Big) \\
+    &= \sum_{k=\ell+1}^n \affPart_0(\Delta t_k, \twistVar_\ell) + \log\Exp_{\Prb_\stateVar}\bigg(\exp\Big(\sum_{k=1}^{\ell-1} \prj{\momentVar_k}{\X_{t_k}} \Big) \Exp_{\Prb_{\X_{t_{\ell-1}}}} \exp\prj{\twistVar_\ell}{\X_{\Delta t_\ell}} \bigg)
+    \label{eq:some-towers}
+  \end{align}
+  By Theorem \ref{theorem:KM}\ref{theorem:KM:2} and (\ref{eq:ell-definition}) we have
+  \begin{equation}
+    \Exp_{\Prb_{\X_{t_{\ell-1}}}}\exp\prj{\twistVar_\ell}{\X_{\Delta t_\ell}} = \infty
+  \end{equation}
+  on the event $\X_{t_\ell-1} \in \stateSpace^\circ$.
+  This and (\ref{eq:some-towers}) permit us to finish the proof by showing $\Prb_\stateVar(\X_t \in \stateSpace^\circ) \neq 0$ for all $t > 0$.
+
+  \color{red}
+  still must finish
+\end{proof}

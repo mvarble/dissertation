@@ -1,0 +1,28 @@
+\begin{theorem}
+  \label{theorem:mgf-fdds}
+  For each $\underline t \vdash [0,\infty)$, the essential domain of $\aff(\underline t, \cdot, \cdot)$ is the space $\momentSpace(\underline t) \times \stateSpace$.
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      \label{theorem:mgf-fdds:1}
+      For each $\underline\momentVar \in \momentSpace(\underline t)$ and $\stateVar \in \stateSpace$, we have integrability,
+      \begin{equation}
+        \Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} < \infty,
+      \end{equation}
+      and $\aff(\underline t, \underline\momentVar, \cdot)$ decomposes as the following affine function.
+      \begin{align}
+        \aff(\underline t, \underline \momentVar, \stateVar) 
+        &\defeq \affPart_0(\underline t, \underline \momentVar) + \bprj{\affPart(\underline t, \underline \momentVar)}{\stateVar} \\
+        \affPart_0(\underline t, \underline\momentVar) &\defeq \sum_{k=1}^{|\underline t|} \affPart_0\big(\Delta t_k, T_{\underline t,k}(\underline \momentVar_{k:|\underline t|}) \big) \\
+        \affPart(\underline t, \underline\momentVar) &\defeq \affPart\big(\Delta t_1, T_{\underline t, 1}(\underline\momentVar_{1:|\underline t|}) \big) 
+      \end{align}
+    \item
+      \label{theorem:mgf-fdds:2}
+      If $\underline t \vdash [0,\infty)$, $\underline\momentVar \in \vecSpace^{|\underline t|}$, and $\stateVar \in \stateSpace^\circ$ are such that,
+      \begin{equation}
+        \Exp_{\Prb_\stateVar}\exp\prj{\underline\momentVar}{\X_{\underline t}} < \infty,
+      \end{equation}
+      then $\underline\momentVar \in \momentSpace(\underline t)$.
+      \color{red}
+      We need to have $\Prb_\stateVar(\X_t \in \stateSpace^\circ) > 0$ for all $\stateVar \in \stateSpace^\circ$.
+  \end{enumerate}
+\end{theorem}

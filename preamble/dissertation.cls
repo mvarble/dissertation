@@ -1,7 +1,7 @@
 \ProvidesClass{dissertation}
 
 % inherits book
-\LoadClass{book}
+\LoadClassWithOptions{book}
 
 % update geometry
 \usepackage[margin=1.5in]{geometry}
@@ -37,21 +37,40 @@
   \end{enumerate*}
 }
 
+% chapters are roman numerals
+\renewcommand\thechapter{\Roman{chapter}}
+
 % section number depth
 \setcounter{secnumdepth}{3}
 
 % equation counter includes chapter and resets within chapter
-\usepackage{chngcntr}
 \counterwithin{equation}{chapter}
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 % theorem environments
-\newcommand{\qed}{\hspace*{\fill}$\square$}
-\usepackage{tcolorbox}
-\usepackage{mfirstuc}
-\usepackage{chngcntr}
+\usepackage{aliascnt}
 \newcounter{environment}[chapter]
 \counterwithin{environment}{chapter}
+\newaliascnt{theorem}{environment}
+\newaliascnt{proposition}{environment}
+\newaliascnt{lemma}{environment}
+\newaliascnt{corollary}{environment}
+\newaliascnt{remark}{environment}
+\newaliascnt{definition}{environment}
+\usepackage[thmmarks]{ntheorem}{
+  \theoremseparator{.}
+  \theorembodyfont{\itshape}
+  \theoremsymbol{$\square$}
+  \newtheorem{theorem}{Theorem}[chapter]
+  \newtheorem{proposition}{Proposition}[chapter]
+  \newtheorem{lemma}{Lemma}[chapter]
+  \newtheorem{corollary}{Corollary}[chapter]
+  \newtheorem{remark}{Remark}[chapter]
+  \newtheorem{definition}{Definition}[chapter]
+  \theoremheaderfont{\itshape}
+  \theorembodyfont{}
+  \newtheorem*{proof}{Proof}
+}
 \newenvironment{myenv}[2][]{%
   \refstepcounter{environment}%
   \def\tmp{#1}%
@@ -66,31 +85,6 @@
   \vskip1em
 }
 
-\newenvironment{theorem}[1][]{\begin{myenv}[#1]{theorem}}{\end{myenv}}
-\newenvironment{corollary}[1][]{\begin{myenv}[#1]{corollary}}{\end{myenv}}
-\newenvironment{proposition}[1][]{\begin{myenv}[#1]{proposition}}{\end{myenv}}
-\newenvironment{lemma}[1][]{\begin{myenv}[#1]{lemma}}{\end{myenv}}
-\newenvironment{remark}[1][]{\begin{myenv}[#1]{remark}}{\end{myenv}}
-\newenvironment{example}[1][]{\begin{myenv}[#1]{example}}{\end{myenv}}
-\newenvironment{formulation}[1][]{\begin{myenv}[#1]{formulation}}{\end{myenv}}
-\newenvironment{question}[1][]{\begin{myenv}[#1]{question}}{\end{myenv}}
-\newenvironment{definition}[1][]{\begin{myenv}[#1]{definition}}{\end{myenv}}
-\newenvironment{assumption}[1][]{\begin{myenv}[#1]{assumption}}{\end{myenv}}
-
-\newenvironment{proof}[1][]{%
-  \def\tmp{#1}%
-  \par\noindent{%
-    \bfseries Proof%
-    \ifx\tmp\empty
-      .
-    \else
-      \,of #1.
-    \fi
-  }
-  \ignorespaces
-}{\vskip1em}
-
-\newcommand{\linkProof}[1]{\par\hyperref[proof:#1]{See proof.}}
 
 % bibliography
 \usepackage{natbib}

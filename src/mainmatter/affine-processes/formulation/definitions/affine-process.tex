@@ -1,0 +1,13 @@
+\begin{definition}
+  \label{definition:affine-process}
+  For a probability space $(\Omega, \Sigma, \Prb)$ with filtration $\scrF = (\scrF_t)_{t\geq0}$, an affine process $\X$ on $\stateSpace$ is a stochastically continuous, time-homogeneous $(\Prb, \scrF)$-Markov process on $\stateSpace$ in which the bounded complex moments have the following log-affine dependence on the initial state.
+  \begin{align}
+    \label{eq:affine-definition}
+    &\begin{aligned}
+      \Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_t} &= \exp\aff(t, \momentVar, \stateVar) \\
+      \aff(t, \momentVar, \stateVar) &= \affPart_0(t, \momentVar) + \bprj{\affPart(t, \momentVar)}{\stateVar},  \\
+    \end{aligned}
+    & t \geq 0, ~ \momentVar \in \boundedSpace
+  \end{align}
+  Above, we are denoting $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$ the conditional distributions of $\X$ factored through the initial state (see Appendix \ref{appendix:markov} for further specification and notation).
+\end{definition}

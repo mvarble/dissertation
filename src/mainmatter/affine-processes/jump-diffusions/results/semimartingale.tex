@@ -1,0 +1,22 @@
+\begin{theorem}[see {\cite[Theorem 1.4.8 and Theorem 1.5.4]{cuchiero2011}}]
+  \label{theorem:semimartingale}
+  For each $\stateVar \in \stateSpace$, $\X$ is a $(\Prb_\stateVar, \scrF)$ semimartingale with the following characteristics $(B^\trunc, A, \predproj{\jumpMeas^\X})$ relative to $\trunc$.
+  \begin{align}
+    B^\trunc_t 
+    &= \int_0^t \affDrift^\trunc(\X_{s-}) \rmd s  
+    = \affDrift^\trunc(\X_-) \shortInt \leb_t \\
+    %
+    A_t 
+    &=\int_0^t \affDiff(\X_{s-}) \rmd s 
+    = \affDiff(\X_-) \shortInt \leb_t \\
+    %
+    \predproj{\jumpMeas^\X}(\rmd s, \rmd\markVar) 
+    &= \affJump(\X_{s-}, \rmd\markVar) \rmd s
+  \end{align}
+  In other words, $\X$ has the following decomposition,
+  \begin{equation}
+    \label{eq:semimartingale-decomposition}
+    \X_t = \stateVar + \affDrift^\trunc(\X_-) \shortInt \leb_t + \X^c_t + \trunc \ast \compensate{\jumpMeas^\X}_t + (\operatorname{id}_\vecSpace-\trunc)\ast\jumpMeas^\X_t
+  \end{equation}
+  where $\compensate{\jumpMeas^\X}$ is the compensated version of the jump measure $\jumpMeas^\X$ (i.e.\, $\compensate{\jumpMeas^\X} = \jumpMeas^\X - \predproj{\jumpMeas^\X}$) and $\X^c$ is the continuous local martingale component of $\X$ (with $\langle\X^{c,i}, \X^{c,j}\rangle = A^{i,j}$).
+\end{theorem}

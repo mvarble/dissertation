@@ -1,0 +1,73 @@
+\begin{proof}
+  \label{proof:proposition:momentSpace-facts}
+  Fix $\tau > 0$ and $\momentVar \in \momentSpace(\tau) \cap \odeSpace^\circ$.
+  Because $\momentVar \in \momentSpace(\tau)$, $\aff(\cdot,\momentVar,\cdot)$ exists on $[0,\tau]\times\stateSpace$ as a solution to $\system(\ode,\tau,\momentVar)$.
+  As mentioned in Remark \ref{remark:riccati-system}, the function $\affPart(\cdot,\momentVar)$ associated with $\aff(\cdot,\momentVar,\cdot)$ is a solution to the following equation,
+  \begin{equation}
+    \label{eq:system'}
+    \left\{\begin{array}{ll}
+      \dot\affPart(t,\momentVar) = f\big(t, \affPart(t,\momentVar)\big) & t \in [0,\tau] \\
+      \affPart(0,\momentVar) = \momentVar
+    \end{array}\right.
+  \end{equation}
+  where $f: \bbR \times \odeSpace^\circ \rightarrow \vecSpace$ is defined by $f(t, \momentVar) \defeq \odePart(\momentVar)$.
+  Seeing as $f$ is continuously differentiable on $\bbR \times \odeSpace^\circ$ by Lemma \ref{lemma:ode-differentiable}, we may use \cite[III.13 Theorem X]{walter1998} to ensure some $\epsilon > 0$ such that the band
+  \begin{equation}
+    S_\epsilon \defeq \Big\{ (t, \vecVar) \in [0,\tau] \times \vecSpace : |\vecVar-\affPart(t,\momentVar)| \leq \epsilon \Big\}
+  \end{equation}
+  is contained in $\bbR \times \odeSpace^\circ$ and provides us to each $(t_0, \vecVar) \in S_\epsilon$ a unique solution $q(\cdot,t_0,\vecVar)$ to the following initial value problem,
+  \begin{equation}
+    \left\{\begin{array}{ll}
+      \dot q(t,t_0,\vecVar) = f\big(t, q(t,t_0,\vecVar)\big) & t \in [t_0,\tau] \\
+      q(t_0,t_0,\vecVar) = \vecVar
+    \end{array}\right.
+  \end{equation}
+  which is continuously differentiable with derivatives $\partial_{t_0} q(t,t_0,\vecVar) \in \vecSpace$ and $Dq(t,t_0,\vecVar) \in \bbL(\vecSpace)$ satisfying the following equations.
+  \begin{align}
+    \partial_{t_0} q(t, t_0, \vecVar) 
+    &= -f(t_0,\momentVar) + \int_{t_0}^t Df\big(s, q(s,t_0,\vecVar) \big) \partial_{t_0} q(s,t_0, \vecVar) \rmd s \\[0.5em]
+    %
+    D q(t,t_0,\vecVar) 
+    &= \operatorname{id}_\vecSpace + \int_{t_0}^t Df\big(s, q(s,t_0,\vecVar) \big) Dq(s, t_0, \vecVar) \rmd s
+  \end{align}
+  In particular, for each $\vecVar \in B(\momentVar, \epsilon)$, we have $|\vecVar - \affPart(0,\momentVar)| = |\vecVar - \momentVar| < \epsilon$, and so $(0,\vecVar) \in S_\epsilon$; this allows us to disregard the middle coordinate and have $q: [0,\tau] \times B(0,\epsilon) \rightarrow \vecSpace$ such that $q(\cdot,\vecVar)$ is the unique solution to 
+  \begin{equation}
+    \label{eq:chart-system}
+    \left\{\begin{array}{ll}
+      \dot q(t, \vecVar) = \odePart\big(q(t, \vecVar)\big), & t \in [0,\tau] \\
+      q(0, \vecVar) = \vecVar
+    \end{array}\right.
+  \end{equation}
+  and the derivative in the second coordinate $Dq(t,\vecVar) \in \bbL(\vecSpace)$ satisfies the following equation.
+  \begin{align}
+    D q(t,\vecVar) &= \operatorname{id}_\vecSpace + \int_0^t D\odePart\big(q(s,\vecVar)\big)Dq(s, \vecVar) \rmd s
+  \end{align}
+  From here, we may define $Q: [0,\tau] \times B(\momentVar,\epsilon) \times \stateSpace \rightarrow \bbR$ as follows.
+  \begin{align}
+    Q(t,\vecVar,\stateVar) &\defeq q_0(t,\vecVar) + \bprj{q(t,\vecVar)}{\stateVar} \\
+    q_0(t,\vecVar) &\defeq \int_0^t \odePart_0\big(q(s,\vecVar)\big) \rmd s \\
+    \odePart_0(\vecVar) &\defeq \ode(\vecVar, 0)
+  \end{align}
+  Because the image of $q(\cdot, \vecVar)$ on $[0,\tau]$ remains in $\odeSpace^\circ$, on which $\odePart$ is continuously differentiable, $q_0$ is continuously differentiable with derivatives $\dot q_0$ and $D q_0$ satisfying the following.
+  \begin{align}
+    \dot q_0(t,\vecVar) &= \odePart_0\big(q(s,\vecVar)\big) \\
+    D q_0(t, \vecVar) &= \int_0^t D\odePart_0\big( q(s, \vecVar) \big) Dq(s, \vecVar) \rmd s
+  \end{align}
+  By linearity, $Q(\cdot,\vecVar,\cdot)$ is a solution to $\system(\ode, \tau, \vecVar)$ and so $\vecVar \in \momentSpace(\tau)$.
+  We now have $B(\momentVar,\epsilon) \subseteq \momentSpace(\tau)$, concluding part \ref{proposition:momentSpace-facts:1}.
+  Meanwhile, any solution $Q^\momentVar$ to $\system(\ode,\tau,\momentVar)$ is such that the associated $q^\momentVar$ solves (\ref{eq:system'}) and so $q^\momentVar = q(\cdot,\momentVar)$.
+  From here, it is thus the case that $Q^\momentVar = Q(\cdot,\momentVar,\cdot)$.
+  This means $\aff$ from Theorem \ref{theorem:KM} is such that $\aff(\cdot,\momentVar,\cdot)$ is the unique solution to $\system(\ode,\momentVar,\tau)$, concluding part \ref{proposition:momentSpace-facts:2}.
+  Lastly, for each $\stateVar\in\stateSpace$, linearity also shows us that $\aff(\cdot,\cdot,\stateVar)$ is continuously differentiable in a neighborhood of $(t, \momentVar)$, with derivative in the second coordinate $D\aff(\cdot,\cdot,\stateVar)$ satisfying the following.
+  \begin{align}
+    D\aff(t,\momentVar,\stateVar)
+    &= D\affPart_0(t,\momentVar) + D\affPart(t,\momentVar)\cdot\stateVar \\
+    &= D q_0(t,\momentVar) + Dq(t,\momentVar)\cdot\stateVar \\
+    &= \int_0^t D\odePart_0\big(q(s,\momentVar)\big) Dq(s,\momentVar) \rmd s + \left(\operatorname{id}_\vecSpace + \int_0^t D\odePart\big(q(s,\momentVar)\big)D q(s,\momentVar) \rmd s\right)\cdot\stateVar \\
+    &= \stateVar + \int_0^t \Big( D\odePart_0\big(q(s,\momentVar) \big) Dq(s,\momentVar) + \sum_{i=1}^d \stateVar_i D\odePart_i\big(q(s,\momentVar) \big) Dq(s,\momentVar) \Big) \rmd s \\
+    &= \stateVar + \int_0^t D\Big( \odePart_0 + \sum_{i=1}^d \stateVar_i \odePart_i \Big)\big(q(s,\momentVar)\big) Dq(s,\momentVar) \Big) \rmd s \\
+    &= \stateVar + \int_0^t D\ode\big(q(s,\momentVar), \stateVar\big) Dq(s,\momentVar) \Big) \rmd s \\
+    &= \stateVar + \int_0^t D\ode\big(\affPart(s,\momentVar), \stateVar\big) D\affPart(s,\momentVar) \rmd s 
+  \end{align}
+  This concludes part \ref{proposition:momentSpace-facts:3}.
+\end{proof}
