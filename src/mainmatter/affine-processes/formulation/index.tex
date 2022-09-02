@@ -3,30 +3,49 @@ We start by specifying a state space on which our stochastic processes live.
 Let $\vecSpace$ be a finite-dimensional real vectorspace with inner-product $\prj\cdot\cdot$.
 Equip $\vecSpace$ with the canonical topology and Borel algebra from $\prj\cdot\cdot$.
 Denote the dimension $d \defeq \dim\vecSpace$ and establish the canonical isometric isomorphism $\vecSpace \equiv \bbR^d$ by specifying an orthonormal basis $\basisVec_1, \ldots, \basisVec_d \in \vecSpace$, so that we may identify components of vectors in $\vecSpace$.
-\begin{equation}
+\begin{equation*}
   \vecVar \in \vecSpace \quad\longleftrightarrow\quad \vecVar^i \defeq \prj{\vecVar}{\basisVec_i}, \quad i = 1, \ldots, d
-\end{equation}
-Similarly identify any map $f: \bbA \rightarrow \vecSpace$ with component functions $f_1,\ldots,f_d: \bbA \rightarrow \bbR$.
-Extend the inner-product to a complex bilinear form on $\vecSpace\oplus\im\vecSpace$, linearly and symmetrically.
-\begin{equation}
+\end{equation*}
+Similarly identify any map $f: \bbA \rightarrow \vecSpace$ with component maps $f_1, \ldots, f_d: \bbA \rightarrow \bbR$.
+\begin{equation*}
+  f: \bbA \rightarrow \vecSpace \quad\longleftrightarrow\quad (f_1,\ldots, f_d): \bbA \rightarrow \bbR^d; ~ f_i(a) = \prj{f(a)}{\basisVec_i}
+\end{equation*}
+Extend the inner-product symmetrically to a bilinear form on $\vecSpace\oplus\im\vecSpace$.
+\begin{equation*}
   \bprj{\vecVar_1+\im w_1}{\vecVar_2 + \im w_2} = \big(\prj{\vecVar_1}{\vecVar_2} - \prj{w_1}{w_2}\big) + \im\big(\prj{\vecVar_1}{w_2} + \prj{w_1}{\vecVar_2}\big)
-\end{equation}
+\end{equation*}
 Fix a convex and closed $\stateSpace \subseteq \vecSpace$ satisfying $0 \in \stateSpace$ and $\operatorname{span}\stateSpace = \vecSpace$.
 Associate this space with the finite exponentials.
-\begin{equation}
+\begin{equation*}
   \boundedSpace \defeq \Big\{ \momentVar \in \vecSpace \oplus \im\vecSpace : \sup_{\stateVar \in \stateSpace} \exp\prj{\Re(\momentVar)}{\stateVar} < \infty \Big\}
-\end{equation}
+\end{equation*}
 We may now define the notion of an affine process on $\stateSpace$.
 
 % define an affine process
 \input{definitions/affine-process}
 
-% note that (\affPart_0, \affPart) are uniquely decided from \aff.
+% clear up our definition with the literature
 \input{results/affine-remarks}
 
+% motivate the importance of \ode, \affDrift, \affDiff, \affJump
 While the tuple $(\affPart_0, \affPart)$ in (\ref{eq:affine-definition}) is a simpler object than the distributions $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$, selecting an \emph{admissible} tuple|one $(\affPart_0, \affPart)$ which actually can appear in (\ref{eq:affine-definition})|is seemingly prohibitive.
-The following result is incredibly useful at demonstrating \emph{parameters} $\affDrift^\trunc, \affDiff, \affJump$ of an affine process, that easily specify admissible pairs $(\affPart_0, \affPart)$.
+The following result is incredibly useful at demonstrating \emph{parameters} of an affine process that specify admissible pairs $(\affPart_0, \affPart)$.
+These implicitly depend on a \emph{truncation function} $\trunc$, which we select as follows.
+\begin{equation}
+  \trunc: \vecSpace \rightarrow \vecSpace, \quad \trunc(\vecVar) \defeq \left\{\begin{aligned}
+    &\vecVar, & |\vecVar| \leq 1 \\
+    &0, & |\vecVar| > 1 
+  \end{aligned}\right.
+\end{equation}
+The importance of this function is for local integrability properties|the details of which we defer until Section \ref{affine-processes:jump-diffusions}.
 
-% Show how there is a map $\ode$
-\input{results/regularity}
+% state the existence of \ode, \affDrift, \affDiff, \affJump
+\input{results/affine-regularity}
+\input{results/affine-regularity.proof}
+\input{results/riccati-affine-formulation}
+\input{results/admissibility-remarks}
 
+% fix our "base" affine process
+Henceforth, we fix $\X$ a c\`adl\`ag affine process with conditional distributions $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$ and moment function $\aff$ as in Definition \ref{definition:affine-process}.
+Also fix the parameters $(\affDriftPart^\trunc_i, \affDiffPart_i, \affJumpPart_i)_{i=0}^d$ from Theorem \ref{theorem:affine-regularity} and the associated functions $\ode, \affDrift^\trunc, \affDiff, \affJump$ from Remark \ref{remark:riccati-affine-formulation}.
+Denote $\scrF=(\scrF_t)_{t\geq0}$ the filtration induced by $\X$
