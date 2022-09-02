@@ -1,4 +1,7 @@
 \begin{lemma}
   \label{lemma:odeSpace-rationale}
-  The expression $\ode(\momentVar, \stateVar)$ is well-defined for all $\stateVar \in \stateSpace$ if and only if $\momentVar \in \odeSpace$.
+  We have $\momentVar \in \odeSpace$ if and only if each $\stateVar \in \stateSpace$ is such that
+  \begin{equation*}
+    \int_{|\vecVar|>1} e^\prj{\momentVar}{\vecVar} \affJump(\stateVar, \rmd\markVar) < \infty
+  \end{equation*}
 \end{lemma}

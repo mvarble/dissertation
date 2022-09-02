@@ -2,21 +2,30 @@
   \label{remark:riccati-affine-formulation}
   By Remark \ref{remark:affine-remarks}\ref{remark:affine-parts}, Theorem \ref{theorem:affine-regularity} is equivalent to the existence of maps
   \begin{equation}
-    \begin{gathered}
-      \affDrift^\trunc(\stateVar) = \affDriftPart_0^\trunc + \sum_{i=1}^d \stateVar^i \affDriftPart_i^\trunc, \qquad
-      \affDiff(\stateVar) = \affDiffPart_0 + \sum_{i=1}^d \stateVar^i \affDiffPart_i, \\
-      \affJump(\stateVar, \rmd\markVar) = \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\rmd\markVar)
-    \end{gathered}
+    \label{eq:affine-maps}
+    \begin{aligned}
+      % drift
+      \affDrift^\trunc(\stateVar) 
+      &\defeq \affDriftPart_0^\trunc + \sum_{i=1}^d \stateVar^i \affDriftPart_i^\trunc, \\
+      % diffusion
+      \affDiff(\stateVar) 
+      &\defeq \affDiffPart_0 + \sum_{i=1}^d \stateVar^i \affDiffPart_i, \\
+      % jumps
+      \affJump(\stateVar, \rmd\markVar) 
+      &\defeq \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\rmd\markVar) \\
+      % ode
+      \ode(\momentVar, \stateVar) 
+      &= \odePart_0(\momentVar) + \sum_{i=1}^d \stateVar^i \odePart_i(\momentVar) \\
+      &\defeq \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} + \frac12 \bprj{\momentVar}{\affDiff(\stateVar)\momentVar} + \int_\vecSpace \Big( e^\prj{\momentVar}{\markVar} - 1 - \bprj{\momentVar}{\trunc(\markVar)} \Big) \affJump(\stateVar, \rmd\markVar) \\
+    \end{aligned}
   \end{equation}
   which specify the dynamics of $\aff$.
   \begin{equation}
-    \label{test}
-  \end{equation}
-  \begin{equation}
+    \label{eq:riccati-system-bounded}
     \forall \stateVar \in \stateSpace, \qquad \left\{\begin{aligned}
       \dot\aff(t, \momentVar, \stateVar) &= \ode\big(\affPart(t,\momentVar), \stateVar\big) & t \geq 0 \\
       \aff(0,\momentVar, \stateVar) &= \prj{\momentVar}{\stateVar}
     \end{aligned}\right.
   \end{equation}
-  Indeed, this is also because differentiability and our initial condition in (\ref{test}) are linear.
+  Indeed, this is also because differentiability and our initial condition in (\ref{eq:riccati-system-bounded}) are linear.
 \end{remark}

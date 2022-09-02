@@ -1,16 +1,19 @@
 \begin{lemma}
   \label{lemma:no-truncation}
   If $0 \in \odeSpace^\circ$, then for each $\stateVar \in \stateSpace$, we have the following integrability.
-  \begin{equation}
+  \begin{equation*}
     \int_\vecSpace |\markVar - \trunc(\markVar)| \affJump(\stateVar, \rmd\markVar) < \infty
-  \end{equation}
-  This allows us to define the following function $\affDrift: \stateSpace \rightarrow \vecSpace$.
+  \end{equation*}
+  This allows us to define the following function $\affDrift: \stateSpace \rightarrow \vecSpace$ and rewrite $\ode$.
   \begin{equation}
-    \affDrift(\stateVar) \defeq \affDrift^\trunc(\stateVar) + \int_\vecSpace \big(\markVar - \trunc(\markVar)\big) \affJump(\stateVar,\rmd\markVar)
+    \label{eq:no-truncation}
+    \begin{gathered}
+      % \affDrift
+      \affDrift(\stateVar) \defeq \affDrift^\trunc(\stateVar) + \int_\vecSpace \big(\markVar - \trunc(\markVar)\big) \affJump(\stateVar,\rmd\markVar) \\
+      % \ode
+      \ode(\momentVar, \stateVar) = \prj{\momentVar}{\affDrift(\stateVar)} + \frac12 \prj{\momentVar}{\affDiff(\stateVar)\momentVar} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\markVar} \big) \affJump(\stateVar, \rmd\markVar) \\
+      % \ode derivative
+      D\ode(\momentVar,\stateVar)w = \Bprj{w}{\affDrift(\stateVar) + \affDiff(\stateVar)\momentVar + \int_\vecSpace \markVar \big( e^\prj{\momentVar}{\markVar} - 1 \big) \affJump(\stateVar,\rmd\markVar)}
+    \end{gathered}
   \end{equation}
-  From here, $\ode$ and its derivative $D\ode$ may be rewritten as such.
-  \begin{gather}
-    \ode(\momentVar, \stateVar) = \prj{\momentVar}{\affDrift(\stateVar)} + \frac12 \prj{\momentVar}{\affDiff(\stateVar)\momentVar} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\markVar} \big) \affJump(\stateVar, \rmd\markVar) \\
-    D\ode(\momentVar,\stateVar)w = \Bprj{w}{\affDrift(\stateVar) + \affDiff(\stateVar)\momentVar + \int_\vecSpace \markVar \big( e^\prj{\momentVar}{\markVar} - 1 \big) \affJump(\stateVar,\rmd\markVar)}
-  \end{gather}
 \end{lemma}

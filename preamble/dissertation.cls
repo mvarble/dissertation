@@ -6,6 +6,10 @@
 % update geometry
 \usepackage[margin=1.5in]{geometry}
 
+% header stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
 % project directories
 \usepackage{import}
 
@@ -13,8 +17,6 @@
 \usepackage{array}
 \usepackage[inline]{enumitem}
 \usepackage{float}
-\usepackage{amsmath}
-\allowdisplaybreaks
 
 % colors
 \usepackage{xcolor}
@@ -60,7 +62,6 @@
 \usepackage[thmmarks]{ntheorem}{
   \theoremseparator{.}
   \theorembodyfont{\itshape}
-  \theoremsymbol{$\square$}
   \newtheorem{theorem}{Theorem}[chapter]
   \newtheorem{proposition}{Proposition}[chapter]
   \newtheorem{lemma}{Lemma}[chapter]

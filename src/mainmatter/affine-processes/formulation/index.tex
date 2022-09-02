@@ -29,9 +29,10 @@ We may now define the notion of an affine process on $\stateSpace$.
 
 % motivate the importance of \ode, \affDrift, \affDiff, \affJump
 While the tuple $(\affPart_0, \affPart)$ in (\ref{eq:affine-definition}) is a simpler object than the distributions $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$, selecting an \emph{admissible} tuple|one $(\affPart_0, \affPart)$ which actually can appear in (\ref{eq:affine-definition})|is seemingly prohibitive.
-The following result is incredibly useful at demonstrating \emph{parameters} of an affine process that specify admissible pairs $(\affPart_0, \affPart)$.
+The following result is incredibly useful at demonstrating primitive affine objects which determine the time-dynamics of $\big(\affPart_0(\cdot,\momentVar), \affPart(\cdot,\momentVar)\big)$ for each $\momentVar \in \momentSpace$.
 These implicitly depend on a \emph{truncation function} $\trunc$, which we select as follows.
 \begin{equation}
+  \label{eq:truncation}
   \trunc: \vecSpace \rightarrow \vecSpace, \quad \trunc(\vecVar) \defeq \left\{\begin{aligned}
     &\vecVar, & |\vecVar| \leq 1 \\
     &0, & |\vecVar| > 1 
@@ -46,6 +47,5 @@ The importance of this function is for local integrability properties|the detail
 \input{results/admissibility-remarks}
 
 % fix our "base" affine process
-Henceforth, we fix $\X$ a c\`adl\`ag affine process with conditional distributions $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$ and moment function $\aff$ as in Definition \ref{definition:affine-process}.
-Also fix the parameters $(\affDriftPart^\trunc_i, \affDiffPart_i, \affJumpPart_i)_{i=0}^d$ from Theorem \ref{theorem:affine-regularity} and the associated functions $\ode, \affDrift^\trunc, \affDiff, \affJump$ from Remark \ref{remark:riccati-affine-formulation}.
-Denote $\scrF=(\scrF_t)_{t\geq0}$ the filtration induced by $\X$
+Henceforth, we fix $\X$ a c\`adl\`ag affine process with conditional distributions $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$, induced filtration $\scrF=(\scrF_t)_{t\geq0}$, and moment function $\aff$ as in Definition \ref{definition:affine-process}.
+Also fix the parameters $(\affDriftPart^\trunc_i, \affDiffPart_i, \affJumpPart_i, \odePart_i)_{i=0}^d$ from Theorem \ref{theorem:affine-regularity} and the associated functions $\affDrift^\trunc, \affDiff, \affJump, \ode$ from Remark \ref{remark:riccati-affine-formulation}.
