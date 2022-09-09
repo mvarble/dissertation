@@ -1,6 +1,6 @@
-% ------------------------------------------------------------------------------
+% --------------------------------------------------------------------------------------------------
 % preamble
-% ------------------------------------------------------------------------------
+% --------------------------------------------------------------------------------------------------
 % our class file establishes our document class, defines fundamental 
 % environments, and includes all of our required packages
 \documentclass[leqno]{./preamble/dissertation}
@@ -13,31 +13,40 @@
 \author{Matthew Varble}
 \date{\today}
 
-% ------------------------------------------------------------------------------
+% --------------------------------------------------------------------------------------------------
 % document
-% ------------------------------------------------------------------------------
+% --------------------------------------------------------------------------------------------------
 \begin{document}
 
 % title page
 \maketitle
 
-% abstract and acknowledgment in `src/frontmatter/`
+% abstract, acknowledgment, table of contents, and introduction in `src/frontmatter/`
 \frontmatter
 \import{src/frontmatter/}{index}
 
-% table of contents
-\tableofcontents
 
-% introduction in `src/introduction/`
-\import{src/introduction/}{index}
-
-% all the chapters are in `src/mainmatter/`
+% all the chapters in their respective `src/*` directory
 \mainmatter
-\import{src/mainmatter/}{index}
 
-% appendix contents in `src/appendix/`
+\chapter{Affine processes}
+\label{affine-processes}
+\import{src/affine-processes/}{index}
+
+\chapter{Large deviations of affine processes}
+\label{large-deviations}
+\import{src/large-deviations/}{index}
+
+\chapter{Large deviation rate functions}
+\label{rate-functions}
+\import{src/rate-functions/}{index}
+
+% appendix chapters in their respective `src/*` directory
 \appendix
-\import{src/appendix/}{index}
+
+\chapter{Jump diffusions}
+\label{jump-diffusions}
+\import{src/jump-diffusions/}{index}
 
 % bibliography top-level file
 \clearpage

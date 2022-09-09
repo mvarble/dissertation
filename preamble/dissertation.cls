@@ -6,10 +6,6 @@
 % update geometry
 \usepackage[margin=1.5in]{geometry}
 
-% header stuff
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-
 % project directories
 \usepackage{import}
 

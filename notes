@@ -1,0 +1,55 @@
+---------------------------------------------------------
+THESIS: first draft with following shape
+---------------------------------------------------------
+
+1. Technical issues surrounding affine processes
+  - affine transform formula (purely complex moments)
+  - Cuchiero hammer (now alpha, beta, mu "refer to appendix for blah")
+  - ode (Keller-Ressel)
+  - "light-tails" assumption (Lambda, ode simplified)
+  - continue with the epsilon difficulty
+
+2. LDP
+  - almost all the same (move the affine stuff)
+
+3. Examples/applications
+  - piecewise psi-map
+  - "ripping off" KK is good + jumps + Hawkes
+  - plots
+  - no need for excessive details
+  - can take stuff from exact sampling paper (without explicit details)
+  - i.e. "future work"
+  - Duffy time-change: "look at alternative approach!"
+
+A. jump diffusions
+  - semimartingales
+  - measure changes
+  - stochastic exponentials
+  - truncations
+
+---------------------------------------------------------
+DEFENSE: get things moving next week; scratchy slides
+---------------------------------------------------------
+
+Top ideas:
+  - Survey of large deviations (10 minutes)
+    - epsilon log asymptotic
+    - definition
+    - Chebyshev: change measure with exp(----), pull out (gives tools for later)
+    - reading list (DZ+KF+Puhalskii) + strengths of each reference
+  - What is an affine process? (10 minutes)
+    - approaches to stochastic processes (transition, ito, feller): what affine means in each case
+    - what is (generally) known/unknown (kicker: no ldp)
+  - Main theorem + discussion with examples (10 minutes)
+    - State theorem, explain.
+    - proof approaches (DZ fdds, KF skorkhod stuff, puhalskii representation)
+  - Equivalence theorem (10 minutes)
+    - "fun fact we found in proof" = equivalence of approaches
+    - recall exponential from LDP
+    - twist
+    - martingale
+    - equivalence
+    - Z = L equality
+    - ideas on where this might generally apply
+
+Extra: maybe put slides for something to point at when talking technical
