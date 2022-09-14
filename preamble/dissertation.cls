@@ -54,7 +54,8 @@
 \newaliascnt{corollary}{environment}
 \newaliascnt{remark}{environment}
 \newaliascnt{definition}{environment}
-\usepackage[thmmarks]{ntheorem}{
+\newaliascnt{example}{environment}
+\usepackage{ntheorem}{
   \theoremseparator{.}
   \theorembodyfont{\itshape}
   \newtheorem{theorem}{Theorem}[chapter]
@@ -63,6 +64,7 @@
   \newtheorem{corollary}{Corollary}[chapter]
   \newtheorem{remark}{Remark}[chapter]
   \newtheorem{definition}{Definition}[chapter]
+  \newtheorem{example}{Example}[chapter]
   \theoremheaderfont{\itshape}
   \theorembodyfont{}
   \newtheorem*{proof}{Proof}

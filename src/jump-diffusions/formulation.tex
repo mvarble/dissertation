@@ -18,9 +18,21 @@ where the functions have the following properties.
       \affJump\big(\stateVar, \{0\}\big) = 0, \quad \int_\vecSpace \big( 1 \wedge |\markVar|^2\big) \affJump(\stateVar, \rmd\markVar) < \infty
     \]
 \end{itemize}
+In other words, our jump-diffusion $\X$ has the following canonical semimartingale representation (see \cite[Theorem II.2.34]{jacod2003} for definition).
+\begin{equation}
+  \label{eq:jump-diffusion-canonical}
+  \begin{gathered}
+    \X = \X_0 + \affDrift^\trunc(\X) \shortInt \leb + \X^\rmc +  \trunc \ast \compensate{\jumpMeas^\X} + (\id_\vecSpace - \trunc) \ast \jumpMeas^\X \\
+    \prj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb \\
+    \predproj{\jumpMeas^\X}(\rmd s, \rmd\markVar) = \affJump(\X_s, \rmd\markVar) \rmd s
+  \end{gathered}
+\end{equation}
 
 % a quick remark on differences and terminology.
-\input{./results/definition-remarks.tex}
+\input{./results/definition-remarks}
+
+% a quick example to demonstrate Brownian motion and Poisson.
+\input{./results/example}
 
 The following Lemma will be repeatedly used as a shortcut of It\^o's formula and various identities that always apply with jump-diffusions.
 

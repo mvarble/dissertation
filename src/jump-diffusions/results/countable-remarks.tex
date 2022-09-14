@@ -1,0 +1,27 @@
+\begin{remark}
+  \label{remark:countable}
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      Such objects $\affInt, \affDist$ always exist with our assumption of the Lemma.
+      Seeing as $\affJump$ is a transition kernel from $(\stateSpace, \scrB(\stateSpace))$ to $(\vecSpace, \scrB(\vecSpace))$, we have our desired measurability.
+      \[
+        \affInt \defeq \affJump(\cdot, \vecSpace) \in \scrB(\stateSpace)/\scrB(\bbR)
+      \]
+      Constructing $\affDist$ should be obvious algebra, so long as we have no zero measures; otherwise, we may define
+      \[
+        \affDist(\stateVar, \Gamma) \defeq \delta_0(\Gamma) \cdot 1_{\affInt^{-1}\{0\}}(\stateVar) + \frac{\affJump(\stateVar, \Gamma)}{\affInt(\stateVar)} 1_{\stateSpace - \affInt^{-1}\{0\}}(\stateVar),
+      \]
+      where $\delta_0$ is the degenerate measure at $0 \in \vecSpace$. 
+      This ensures that any $\affDist(\cdot, \Gamma) \in \scrB(\stateSpace)/\scrB(\bbR)$ and any $\affDist(\stateVar, \cdot)$ a probability measure on $\scrB(\vecSpace)$; also, when $\affJump(\stateVar, \cdot)$ is the zero measure,
+      \[
+        \affJump(\stateVar, \rmd\markVar) = 0 = \affInt(\stateVar) \cdot \delta_0(\rmd\markVar) = \affInt(\stateVar) \affDist(\stateVar, \rmd\markVar),
+      \]
+      and otherwise,
+      \[
+        \affJump(\stateVar, \rmd\markVar) = \affJump(\stateVar,\vecSpace) \frac{\affJump(\stateVar, \rmd\markVar)}{\affJump(\stateVar, \vecSpace)} = \affInt(\stateVar) \affDist(\stateVar, \rmd\markVar).
+      \]
+    \item
+      As far as we know, there is no widely accepted source which explores jump-diffusions to the extent of declaring a notion like \emph{locally countable}, as we have.
+      This means that there is likely some clash of terminology, should such a concept already exist.
+  \end{enumerate}
+\end{remark}

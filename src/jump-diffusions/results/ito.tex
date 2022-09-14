@@ -12,16 +12,7 @@
 \end{lemma}
 \begin{proof}
   \label{proof:lemma:ito}
-  Our jump-diffusion $\X$ has the following canonical semimartingale representation (see \cite[Theorem II.2.34]{jacod2003} for definition).
-  \begin{equation}
-    \label{eq:jump-diffusion-canonical}
-    \begin{gathered}
-      \X = \X_0 + \affDrift^\trunc(\X) \shortInt \leb + \X^\rmc +  \trunc \ast \compensate{\jumpMeas^\X} + (\id_\vecSpace - \trunc) \ast \jumpMeas^\X \\
-      \prj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb \\
-      \predproj{\jumpMeas^\X}(\rmd s, \rmd\markVar) = \affJump(\X_s, \rmd\markVar) \rmd s
-    \end{gathered}
-  \end{equation}
-  Now apply It\^o's formula \cite[Theorem I.4.57]{jacod2003} and use the predictable covariation identity in (\ref{eq:jump-diffusion-canonical}) to get the following.
+  Apply It\^o's formula \cite[Theorem I.4.57]{jacod2003} and use the predictable covariation identity in (\ref{eq:jump-diffusion-canonical}) to get the following.
   \begin{align*}
     f(\X_t) 
     &= \begin{aligned}[t]
