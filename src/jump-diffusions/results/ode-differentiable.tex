@@ -1,7 +1,15 @@
+\begin{lemma}
+  \label{lemma:ode-differentiable}
+  For each $\stateVar \in \stateSpace$, the map $\ode(\cdot,\stateVar)$ is continuously differentiable on $\odeSpace(\stateVar)^\circ$, with derivative $\Der \ode(\cdot,\stateVar): \odeSpace(\stateVar)^\circ \rightarrow \bbL(\vecSpace, \bbR)$ as follows.
+  \begin{equation}
+    \label{eq:ode-derivative-truncation}
+    \Der \ode(\momentVar,\stateVar) w = \Bprj{\affDrift^\trunc(\stateVar) + \affDiff(\stateVar)\momentVar + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} \markVar - \trunc(\markVar)\big) \affJump(\stateVar,\rmd\markVar)}{w}, \quad \momentVar \in \odeSpace(\stateVar)^\circ
+  \end{equation}
+\end{lemma}
 \begin{proof}
   \label{proof:lemma:ode-differentiable}
-  Fix $\stateVar \in \stateSpace$, $\momentVar \in \odeSpace^\circ$.
-  Let $\epsilon > 0$ such that $B(\momentVar, \epsilon) \subseteq \odeSpace$.
+  Fix $\stateVar \in \stateSpace$, $\momentVar \in \odeSpace(\stateVar)^\circ$.
+  Let $\epsilon > 0$ such that $B(\momentVar, \epsilon) \subseteq \odeSpace(\stateVar)$.
   For all $0 < \delta < \epsilon$ and $i = 1, \ldots, d$, we now have the following identity
   \begin{equation}
     \label{eq:difference-quotient}
@@ -25,7 +33,7 @@
     &= \Big| \frac{1}{2} \prj{\momentVar+\delta \basisVec_i}{\markVar}^2 e^{\gamma_0\prj{\momentVar+\delta \basisVec_i}{\markVar}} + \frac12\prj{\momentVar}{\markVar}^2 e^{\gamma_1\prj{\momentVar}{\markVar}} \Big| \\
     &\leq \Big(\big(|\momentVar| + \epsilon\big)^2 e^{|\momentVar|+\epsilon} \Big) |\markVar|^2.
   \end{align*}
-  This dominating function is integrable (recall the finiteness in (\ref{eq:affine-maps-characteristic-consequences}) of Remark \ref{remark:affine-admissibility}),
+  This dominating function is integrable,
   \begin{equation*}
     \int_{|\markVar|\leq 1} \Big( \big(|\momentVar|+\epsilon\big)^2 e^{|\momentVar|+\epsilon} \Big) |\markVar|^2 \affJump(\stateVar,\rmd\markVar)
     \leq  \Big( \big(|\momentVar|+\epsilon\big)^2 e^{|\momentVar|+\epsilon} \Big) \int_\vecSpace (1 \wedge |\markVar|^2) \affJump(\stateVar,\rmd\markVar) < \infty,
@@ -76,9 +84,9 @@
   \end{align}
   Combining equations (\ref{eq:difference-quotient}), (\ref{eq:dct1}), and (\ref{eq:dct2}) now yields our desired identity.
   \begin{equation*}
-    \frac{\partial}{\partial\momentVar_i} \ode(\momentVar,\stateVar)
+    \Der_i \ode(\momentVar,\stateVar)
     = \Bprj{\basisVec_i}{\affDrift^\trunc(\stateVar) + \affDiff(\stateVar)\momentVar + \int_\vecSpace \Big( e^\prj{\momentVar}{\markVar} \markVar - \trunc(\markVar) \Big) \affJump(\stateVar,\rmd\markVar)}
   \end{equation*}
-  Continuity of $\frac{\partial}{\partial\momentVar_i} \ode(\momentVar, \stateVar)$ for $\momentVar \in \odeSpace^\circ$ involves very similar dominated convergence theorem arguments as above.
+  Continuity of $\Der_i \ode(\momentVar, \stateVar)$ for $\momentVar \in \odeSpace(\stateVar)^\circ$ involves very similar dominated convergence theorem arguments as above.
   From here, it is clear that $\ode$ is continuously differentiable with the form in (\ref{eq:ode-derivative-truncation}).
 \end{proof}

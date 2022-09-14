@@ -1,3 +1,8 @@
+\begin{lemma}
+  \label{lemma:odeSpace-rationale}
+  For any $\stateVar \in \stateSpace$, we have $\momentVar \in \odeSpace(\stateVar)$ if and only if 
+  $\int_{|\vecVar|>1} e^\prj{\momentVar}{\vecVar} \affJump(\stateVar, \rmd\markVar) < \infty$.
+\end{lemma}
 \begin{proof}
   \label{proof:lemma:odeSpace-rationale}
   To each $\momentVar, \vecVar \in \vecSpace$, Taylor's theorem gives us $\gamma_{\momentVar,\vecVar} \in [0,1]$ such that
@@ -13,4 +18,3 @@
   \end{align*}
   Thus, one can be defined as a finite displacement of the other.
 \end{proof}
-

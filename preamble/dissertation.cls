@@ -43,7 +43,6 @@
 
 % equation counter includes chapter and resets within chapter
 \counterwithin{equation}{chapter}
-\renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 % theorem environments
 \usepackage{aliascnt}
@@ -68,20 +67,6 @@
   \theorembodyfont{}
   \newtheorem*{proof}{Proof}
 }
-\newenvironment{myenv}[2][]{%
-  \refstepcounter{environment}%
-  \def\tmp{#1}%
-  \noindent
-  {\bfseries \capitalisewords{#2}~\theenvironment.}
-  \itshape
-  \ifx\tmp\empty
-  \else
-    \,{\emph{(\tmp)}}\,%
-  \fi
-}{
-  \vskip1em
-}
-
 
 % bibliography
 \usepackage{natbib}

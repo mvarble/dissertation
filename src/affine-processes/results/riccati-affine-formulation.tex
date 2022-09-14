@@ -1,0 +1,11 @@
+\begin{remark}
+  \label{remark:riccati-affine-formulation}
+  By Remark \ref{remark:affine-remarks}\ref{remark:affine-parts}, the equation in (\ref{eq:complex-riccati-charts}) is equivalent to the following system of equations.
+  \begin{equation}
+    \label{eq:complex-riccati-system}
+    \forall ~ \stateVar \in \stateSpace, \qquad \left\{\begin{aligned}
+      \dot\aff(t, \momentVar, \stateVar) &= \ode\big(\affPart(t,\momentVar), \stateVar\big) & t \geq 0 \\
+      \aff(0,\momentVar, \stateVar) &= \prj{\momentVar}{\stateVar}
+    \end{aligned}\right.
+  \end{equation}
+\end{remark}

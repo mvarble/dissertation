@@ -1,2 +1,51 @@
-This is where I motivate my choice of including this Appendix.
-Big point: I want to resolve the abstractions and rigor of \cite{jacod2003} to the digestible notions and calculus of diffusions.
+\begin{color}{gray}
+  TODO:
+  \begin{itemize}
+    \item
+      Motivate why I chose to put this in the appendix. Big point: I want to resolve abstractions and rigor of \cite{jacod2003} to the digestible notions of special jump-diffusions.
+    \item
+      Point to the various papers we use that do not consolidate a similar set of assumptions.
+  \end{itemize}
+\end{color}
+
+In order to discuss jump-diffusions on a finite-dimensional real vectorspace, one must have a decent understanding of semimartingales.
+A great text for a comprehensive study of this is \cite{jacod2003}, which we will refer to in our proofs.
+In terms of notational differences, we choose our probability space $(\Omega, \Sigma, \Prb)$ and filtration $\scrF=(\scrF_t)_{t\geq0}$, where $\scrF_\infty \subseteq \Sigma$ denotes the joined space.
+Furthermore, we do not explicitly write processes to take values in $\bbR^d$, but rather some vectorspace $\vecSpace$ with dimension $d \defeq \operatorname{dim}\vecSpace$ and inner-product $\prj\cdot\cdot$.
+Surely---due to our isometric isomorphism $\vecSpace \equiv \bbR^d$---any componentwise or linear notion, such as integration or differentiation may be taken as equivalent.
+Furthermore, we sometimes specify that a stochastic process $\X$ has a Borel state space $\stateSpace\subseteq \vecSpace$, as this is the case when studying affine processes.
+We find it important to highlight the following important notation of objects introduced in \cite[Chapters I-II]{jacod2003}.
+\begin{itemize}
+  \item
+    Given $(\Prb,\scrF)$ locally square-integrable martingales $M, N: \Omega \times \bbR_+ \rightarrow \bbR$, denote $\prj{M}{N}$ the predictable quadratic covariation.
+  \item
+    Given $H,\X: \Omega \times \bbR_+ \rightarrow \bbR$ with $H$ being $\scrF$ predictable and $(\Prb, \scrF)$ locally bounded and $\X$ a $(\Prb, \scrF)$ semimartingale, denote the stochastic integral process as follows.
+    \[
+      H\shortInt \X_t = \int_0^t H_s \rmd\X_s
+    \]
+    We may lift this concept componentwise and linearly.
+    This allows us to choose the codomains of $H, \X$ to various combinations of $\vecSpace$ and $\bbL(\vecSpace, \bbW)$ when evaluating $H \shortInt \X$, so long as such a combination allows for $H_t \cdot \X_t$ to make sense.
+  \item
+    Denote $\leb: \bbR_+ \rightarrow \bbR_+$ the identity map, so as to allow a concise notation for Lebesgue integration.
+    \[
+      H \shortInt \leb_t = \int_0^t H_s \rmd s
+    \]
+  \item
+    Given a random measure $\jumpMeas: \Omega \times \scrB(\bbR_+ \times \vecSpace) \rightarrow [0,\infty]$, denote the stochstic integral process against some suitably integrable optional process $H: \Omega \times \bbR_+ \times \vecSpace \rightarrow \bbR$ as follows.
+    \[
+      H \ast \jumpMeas_t = \int_{[0,t] \times \vecSpace} H_s(\markVar) \jumpMeas(\rmd s, \rmd\markVar)
+    \]
+    Denote its $(\Prb, \scrF)$ predictable projection by $\predproj{\jumpMeas}$ and the compensated measure $\compensate{\jumpMeas} = \jumpMeas - \predproj{\jumpMeas}$.
+    Lift these integration notions to vector-valued $H$ componentwise.
+    Instead of choosing a canonical variable for integrating expressions in this form, we use the identity maps $\id_\vecSpace$ or $\leb$.
+    \[
+      f(\leb, \id_\vecSpace) \ast \jumpMeas_t = \int_{[0,t] \times \vecSpace} f(s, \markVar) \jumpMeas(\rmd s, \rmd\markVar)
+    \]
+  \item
+    Given a random measure $\jumpMeas$, we denote $G_\loc(\jumpMeas)$ the set of processes $W$ which we can take a compensated stochastic integral, $W \ast \compensate{\jumpMeas}$, as in \cite[Definition 1.27(a)]{jacod2003}.
+  \item
+    Given $(\Prb, \scrF)$ semimartingales $\X, Y: \Omega \times \bbR_+ \rightarrow \bbR$, denote $[\X,Y]$ the quadratic covariation.
+  \item
+    Given a semimartingale $\X$, denote $\X^\rmc$ its continuous local martingale component and $\jumpMeas^\X$ its jump measure.
+
+\end{itemize}

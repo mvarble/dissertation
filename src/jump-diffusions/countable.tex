@@ -1,0 +1,13 @@
+We see that a $(\Prb, \scrF)$ jump-diffusion $\X$ is special if the accumulated large jumps $(\id_\vecSpace - \trunc) \ast \jumpMeas^\X$ may be compensated.
+To this end, being special is a condition on the jumps \emph{away} from the origin.
+We now turn our focus to jump-diffusions $\X$ in which the jumps \emph{near} the origin behave nicely.
+For any jump-diffusion $\X$, we may count the jumps with the jump process $\N^\X$.
+\begin{equation}
+  \label{eq:jump-process}
+  \N^\X_t \defeq \sum_{0 < s \leq t} 1_{\Delta\X_s \neq 0} = 1 \ast \jumpMeas^\X_t
+\end{equation}
+For many jump diffusions, it may be the case that we $\Prb$-almost-surely have $\N^\X_t = \infty$ for all $t > 0$.
+We way that $\X$ has $(\Prb, \scrF)$ \emph{locally countable}, so long as $N^\X$ is $(\Prb, \scrF)$ locally integrable.
+Below, we state how to verify this using the differential characteristics.
+
+\input{./results/countable}

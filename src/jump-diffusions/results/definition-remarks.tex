@@ -1,0 +1,26 @@
+\begin{remark}
+  \label{remark:jump-diffusions}
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      Note that we differ slightly from the definition we reference by imposing a time-homogenity formulation.
+      There is no loss of generality in doing so, because we may always extend the state to $\bbR_+ \times \stateSpace$ via $\hat\X_t = (t, \X_t)$.
+    \item
+      Note that (\ref{eq:jump-diffusion-characteristics}) can be written concisely by using the identity $\lambda$ on $\bbR_+$.
+      \[
+        B^\trunc_t = \affDrift^\trunc(\X) \shortInt \leb_t, \quad
+        A_t = \affDiff(\X) \shortInt \leb_t, \quad
+        \predproj{\jumpMeas^\X}([0,t],\rmd\markVar) = \affJump(\X, \rmd\markVar) \shortInt \leb_t
+      \]
+    \item
+      \label{remark:characteristic-switch}
+      If we have a jump-diffusion with $\trunc$-characteristics in (\ref{eq:jump-diffusion-characteristics}), we call $(\affDrift^\trunc, \affDiff, \affJump)$ the \emph{differential $\trunc$-characteristics}.
+      Just as with usual characteristics, there are simple expressions which relate $\affDrift^\trunc$ and $\affDrift^{\hat\trunc}$ between different truncation functions $\trunc, \hat\trunc$.
+      \begin{equation}
+        \label{eq:affDrift-relationship}
+        \affDrift^{\hat\trunc}(\stateVar) = \affDrift^\trunc(\stateVar) + \int_\vecSpace \big(\hat\trunc(\markVar) - \trunc(\markVar) \big) \affJump(\stateVar, \rmd\markVar)
+      \end{equation}
+    \item
+      The conditions on $\affDiff(\stateVar)$ and $\affJump(\stateVar, \rmd\markVar)$ are immediate consequences of (\ref{eq:jump-diffusion-characteristics}).
+      For the most general setting, see the corresponding result for \emph{any} semimartingale, in \cite[Proposition II.2.9]{jacod2003}.
+  \end{enumerate}
+\end{remark}

@@ -18,6 +18,9 @@
 % --------------------------------------------------------------------------------------------------
 \begin{document}
 
+% change the equation numbering to not include chapter
+\renewcommand{\theequation}{\arabic{equation}}
+
 % title page
 \maketitle
 
@@ -28,6 +31,9 @@
 
 % all the chapters in their respective `src/*` directory
 \mainmatter
+
+% change the equation numbering to include chapter
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 \chapter{Affine processes}
 \label{affine-processes}
@@ -44,7 +50,7 @@
 % appendix chapters in their respective `src/*` directory
 \appendix
 
-\chapter{Jump diffusions}
+\chapter{Jump-diffusions}
 \label{jump-diffusions}
 \import{src/jump-diffusions/}{index}
 

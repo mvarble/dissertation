@@ -1,0 +1,33 @@
+We now turn our focus to the real moments of $(\Prb, \scrF)$ jump-diffusions and the extension of our L\'evy-Khintchine map $\ode$ to real moments.
+\begin{equation*}
+  \ode(\momentVar, \stateVar) = \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} + \frac12\bprj{\momentVar}{\affDiff(\stateVar)} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJump(\stateVar, \rmd\markVar), \quad \momentVar \in \vecSpace, ~ \stateVar \in \stateSpace
+\end{equation*}
+The above expression may be infinite, as the final term includes an unbounded integral over a possibly infinite measure.
+That said, we find it imperative to denote the following sets of finiteness.
+\begin{equation}
+  \label{eq:odeSpace-general}
+  \odeSpace(\stateVar) \defeq \Big\{ \momentVar \in \vecSpace : \ode(\momentVar, \stateVar) < \infty \Big\}, \qquad
+  \odeSpace \defeq \bigcap_{\stateVar \in \stateSpace} \odeSpace(\stateVar)
+\end{equation}
+The following results will explore the nature of the maps $\ode(\cdot,\stateVar): \odeSpace(\stateVar) \rightarrow \bbR$ for fixed differentiable $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$, where our truncation function $\trunc$ is defined by $\trunc(\markVar) = \markVar 1_{|\markVar|\leq 1}$.
+Note that there is no loss of generality in selecting this truncation function, since they all evaluate $\ode$ identically.
+
+\input{./results/odeSpace-rationale}
+\input{./results/odeSpace-convex}
+\input{./results/ode-differentiable}
+
+As we have seen in Lemmas \ref{lemma:special} and \ref{lemma:countable}, if we have local boundedness of certain integrals of a jump kernel $\affJump$, we can leverage these to $(\Prb, \scrF)$ local conditions of the associated jump-diffusion $\X$.
+Throughout the remainder of this section, we impose the following uniform-boundedness principle for the kernel $\affJump$.
+\begin{equation}
+  \label{eq:affJump-regularity}
+  \begin{aligned}
+    &\int_\vecSpace f(\markVar) \affJump(\stateVar, \rmd\markVar) < \infty \text{ for all } \stateVar \in \stateSpace \\
+    &\quad\Longrightarrow\quad \stateVar \mapsto \int_\vecSpace f(\markVar) \affJump(\stateVar, \rmd\markVar) \text{ bounded on compact sets}
+  \end{aligned}
+\end{equation}
+With this assumption, we get some nice results on finite exponential moments of $\X$.
+
+\input{./results/LK-special}
+\input{./results/LK-real}
+\input{./results/LK-exponential-martingale}
+

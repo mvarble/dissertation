@@ -2,8 +2,12 @@
 \usepackage{amsmath}
 \allowdisplaybreaks
 
+% identity map
+\newcommand{\id}{\rmi\rmd}
+
 % balls
 \newcommand{\ball}[2]{{B(#1,#2)}}
+\newcommand{\closedBall}[2]{{\overline B(#1,#2)}}
 
 % colon equals for definitions
 \usepackage{mathtools}
@@ -36,10 +40,15 @@
 \newcommand{\Exp}{{\operatorname{E}}}
 \newcommand{\Prb}{{\operatorname{P}}}
 
+% linear space stuff
+\newcommand{\Der}{\rmD}
+\newcommand{\Hess}{\rmD^2}
+\newcommand{\tr}{\operatorname{tr}}
+
 % stochastic integrals
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 \newcommand{\shortInt}{\mathpalette\bigcdot@{0.5}}
-\newcommand{\leb}{\lambda}
+\newcommand{\leb}{\ell}
 
 %-------------------------------------------------------------------------------
 % *SPACES*
@@ -95,8 +104,9 @@
 % cadlag
 \newcommand{\pathSpace}[2]{\bbD(#1,#2)}   
 
-% continuous
+% continuous + differentiable
 \newcommand{\cpathSpace}[2]{\bbC(#1,#2)}
+\newcommand{\ccpathSpace}[3]{\bbC^{#1}(#2,#3)}
 
 % absolutely continuous
 \newcommand{\acpathSpace}[2]{\bbA(#1,#2)}
@@ -109,9 +119,9 @@
 %   Argument `X` in space `M(X)` should be sigma algebra on which measures are 
 %   defined. 
 %
-\newcommand{\signedMeasSpace}[1]{\bbM_s(#1)} 
-\newcommand{\measSpace}[1]{\bbM(#1)} 
-\newcommand{\probSpace}[1]{\bbM_1(#1)} 
+\newcommand{\signedMeasSpace}{\bbM_s} 
+\newcommand{\measSpace}{\bbM} 
+\newcommand{\probSpace}{\bbM_1} 
 \newcommand{\measVar}{m}
 
 %-------------------------------------------------------------------------------
@@ -158,6 +168,7 @@
 \newcommand{\ode}{\Lambda}  % (function, state)
 \newcommand{\odeSpace}{\calD_\Lambda}  % (function, state)
 \newcommand{\odePart}{L}    % (function)
+\newcommand{\generator}{\calL}
 
 %
 % Parameters
@@ -174,21 +185,15 @@
 \newcommand{\affDistPart}{k}
 
 %
-% Special semimartingales:
-%   This abstraction allows us to look at the affine process from a broad
-%   perspective of the form:
-%    
-%       process = initial + predictable FV + local martingale
-%                                (I)              (II)
-% 
-%   process (I) is determined by the drift, while (II) is determined by
-%   the diffusion and jump functions.
+% Semimartingales:
+%
 
-% local martingale in (II)
-\newcommand{\mgTerm}{Z}                    % (II)
+% localization
+\newcommand{\loc}{{\operatorname{loc}}}
 
 % the purely discontinuous component is an integral against a compensated 
 % jump measure
+\newcommand{\N}{N}
 \newcommand{\jumpMeas}{q}
 \newcommand{\predproj}[1]{\hat#1}
 \newcommand{\compensate}[1]{\tilde#1}
@@ -201,7 +206,7 @@
 % Jump diffusions: write in terms of Brownian motion and Poisson random measure
 \newcommand{\poisRM}{p}
 \newcommand{\W}{W}
-\newcommand{\thinner}{\delta}
+\newcommand{\thinner}{c}
 \newcommand{\affDiffSqrt}{\sigma}
 
 %-------------------------------------------------------------------------------

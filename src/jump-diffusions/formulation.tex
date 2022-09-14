@@ -1,0 +1,62 @@
+% formulate jump-diffusions in terms of characteristics
+As in \cite[Definition III.2.18]{jacod2003}, a $(\Prb, \scrF)$ jump-diffusion $\X$ on state space $(\stateSpace, \scrB(\stateSpace))$ is a $(\Prb, \scrF)$ semimartingale in which the $\trunc$-characteristics $(B^\trunc, A, \predproj{\jumpMeas^\X})$ have the following decompositions,
+\begin{equation}
+  \label{eq:jump-diffusion-characteristics}
+  B^\trunc_t = \int_0^t \affDrift^\trunc(\X_s) \rmd s, \quad 
+  A_t = \int_0^t \affDiff(\X_s) \rmd s, \quad
+  \predproj{\jumpMeas^\X}(\rmd s,\rmd\markVar) = \affJump(\X_s, \rmd\markVar) \rmd s,
+\end{equation}
+where the functions have the following properties.
+\begin{itemize}
+  \item
+    $\affDrift^\trunc: \stateSpace \rightarrow \vecSpace$ is Borel measurable, $\affDrift^\trunc \in \scrB(\stateSpace)/\scrB(\vecSpace)$.
+  \item
+    $\affDiff: \stateSpace \rightarrow \bbL(\vecSpace)$ is Borel measurable, $\affDiff \in \scrB(\stateSpace)/\scrB(\bbL(\vecSpace))$, and $\affDiff(\stateVar)$ is self-adjoint and nonnegative for each $\stateVar \in \stateSpace$.
+  \item
+    $\affJump: \stateSpace \times \scrB(\vecSpace) \rightarrow [0,\infty]$ is a transition kernel from $\stateSpace$ to $\vecSpace$, and it satisfies the following properties for each $\stateVar \in \stateSpace$.
+    \[
+      \affJump\big(\stateVar, \{0\}\big) = 0, \quad \int_\vecSpace \big( 1 \wedge |\markVar|^2\big) \affJump(\stateVar, \rmd\markVar) < \infty
+    \]
+\end{itemize}
+
+% a quick remark on differences and terminology.
+\input{./results/definition-remarks.tex}
+
+The following Lemma will be repeatedly used as a shortcut of It\^o's formula and various identities that always apply with jump-diffusions.
+
+% restate Ito in terms of jump-diffusions
+\input{./results/ito}
+
+% express the notion of the generator of X
+In the above lemma, the final term in the semimartingale decomposition of $f(\X)$ is typically not able to be compensated into a local martingale.
+If we did have local integrability of the following quantity,
+\begin{equation*}
+  \Big| f(\X_-+\id_\vecSpace) - f(\X_-) + \Der f(\X_-) \cdot \trunc \Big| \ast \predproj{\jumpMeas^\X},
+\end{equation*}
+then by \cite[Proposition II.1.28]{jacod2003} we could rewrite $f(\X)$ into a canonical special semimartingale decomposition.
+\begin{equation}
+  \label{eq:jump-diffusion-generator}
+  \begin{aligned}
+    f(\X_t) &= f(\X_0) + \generator f(\X) \shortInt \leb_t + \Der f(\X_-) \shortInt \X^\rmc + \big( f(\X_- + \id_\vecSpace) - f(\X_-) \big) \ast \compensate{\jumpMeas^\X}_t \\
+    \generator f(\stateVar) &\defeq \begin{aligned}[t]
+      &\Der f(\stateVar) \cdot \affDrift^\trunc(\stateVar) + \frac12 \tr\Big( \Hess f(\stateVar) \circ \affDiff(\stateVar) \Big) \\
+      &\hspace{25mm}+ \int_\vecSpace \Big( f(\stateVar + \markVar) - f(\stateVar) - \Der f(\stateVar) \cdot \trunc(\markVar) \Big) \affJump(\stateVar, \rmd\markVar)
+    \end{aligned}
+  \end{aligned}
+\end{equation}
+So long as $f$ is bounded, we can guarantee this special semimartingale property.
+
+% bounded
+\input{./results/ito-bounded}
+
+This operator $\generator$ in (\ref{eq:jump-diffusion-generator}) gives a nice closed from for suitable $f(\X)$, and so we reserve it the term of \emph{generator} associated with $\X$.
+Note that we do not mark dependence on $\trunc$, as any other truncation function $\hat\trunc$ will produce the same operator; see Remark \ref{remark:jump-diffusions}\ref{remark:characteristic-switch} and note that the displacement from $\affDrift^\trunc$ and $\affDrift^{\hat\trunc}$ would be the same as that in the integral term.
+One particular setting in which this result is useful is establishing a L\'evy-Khintchine formula for jump-diffusions.
+
+% Levy-Khintchine
+\input{./results/LK}
+
+% manifest equivalence
+It turns out that each of the preceding results is sufficient in characterizing a semimartingale $\X$ as a jump-diffusion.
+
+\input{./results/characterizations}

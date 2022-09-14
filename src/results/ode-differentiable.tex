@@ -1,8 +1,0 @@
-\begin{lemma}
-  \label{lemma:ode-differentiable}
-  For each $\stateVar \in \stateSpace$, the map $\ode(\cdot,\stateVar)$ is continuously differentiable on $\odeSpace^\circ$, with derivative $D\ode(\cdot,\stateVar): \odeSpace^\circ \rightarrow \bbL(\vecSpace, \bbR)$ as follows.
-  \begin{equation}
-    \label{eq:ode-derivative-truncation}
-    D\ode(\momentVar,\stateVar) w = \Bprj{\affDrift^\trunc(\stateVar) + \affDiff(\stateVar)\momentVar + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} \markVar - \trunc(\markVar)\big) \affJump(\stateVar,\rmd\markVar)}{w}, \quad \momentVar \in \odeSpace^\circ
-  \end{equation}
-\end{lemma}

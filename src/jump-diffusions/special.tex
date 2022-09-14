@@ -1,0 +1,33 @@
+We now turn our focus to $(\Prb, \scrF)$ jump-diffusions which are additionally \emph{special} in the sense of them having a semimartingale decomposition in which the finite-variation term is predictable.
+When looking at the canonical representation of a jump-diffusion $\X$ with $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$, it is clear how to make this predictable.
+\begin{equation}
+  \label{eq:jump-diffusion-special}
+  \begin{aligned}
+    \X_t 
+    &= \X_0 + \affDrift^\trunc(\X) \shortInt \leb_t + \X^\rmc_t + \trunc \ast \compensate{\jumpMeas^\X} + (\id_\vecSpace - \trunc) \ast \jumpMeas^\X \\
+    &= \X_0 + \affDrift^\trunc(\X) \shortInt \leb_t + (\id_\vecSpace - \trunc) \ast \predproj{\jumpMeas^\X} + \X^\rmc_t + \id_\vecSpace \ast \compensate{\jumpMeas^\X}  \\
+    &= \X_0 + \bigg( \affDrift^\trunc(\X) + \int_\vecSpace \big(\markVar - \trunc(\markVar) \big) \affJump(\X, \rmd\markVar) \bigg) \shortInt \leb_t  + \X^\rmc_t + \id_\vecSpace \ast \compensate{\jumpMeas^\X}  
+  \end{aligned}
+\end{equation}
+In such a case, it is nice to define the function $\affDrift: \stateSpace \rightarrow \vecSpace$,
+\begin{equation}
+  \label{eq:jump-diffusion-drift}
+  \affDrift(\stateVar) \defeq \affDrift^\trunc(\stateVar) + \int_\vecSpace \big(\markVar - \trunc(\markVar)\big) \affJump(\stateVar, \rmd\markVar),
+\end{equation}
+so that (\ref{eq:jump-diffusion-special}) may be simplified to a concise special semimartingale decomposition.
+\[
+  \X_t = \X_0 + \affDrift(\X) \shortInt \leb + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X}_t
+\]
+We call the triplet $(\affDrift, \affDiff, \affJump)$ that results from (\ref{eq:jump-diffusion-drift}) the \emph{special differential characteristics} and its components $\affDrift, \affDiff, \affJump$ the \emph{drift}, \emph{diffusion}, and \emph{jump kernel}, respectively.
+
+The calculus of (\ref{eq:jump-diffusion-special}) begs the question that $(\id_\vecSpace - \trunc) \ast \jumpMeas^\X$ can be compensated which is not generally the case---otherwise, the term \emph{special} would be a misnomer!
+The next result specifies conditions on which we may perform the above calculus.
+
+\input{./results/special}
+
+Seeing as $(\id_\vecSpace - \trunc) \ast \jumpMeas^\X$ may be compensated for special jump-diffusions $X$, all of the characterizing objects of Theorem \ref{theorem:jump-diffusion-characterizations} may be rewritten in terms of our drift $\affDrift$---effectively, $\trunc$ becomes the identity.
+\begin{gather*}
+  \generator f(\stateVar) \defeq \Der f(\stateVar) \cdot \affDrift(\stateVar) + \frac12 \tr\Big( \Hess f(\stateVar) \circ \affDiff(\stateVar) \Big) + \int_\vecSpace \Big( f(\stateVar + \markVar) - f(\stateVar) - \Der f(\stateVar) \cdot \markVar \Big) \affJump(\stateVar, \rmd\markVar) \\
+  \ode(\momentVar, \stateVar) = \bprj{\momentVar}{\affDrift(\stateVar)} + \frac12\bprj{\momentVar}{\affDiff(\stateVar)} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\markVar} \big) \affJump(\stateVar, \rmd\markVar), \\
+  \X_t = \stateVar + \affDrift(\X) \shortInt \leb_t + \sigma(\X_-) \shortInt \W_t + \thinner(\X_-, \id_\vecSpace) \ast \compensate{\poisRM}_t 
+\end{gather*}

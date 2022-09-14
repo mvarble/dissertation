@@ -1,0 +1,42 @@
+\begin{proposition}
+  \label{proposition:LK}
+  Fix a jump-diffusion $\X$ with differential $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$.
+  Then, for each $\momentVar \in \im\vecSpace$, the process $\exp\big(\prj{\momentVar}{\X} - \ode(\momentVar, \X) \shortInt \leb\big)$ is a complex-valued $(\Prb, \scrF)$ local martingale, where $\ode: \im\vecSpace \times \stateSpace \rightarrow \bbR$ is the associaed \emph{L\'evy-Khintchine map}.
+  \begin{equation*}
+    \ode(\momentVar, \stateVar) = \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} + \frac12\bprj{\momentVar}{\affDiff(\stateVar)} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJump(\stateVar, \rmd\markVar),
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  \label{proof:proposition:LK}
+  For a fixed $\momentVar \in \im\vecSpace$, note that the map $f_\momentVar$, defined by $f_\momentVar(\vecVar) = \exp\prj{\momentVar}{\vecVar}$ is bounded.
+  Thus, by Proposition \ref{proposition:ito-bounded}, we have 
+  \[
+    f_\momentVar(\X_t) = f_\momentVar(\X_0) +  \generator f_\momentVar(\X) \shortInt \leb_t + M_t,
+  \]
+  where $M$ is a $(\Prb, \scrF)$ local martingale.
+  Observe that the partial derivatives of $f$ are as follows,
+  \begin{equation}
+    \label{eq:exponential-derivatives}
+    \Der_i f_\momentVar(\stateVar) = f_\momentVar(\stateVar) \momentVar_i, \qquad \Der_{ij} f_\momentVar(\stateVar) = f_\momentVar(\stateVar) \momentVar_i\momentVar_j,
+  \end{equation}
+  so we have the following equation.
+  \begin{align*}
+    \generator f_\momentVar(\stateVar)
+    &=\begin{aligned}[t]
+      &\Der f_\momentVar(\stateVar) \cdot \affDrift^\trunc(\stateVar) + \frac12 \tr\Big( \Hess f_\momentVar(\stateVar) \circ \affDiff(\stateVar) \Big) \\
+      &+ \int_\vecSpace \Big( f_\momentVar(\stateVar + \markVar) - f_\momentVar(\stateVar) - \Der f(\stateVar) \cdot \trunc(\markVar) \Big) \affJump(\stateVar, \rmd\markVar)
+    \end{aligned} \\
+    &= f_\momentVar(\stateVar) \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} + \frac12 f_\momentVar(\stateVar) \bprj{\momentVar}{\affDiff(\stateVar)\momentVar} +  f_\momentVar(\stateVar) \int_\vecSpace \Big( f_\momentVar(\markVar) - 1 - \bprj{\momentVar}{\trunc(\markVar)} \Big) \affJump(\stateVar, \rmd\markVar) \\
+    &= f_\momentVar(\stateVar) \cdot \ode(\momentVar, \stateVar)
+  \end{align*}
+  Denoting $A = f_\momentVar(\X) = \exp\prj\momentVar\X$ and $B = \exp\big(-\ode(\momentVar, \X) \shortInt \leb\big)$, we now use the fact that $B$ is $\scrF$ predictable and of finite-variation, so \cite[Proposition I.4.49(b)]{jacod2003} gives us the following.
+  \begin{align*}
+    &\exp\Big(\prj{\momentVar}{\X} - \ode(\momentVar, \X) \shortInt \leb \Big) \\
+    &= A_t B_t \\
+    &= A_0 B_0 + A_- \shortInt B_t + B \shortInt A_t \\
+    &= \exp\prj{\momentVar}{\X_0} + A_- \shortInt \Big(\big( -B \cdot \ode(\momentVar, \X) \big)\shortInt \leb \Big)_t  + B \shortInt \Big( f_\momentVar(\X_0) + \generator f_\momentVar(\X) \shortInt \leb + M \Big)_t \\
+    &= \exp\prj{\momentVar}{\X_0} - \Big( A \cdot B \cdot \ode(\momentVar, \X) \Big) \shortInt \leb_t + \Big( B \cdot f_\momentVar(\X) \cdot \ode(\momentVar, \X) \Big) \shortInt \leb_t + B \shortInt M_t \\
+    &= \exp\prj{\momentVar}{\X_0} + B\shortInt M_t
+  \end{align*}
+  This identity and \cite[Remark I.4.34(b)]{jacod2003} concludes the proof.
+\end{proof}

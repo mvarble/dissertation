@@ -1,0 +1,18 @@
+\begin{lemma}
+  \label{lemma:special}
+  Let $\X$ be a $(\Prb, \scrF)$ jump-diffusion with differential $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$, such that $\affJump$ satisfies the following condition.
+  \begin{equation*}
+    \stateVar \mapsto \int_\vecSpace \big|\markVar - \trunc(\markVar) \big| \affJump(\stateVar, \rmd\markVar) \text{ is bounded on compact subsets}
+  \end{equation*}
+  Then, $\X$ is special with drift $\affDrift$ as in (\ref{eq:jump-diffusion-drift}).
+\end{lemma}
+\begin{proof}
+  \label{proof:lemma:special}
+  By choosing a $\scrF$ localizing sequence $(T_n)_{n\in\bbN}$ as in (\ref{eq:stopping-times}), our hypothsesis gives us the following integrability.
+  \begin{equation*}
+    \Exp_\Prb\big| \id_\vecSpace- \trunc \big| \ast \predproj{\jumpMeas^\X}_{T_n}
+    = \Exp_\Prb \int_0^{T_n} \int_\vecSpace \big|\markVar - \trunc(\markVar)\big| \affJump(\X_t, \rmd\markVar) \rmd t
+    \leq n \cdot \sup_{|\stateVar|\leq n} \int_\vecSpace \big|\markVar-\trunc(\markVar)\big| \affJump(\stateVar, \rmd\markVar) < \infty
+  \end{equation*}
+  Now, \cite[Proposition II.1.28]{jacod2003} allows us to compensate as we did in (\ref{eq:jump-diffusion-special})
+\end{proof}
