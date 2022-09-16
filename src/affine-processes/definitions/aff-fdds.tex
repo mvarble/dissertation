@@ -1,0 +1,11 @@
+\begin{definition}
+  \label{definition:aff-fdds}
+  To each $\underline t \vdash [0,\infty)$, define $\aff(\underline t, \cdot, \cdot): \vecSpace^{|\underline t|} \times \stateSpace \rightarrow (-\infty,\infty]$ as the cumulant generating function of $\X_{\underline t}$.
+  \begin{equation*}
+    \Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} \eqdef \exp\aff(\underline t, \underline\momentVar, \stateVar)
+  \end{equation*}
+  Also define the following subset of $\vecSpace^{|\underline t|}$.
+  \begin{equation*}
+    \momentSpace(\underline t) \defeq \prod_{k=1}^{|\underline t|} \momentSpace(\Delta t_k)
+  \end{equation*}
+\end{definition}

@@ -1,0 +1,50 @@
+% mention how we are effectively repeating 
+With a good grasp of the finite real moments associated with our affine process $\X$ and their correspondence with $\aff$, we now leverage these results to the finite-dimensional distributions.
+In other words, this section serves to lift Theorem \ref{theorem:KM-moments} on marginals $\X_t$ to one on finite-dimensional distributions $(\X_{t_1}, \ldots, \X_{t_n})$.
+Let us establish some notation.
+
+For any space $\bbA$, positive integer $n\in\bbN$, and $\underline a \in \bbA^n$, adopt the convention of denoting $\underline a = (a_1, \ldots, a_n)$ and 
+\begin{equation*}
+  \underline a_{\ell:m} = (a_\ell,\ldots,a_m) \in \bbA^{m-\ell+1}, \quad 1 \leq \ell \leq m \leq n.
+\end{equation*}
+For each $n\in \bbN$ and $\underline t \in [0,\infty)^n$, define the projection map $\pi_{\underline t}: \stateSpace^{[0,\infty)} \rightarrow \stateSpace^n$ by
+\begin{equation*}
+  \pi_{\underline t}(\pathVar) \defeq \pathVar(\underline t) \defeq \big( \pathVar(t_1), \ldots, \pathVar(t_n) \big).
+\end{equation*}
+Denote $\underline t \vdash [0,\infty)$ to mean that $\underline t$ is additionally a partition of the following form.
+\begin{equation*}
+  0 < t_1 < \cdots < t_n
+\end{equation*}
+For each such partition $\underline t \vdash [0,\infty)$, associate the following notation.
+\begin{align*}
+  t_0 &\defeq 0 \\
+  \Delta t_k &\defeq t_k - t_{k-1}, & 1 \leq k \leq n \\
+  |\underline t| &\defeq n
+\end{align*}
+Lastly, for any $A \subseteq [0,\infty)$, denote $\underline t \vdash A$ to mean $\underline t \vdash [0,\infty)$ and $t_1,\ldots,t_{|\underline t|} \in A$.
+For each $n \in \bbN$, extend the linear operations of $\vecSpace$ to $\vecSpace^n$, componentwise.
+Similarly, extend the definition of our inner-product on $\vecSpace \oplus \im\vecSpace$ to one on $(\vecSpace \oplus \im\vecSpace)^n$, like so.
+\begin{equation*}
+  \prj{\underline\momentVar}{\underline\vecVar} \defeq \sum_{k=1}^n \prj{\momentVar_k}{\vecVar_k}
+\end{equation*}
+We now clearly specify the extension of $\aff$ to finite-dimensional projections from the perspective of Theorem \ref{theorem:KM} and equation (\ref{theorem:KM-moments}).
+Note that this specifically \emph{permits} infinite values.
+
+\input{./definitions/aff-fdds}
+
+The $\stateSpace$-affine structure of $\aff: \momentSpace \times \stateSpace \rightarrow \bbR$ allows us to perform coordinate transformations $\twistToMoment_{\underline t}$ for each $\underline t \vdash [0,\infty)$ which make evaluating the respective $\aff(\underline t, \cdot, \cdot)$ very natural.
+This can be thought of as the finite-dimensional distribution analogue of Theorem \ref{theorem:KM}\ref{theorem:KM:1}, in that it tells us how $\momentSpace(\underline t)$ produces moments which are finite for all $\stateVar \in \stateSpace$
+
+\input{./results/twist-to-moment}
+
+We now turn to the analogue of Theorem \ref{theorem:KM}\ref{theorem:KM:2}, in which $\Prb_\stateVar$-finite moments $\underline\momentVar \in \vecSpace^{|\underline t|}$ for initial points $\stateVar \in \stateSpace^\circ$ are precisely those $\underline\momentVar \in \momentSpace(\underline t)$.
+
+\input{./results/moment-to-twist}
+
+Our final result of this section explores more on how finite moments $\underline\momentVar$ of $\X_{\underline t}$ relate to those $\underline\twistVar$ of the increments $\X_{t_1}-\X_{t_0}, \X_{t_2} - \X_{t_1}, \ldots, \X_{t_n} - \X_{t_{n-1}}$.
+To see this, we define the following increment cumulant generating function,
+\begin{equation*}
+  \affShift(t, \twistVar, \stateVar) \defeq \log\Exp_{\Prb_\stateVar}\exp\prj{\twistVar}{\X_t-\stateVar} = \aff(t, \twistVar, \stateVar) - \prj{\twistVar}{\stateVar}
+\end{equation*}
+
+\input{./results/mgf-fdds}

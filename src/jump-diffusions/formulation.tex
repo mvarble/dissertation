@@ -1,5 +1,5 @@
 % formulate jump-diffusions in terms of characteristics
-As in \cite[Definition III.2.18]{jacod2003}, a $(\Prb, \scrF)$ jump-diffusion $\X$ on state space $(\stateSpace, \scrB(\stateSpace))$ is a $(\Prb, \scrF)$ semimartingale in which the $\trunc$-characteristics $(B^\trunc, A, \predproj{\jumpMeas^\X})$ have the following decompositions,
+As in \cite[Definition III.2.18]{jacod2003}, a $(\Prb, \scrF)$ jump-diffusion $\X$ on state space $(\stateSpace, \scrB(\stateSpace))$ is a $(\Prb, \scrF)$ semimartingale in which the $\trunc$-characteristics $(B^\trunc, A, \predproj{\jumpMeas^\X})$ have the following decompositions.
 \begin{equation}
   \label{eq:jump-diffusion-characteristics}
   B^\trunc_t = \int_0^t \affDrift^\trunc(\X_s) \rmd s, \quad 
@@ -11,12 +11,13 @@ where the functions have the following properties.
   \item
     $\affDrift^\trunc: \stateSpace \rightarrow \vecSpace$ is Borel measurable, $\affDrift^\trunc \in \scrB(\stateSpace)/\scrB(\vecSpace)$.
   \item
-    $\affDiff: \stateSpace \rightarrow \bbL(\vecSpace)$ is Borel measurable, $\affDiff \in \scrB(\stateSpace)/\scrB(\bbL(\vecSpace))$, and $\affDiff(\stateVar)$ is self-adjoint and nonnegative for each $\stateVar \in \stateSpace$.
+    $\affDiff: \stateSpace \rightarrow \bbL(\vecSpace)$ is Borel measurable, $\affDiff \in \scrB(\stateSpace)/\scrB(\bbL(\vecSpace))$, and $\affDiff(\stateVar)$ is self-adjoint and non-negative for each $\stateVar \in \stateSpace$.
   \item
     $\affJump: \stateSpace \times \scrB(\vecSpace) \rightarrow [0,\infty]$ is a transition kernel from $\stateSpace$ to $\vecSpace$, and it satisfies the following properties for each $\stateVar \in \stateSpace$.
-    \[
+    \begin{equation}
+      \label{eq:affJump-conditions}
       \affJump\big(\stateVar, \{0\}\big) = 0, \quad \int_\vecSpace \big( 1 \wedge |\markVar|^2\big) \affJump(\stateVar, \rmd\markVar) < \infty
-    \]
+    \end{equation}
 \end{itemize}
 In other words, our jump-diffusion $\X$ has the following canonical semimartingale representation (see \cite[Theorem II.2.34]{jacod2003} for definition).
 \begin{equation}
@@ -72,3 +73,4 @@ One particular setting in which this result is useful is establishing a L\'evy-K
 It turns out that each of the preceding results is sufficient in characterizing a semimartingale $\X$ as a jump-diffusion.
 
 \input{./results/characterizations}
+\input{./results/characterization-remark}

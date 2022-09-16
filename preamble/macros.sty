@@ -159,15 +159,17 @@
 %
 \newcommand{\boundedSpace}{\calU_\stateSpace}
 \newcommand{\momentSpace}{\calD_\aff}
+\newcommand{\momentSpacee}{\calD_{\aff^\epsilon}}
 \newcommand{\momentVar}{u}
 
 %
 % ODE functions
 %
 \newcommand{\system}{\operatorname{system}}
-\newcommand{\ode}{\Lambda}  % (function, state)
-\newcommand{\odeSpace}{\calD_\Lambda}  % (function, state)
-\newcommand{\odePart}{L}    % (function)
+\newcommand{\ode}{\Lambda}  % (moment, state)
+\newcommand{\odeSpace}{\calD_\Lambda}  % (moment, state)
+\newcommand{\odeSpacee}{\calD_{\Lambda^\epsilon}}  % (moment, state)
+\newcommand{\odePart}{L}    % (moment)
 \newcommand{\generator}{\calL}
 
 %
@@ -180,7 +182,7 @@
 \newcommand{\affJump}{\mu}     % jumps
 \newcommand{\affJumpPart}{m}
 \newcommand{\affInt}{\lambda}     % jumps
-\newcommand{\affIntPart}{\ell}
+\newcommand{\affIntPart}{l}
 \newcommand{\affDist}{\kappa}     % jumps
 \newcommand{\affDistPart}{k}
 
@@ -193,10 +195,13 @@
 
 % the purely discontinuous component is an integral against a compensated 
 % jump measure
-\newcommand{\N}{N}
 \newcommand{\jumpMeas}{q}
 \newcommand{\predproj}[1]{\hat#1}
 \newcommand{\compensate}[1]{\tilde#1}
+
+% jump processes
+\newcommand{\N}{N}
+\newcommand{\V}{V}
 
 %
 % Semimartingales: need a truncation function
@@ -219,6 +224,8 @@
 \newcommand{\twistVar}{\theta}
 \newcommand{\twistFunc}{h}
 \newcommand{\twistSpace}{\calH_\ode}
+\newcommand{\twistToMoment}{U}
+\newcommand{\momentToTwist}{T}
 
 % our LDP happens on a finite time horizon 
 \newcommand{\TT}{T}

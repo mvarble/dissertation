@@ -1,0 +1,31 @@
+\begin{proposition}
+  \label{proposition:locally-countable}
+  If the jump kernel satisfies $\affJump(\stateVar, \vecSpace) < \infty$ for all $\stateVar \in \stateSpace$, then $\X$ is $(\Prb_\stateVar, \scrF)$ locally countable for all $\stateVar \in \stateSpace$.
+  In the resulting factorization,
+  \begin{equation*}
+    \affJump(\stateVar, \rmd\markVar) = \affInt(\stateVar) \affDist(\stateVar, \rmd\markVar),
+  \end{equation*}
+  the intensity $\affInt$ is an affine map and the jump distribution $\affDist$ is a convex mixture of probability distributions $\affDistPart_0, \ldots, \affDistPart_d$ whenever $\affInt(\stateVar) \neq 0$.
+  \begin{equation*}
+    \affInt(\stateVar) = \affIntPart_0 + \sum_{i=1}^d \stateVar^i \affIntPart_i, \qquad \affDist(\stateVar, \rmd\markVar) = \frac{\affIntPart_0}{\affInt(\stateVar)} \affDistPart_0(\rmd\markVar) + \sum_{i=1}^d \frac{\stateVar^i\affIntPart_i}{\affInt(\stateVar)} \affDistPart_i(\rmd\markVar), \quad 
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  \label{proof:proposition:locally-countable}
+  By combining Lemmas \ref{lemma:affJump-regularity} and \ref{lemma:countable}, we get the desired local countability.
+  Because $0 \in \stateSpace$ and $\operatorname{span}\stateSpace = \vecSpace$, we are able to take appropriate linear combinations to ensure finiteness of the quantities $\affIntPart_i \defeq \affJumpPart_i(\vecSpace)$ for each $i = 0, \ldots, d$.
+  This allows us to define our intensity map.
+  \begin{equation*}
+    \affInt(\stateVar) \defeq \affIntPart_0 + \sum_{i=1}^d \stateVar^i \affIntPart_i = \affJumpPart_0(\vecSpace) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\vecSpace) = \affJump(\stateVar, \vecSpace)
+  \end{equation*}
+  Now, just as in Remark \ref{remark:countable}, each non-zero $\affIntPart_i$ will produce a probability distribution $\affDistPart_i(\rmd\markVar) \defeq \affJumpPart_i(\rmd\markVar) / \affIntPart_i$; otherwise, simply define $\affDistPart_i(\rmd\markVar) \defeq \delta_{\basisVec_1}$.
+  This way, we have the factoring $\affJumpPart_i(\rmd\markVar) = \affIntPart_i\affDistPart_i(\rmd\markVar)$ for each $i = 0, \ldots, d$.
+  If $\affInt(\stateVar) \neq 0$, we see our other desired identity.
+  \begin{align*}
+    \affDist(\stateVar, \rmd\markVar) 
+    &\defeq \frac{1}{\affInt(\stateVar)} \affJump(\stateVar, \rmd\markVar) \\
+    &= \frac{1}{\affInt(\stateVar)} \bigg( \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\rmd\markVar) \bigg) \\
+    &= \frac{1}{\affInt(\stateVar)} \bigg( \affIntPart_0 \affDistPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affIntPart_i \affDistPart_i(\rmd\markVar) \bigg) \\
+    &= \frac{\affIntPart_0}{\affInt(\stateVar)} \affDistPart_0(\rmd\markVar) + \sum_{i=1}^d \frac{\stateVar^i\affIntPart_i}{\affInt(\stateVar)} \affDistPart_i(\rmd\markVar) 
+  \end{align*}
+\end{proof}

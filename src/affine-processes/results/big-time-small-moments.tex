@@ -3,3 +3,9 @@
   Suppose $0 \in \odeSpace^\circ$.
   For each $\tau > 0$, there exists $\gamma > 0$ with $B(0,\gamma) \subseteq \momentSpace(\tau)$.
 \end{corollary}
+\begin{proof}
+  \label{proof:corollary:big-time-small-moments}
+  Suppose $0 \in \odeSpace^\circ$ and fix $\tau > 0$.
+  Theorem \ref{theorem:KM}\ref{theorem:KM:2} tells us $0 \in \momentSpace(\tau)$. Thus, $0 \in \momentSpace(\tau) \cap \odeSpace^\circ$ and so we may use Proposition \ref{proposition:momentSpace-facts}\ref{proposition:momentSpace-facts:1} to ensure $0 \in \momentSpace(\tau)^\circ$.
+  This means there is some $\gamma > 0$ such that $B(0,\gamma) \subseteq \momentSpace(\tau)$.
+\end{proof}

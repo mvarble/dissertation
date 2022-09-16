@@ -1,0 +1,40 @@
+\begin{example}[Diffusions]
+  We can leverage Example \ref{example:brownian} to a family of processes $(\Xe)_{\epsilon>0}$,
+  \begin{equation}
+    \label{eq:F-brownian-drift}
+    \Xe = \affDrift(\Xe) \shortInt \leb + \sqrt\epsilon \affDiffSqrt(\Xe) \shortInt \W,
+  \end{equation}
+  where the drift $\affDrift: \vecSpace \rightarrow \vecSpace$ and diffusion $\affDiff = \affDiffSqrt\affDiffSqrt^*: \vecSpace \rightarrow \bbL(\vecSpace)$ are bounded and Lipschitz and $\affDiff$ is invertible.
+  The details of this result, attributed to Freidlin-Wentzel \cite[Theorems 5.6.3 and 5.6.7]{dembo2010}, are rather complicated, so we will explain a heuristic.
+  Having a map $F_{\affDrift,\affDiff}$ which implicitly solves the equation,
+  \begin{equation*}
+    F_{\affDrift,\affDiff}(\omega) = \pathVar, \quad \pathVar(t) = \affDrift(\pathVar) \shortInt \leb_t + \affDiffSqrt(\pathVar) \shortInt \omega_t,
+  \end{equation*}
+  will make $F_\affDrift(\sqrt\epsilon\W) = \Xe$ for each $\epsilon > 0$, so the contraction principle states that the distributions of $(\Xe)_{\epsilon>0}$ satisfy a large deviation principle in which the rate function $\rf_\X$ is derived from that $\rf_\W$ from Example \ref{example:brownian}.
+  \begin{align*}
+    \rf_\X(\pathVar) &\defeq \inf\Big\{ \rf_\W(\omega) : F_\affDrift(\omega) = \pathVar \Big\},\\
+    \rf_\W(\omega) &\defeq \left\{\begin{array}{ll}
+      \displaystyle\int_0^\infty \frac12\big|\dot\omega(t)\big|^2 \rmd t & \omega(0) = 0, ~ \omega \in \acpathSpace{[0,\infty)}{\vecSpace}, \\
+      \infty & \text{otherwise}
+    \end{array}\right.
+  \end{align*}
+  When $F_\affDrift(\omega) = \pathVar$, equation (\ref{eq:F-brownian-drift}) tells us $\dot\omega = \affDiffSqrt(\pathVar)^{-1} \big(\dot\pathVar - \affDrift(\pathVar)\big)$, and so on the 
+  \begin{align*}
+    \rf_\X(\pathVar) 
+    &= \int_0^\infty \frac12\Big|\affDiffSqrt\big(\pathVar(t)\big)^{-1}\Big(\dot\pathVar(t)-\affDrift\big(\pathVar(t)\big)\Big)\Big| \rmd t  \\
+    &= \int_0^\infty \frac12 \Bprj{\Big(\dot\pathVar(t)-\affDrift\big(\pathVar(t)\big)\Big)}{\affDiff\big(\pathVar(t)\big)^{-1}\Big(\dot\pathVar(t)-\affDrift\big(\pathVar(t)\big)\Big)} \rmd t
+  \end{align*}
+  
+  Note that this result does not apply to the general class of affine diffusions, for $\affDrift, \affDiff$ are generally not bounded or Lipschitz, and $\affDiff$ need not be invertible.
+  However, \cite{kang2014}---a paper which inspires parts of our proof---first proved that affine diffusions with special characteristics $(\affDrift, \affDiff)$ satisfy a large deviation principle with rate function similar to that above.
+  Our rate function (\ref{eq:rf-integral}) from Theorem \ref{theorem:ldp-integral} immediately resolves an identical representation.
+  \begin{align*}
+    \ode^*(\dot\stateVar, \stateVar)
+    &= \sup_{\momentVar \in \vecSpace} \bigg( \prj{\momentVar}{\dot\stateVar} - \bprj{\momentVar}{\affDrift(\stateVar)} - \frac12\bprj{\momentVar}{\affDiff(\stateVar)\momentVar} \bigg) \\
+    &= \left\{\begin{array}{ll}
+      \displaystyle \frac12\Bprj{\big(\dot\stateVar-\affDrift(\stateVar)\big)}{\affDiff(\stateVar)^\dagger\big(\dot\stateVar-\affDrift(\stateVar)\big)} & \dot\stateVar - \affDrift(\stateVar) \in \operatorname{image}\affDiff(\stateVar) \\
+      \infty & \text{otherwise}
+    \end{array}\right.
+  \end{align*}
+  Above, $a^\dagger \in \bbL(\vecSpace)$ denotes the pseudoinverse of $a \in \bbL(\vecSpace)$.
+\end{example}

@@ -1,16 +1,30 @@
 \input{introduction}
 
+\section{Mogulskii's theorem}
+\input{mogulskii}
+
+\section{Transformations}
+\input{transformations}
+
+\section{Coupling}
+
 \begin{enumerate}
+    \begin{color}{gray}
+    \item
+      {\bfseries Mogulskii's theorem.}
+      Purpose of section is to familiarize with rate functions we already have and set the stage for how we operate with our theorem.
+      \begin{enumerate}
+        \item
+          Cite Mogulskii's theorem.
+        \item
+          Brownian motion of our regime: achieved with Mogulskii's theorem with Normal increments and exponential tightness (Schilder).
+        \item
+          Poisson process of our regime: achieved with Mogulskii's theorem with Poisson increments and use exponential tightness.
+      \end{enumerate}
+    \end{color}
   \item
-    {\bfseries Familiar large deviation principles.}
-    Purpose of section is to familiarize with rate functions we already have and set the stage for how we operate with our theorem.
+    {\bfseries Simple contraction maps.}
     \begin{enumerate}
-      \item
-        Cite Mogulskii's theorem.
-      \item
-        Brownian motion of our regime: achieved with Mogulskii's theorem with Normal increments and exponential tightness (Schilder).
-      \item
-        Poisson process of our regime: achieved with Mogulskii's theorem with Poisson increments and use exponential tightness.
       \item
         Friedlin Wentzel (not so much our regime): use contraction mapping principles
       \item
@@ -37,11 +51,11 @@
     \begin{enumerate}
       \item
         State result in numerous flavors, depending on which \emph{base} quantities in which we choose to focus the large deviations.
-          \begin{align*}
-            \X &= \affDrift(\X)\shortInt \leb + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X} \\
-            \N^\X &= 1 \ast \jumpMeas^\X \\
-            V^\X &= \id_\vecSpace \ast \jumpMeas^\X 
-          \end{align*}
+        \begin{align*}
+          \X &= \affDrift(\X)\shortInt \leb + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X} \\
+          \N^\X &= 1 \ast \jumpMeas^\X \\
+          V^\X &= \id_\vecSpace \ast \jumpMeas^\X 
+        \end{align*}
         \begin{enumerate}
           \item
             \textbf{overdetermined flavor.}

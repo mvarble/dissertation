@@ -1,0 +1,73 @@
+% declare asymptotic family
+We will prove a large deviation principle for a family $(\Prb^\epsilon_{\stateVar_0})_{\epsilon>0}$ of distributions $\Prb^\epsilon_{\stateVar_0}$ of affine processes $\Xe$ with initial point $\stateVar_0 \in \stateSpace^\circ$ in which the special differential characteristics $(\affDrift^\epsilon, \affDiff^\epsilon, \affJump^\epsilon)$ of each respective $\Xee$ have the following parameterization.
+\begin{equation}
+  \label{eq:special-characteristic-asymptotics}
+  \affDrift^\epsilon(\stateVar) = \frac1\epsilon \affDrift^1(\epsilon\stateVar), \quad
+  \affDiff^\epsilon(\stateVar) = \frac1\epsilon \affDiff^1(\epsilon\stateVar), \quad
+  \affJump^\epsilon(\stateVar, \rmd\markVar) = \frac1\epsilon \affJump^1(\epsilon\stateVar, \rmd\markVar), \quad \stateVar \in \stateSpace
+\end{equation}
+In effect, the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ is induced by a \emph{base distribution} $\Prb_\stateVar \defeq \Prb^1_\stateVar$ associated with \emph{base affine process} $\X \defeq \X^1$ and \emph{base special differential characteristics} $(\affDrift, \affDiff, \affJump) \defeq (\affDrift^1, \affDiff^1, \affJump^1)$.
+This also implies a similar parameterization for the L\'evy-Khintchine maps $\ode^\epsilon$ associated with $(\affDrift^\epsilon, \affDiff^\epsilon, \affJump^\epsilon)$ in terms of the base map $\ode$ from $(\affDrift, \affDiff, \affJump)$.
+\begin{equation}
+  \label{eq:LK-asymptotics}
+  \ode^\epsilon(\momentVar, \stateVar) = \frac1\epsilon \ode(\momentVar, \epsilon \stateVar), \quad \momentVar \in \vecSpace, ~ \stateVar \in \stateSpace
+\end{equation}
+Using the notation of Appendix \ref{jump-diffusions:real-moments}, we see that the set $\odeSpace(\stateVar)$ of finite points of $\ode(\cdot, \stateVar)$ is identical to that $\odeSpacee(\epsilon\stateVar)$ of $\ode^\epsilon(\cdot, \epsilon\stateVar)$.
+So long that $\stateSpace$ is a cone---which is to say that $\stateSpace$ an additive set, closed under non-negative-scalar multiplication---we have $\stateSpace = \epsilon\stateSpace$, and so the following sets agree.
+\begin{equation*}
+  \odeSpace = \bigcap_{\stateVar \in \stateSpace} \odeSpace(\stateVar) = \bigcap_{\stateVar \in \stateSpace} \odeSpacee(\epsilon\stateVar) = \bigcap_{\stateVar \in \stateSpace} \odeSpacee(\stateVar) = \odeSpacee
+\end{equation*}
+
+% show parameterization for \aff
+Note that a parameterization like (\ref{eq:special-characteristic-asymptotics}) or (\ref{eq:LK-asymptotics}) may exist irrespective of the affine property on $(\affDrift, \affDiff, \affJump)$.
+However, affine processes are distinct in the existence (from Theorem \ref{theorem:KM}) of an affine map $\aff^\epsilon: \momentSpacee \rightarrow \bbR$ respective to $\Xee$,
+\begin{equation*}
+  \aff^\epsilon(t, \momentVar, \stateVar) = \affPart^\epsilon_0(t,\momentVar) + \bprj{\affPart^\epsilon(t,\momentVar)}{\stateVar},
+\end{equation*}
+in which $\aff^\epsilon(\cdot, \momentVar, \cdot)$ is the minimal solution of $\system(\ode^\epsilon, \tau, \momentVar)$ for each $(\tau, \momentVar) \in \momentSpacee$,
+\begin{equation*}
+  \forall~ \stateVar \in \stateSpace, \quad \left\{\begin{array}{ll}
+    \displaystyle \dot\aff^\epsilon(t, \momentVar, \stateVar) = \ode^\epsilon\big( \affPart^\epsilon(t, \momentVar), \stateVar \big), & t \in [0,\tau] \\
+    \aff^\epsilon(0, \momentVar, \stateVar) = \prj{\momentVar}{\stateVar}
+  \end{array}\right.
+\end{equation*}
+and is the cumulant generating function of each marginal.
+\begin{equation*}
+  \Exp_{\Prb^\epsilon_\stateVar} \exp\prj{\momentVar}{\Xee_\tau} = \exp\aff^\epsilon(\tau, \momentVar, \stateVar/\epsilon), \quad (\tau, \momentVar) \in \momentSpace, ~ \stateVar \in \stateSpace
+\end{equation*}
+Above, note that we are naturally denoting $(\Prb^\epsilon_\stateVar)_{\stateVar\in\stateSpace}$ the other distributions $\Prb^\epsilon_\stateVar$ of $\Xe$ in which it starts at various $\stateVar \in \stateSpace$ (hence why we have a $\stateVar/\epsilon$ in the last coordinate).
+The following result shows us that our parameterization in (\ref{eq:special-characteristic-asymptotics}) and (\ref{eq:LK-asymptotics}) applies these cumulant generating functions, where $\aff \defeq \aff^1$ and $\momentSpace \defeq \momentSpace^1$.
+
+\input{./results/aff-asymptotics}
+
+% show parameterization for \affShift and \aff fdds
+Surely, this parameterization immediately applies to the cumulant generating functions of the increments.
+Denoting
+\begin{equation*}
+  \affShift^\epsilon(t, \twistVar, \stateVar/\epsilon) = \Exp_{\Prb_\stateVar} \exp\prj{\twistVar}{\Xee_t-\stateVar/\epsilon},
+\end{equation*}
+and $\affShift \defeq \affShift^1$, we have
+\begin{equation*}
+  \affShift^\epsilon(t, \twistVar, \stateVar) = \aff^\epsilon(t, \twistVar, \stateVar) - \prj{\twistVar}{\stateVar} = \frac1\epsilon \bigg( \aff(t, \twistVar, \stateVar) - \prj{\twistVar}{\epsilon\stateVar} \bigg) = \frac1\epsilon \affShift(t, \twistVar, \stateVar).
+\end{equation*}
+This parameterization also applies to the liftings $\aff^\epsilon(\underline t, \cdot, \cdot)$ of $\aff^\epsilon$ to finite-dimensional projections on partitions $\underline t \vdash [0,\infty)$.
+\begin{equation*}
+  \Exp_{\Prb^\epsilon_\stateVar}\exp\prj{\underline\momentVar}{\Xe_{\underline t}} \eqdef \exp\aff(\underline t, \underline\momentVar, \stateVar/\epsilon), \quad \underline\momentVar \in \vecSpace^{|\underline t|}, ~ \stateVar\in \stateSpace
+\end{equation*}
+Denoting $\aff(\underline t, \cdot, \cdot) \defeq \aff^1(\underline t, \cdot, \cdot)$, the below result shows just this.
+
+\input{./results/aff-fdd-asymptotics}
+
+% show parameterization for Brownian motion and Poisson random measure
+In Theorem \ref{theorem:jump-diffusion-characterizations}, we saw how jump-diffusions $\X$ always have a representation in which they are the weak solution of some stochastic differential equation driven by standard Brownian motion $\W$ and Poisson random measure $\poisRM$.
+\begin{gather}
+  \label{eq:sde-reminder}
+  \X_t = \X_0 + \affDrift(\X) \shortInt \leb_t + \affDiffSqrt(\X) \shortInt \W_t + \thinner(\X, \id_\vecSpace) \ast \compensate{\poisRM}_t \\
+  \forall ~ \stateVar \in \stateSpace, \quad \left\{\begin{aligned}
+    \affJump(\stateVar, \Gamma) &= \int_\vecSpace 1_\Gamma\big(\thinner(\stateVar, \markVar)\big) \rmd\markVar, & \Gamma \in \scrB(\vecSpace-\{0\}) \\
+    \affDiff(\stateVar) &= \affDiffSqrt\affDiffSqrt^*(\stateVar)
+  \end{aligned}\right.
+\end{gather}
+The following proposition gives perspectives on how the processes $\Xe$ may relate through these objects in two different perturbed dynamical systems.
+
+\input{./results/sde-asymptotics}

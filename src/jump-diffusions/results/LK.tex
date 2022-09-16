@@ -1,7 +1,7 @@
 \begin{proposition}
   \label{proposition:LK}
   Fix a jump-diffusion $\X$ with differential $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$.
-  Then, for each $\momentVar \in \im\vecSpace$, the process $\exp\big(\prj{\momentVar}{\X} - \ode(\momentVar, \X) \shortInt \leb\big)$ is a complex-valued $(\Prb, \scrF)$ local martingale, where $\ode: \im\vecSpace \times \stateSpace \rightarrow \bbR$ is the associaed \emph{L\'evy-Khintchine map}.
+  Then, for each $\momentVar \in \im\vecSpace$, the process $\exp\big(\prj{\momentVar}{\X} - \ode(\momentVar, \X) \shortInt \leb\big)$ is a complex-valued $(\Prb, \scrF)$ local martingale, where $\ode: \im\vecSpace \times \stateSpace \rightarrow \bbR$ is the associated \emph{L\'evy-Khintchine map}.
   \begin{equation*}
     \ode(\momentVar, \stateVar) = \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} + \frac12\bprj{\momentVar}{\affDiff(\stateVar)} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJump(\stateVar, \rmd\markVar),
   \end{equation*}

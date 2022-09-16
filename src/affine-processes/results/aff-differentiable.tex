@@ -5,3 +5,23 @@
     \big| \aff(t, \momentVar, \stateVar) - \aff(0, \momentVar, \stateVar) \big| \leq C_K \cdot t \cdot \big( 1 + |\stateVar| \big)
   \end{equation*}
 \end{proposition}
+\begin{proof}
+  \label{proof:proposition:aff-differentiable}
+  Let $K \subseteq \momentSpace^\circ$ be compact.
+  By Remark \ref{remark:riccati-affine-formulation} and Proposition \ref{proposition:momentSpace-facts}\ref{proposition:momentSpace-facts:3}, we have that the functions $\affPart_i$ for $i = 0, \ldots, d$ are continuously differentiable on $\momentSpace^\circ$.
+  Thus, we may define the following positive numbers.
+  \begin{gather*}
+    C_{K,i} \defeq \sup_{(t, \momentVar) \in K} |\dot\affPart_i(t, \momentVar)|, \quad i = 0, \ldots, d \\
+    C_K \defeq \max\Big\{ C_{K,0}, C_{K,1}\sqrt d, \ldots, C_{K,d} \sqrt d \Big\} < \infty
+  \end{gather*}
+  Using the fundamental theorem of calculus and that $\aff(\cdot,\momentVar,\cdot)$ solves $\system(\ode,\tau,\momentVar)$, we produce the following bound for all $(t, \momentVar) \in K$.
+  \begin{align*}
+    \big|\aff(t, \momentVar, \stateVar) - \aff(0, \momentVar, \stateVar)\big| 
+    &= \Big| \affPart_0(t, \momentVar) + \bprj{\affPart(t, \momentVar) - \momentVar}{\stateVar} \Big| \\
+    &\leq \big|\affPart_0(t,\momentVar)\big| + \big|\affPart(t,\momentVar) - \momentVar\big| \cdot |\stateVar| \\
+    &= \left| \int_0^t \dot\affPart_0(s,\momentVar) \rmd s \right|
+      + \left| \int_0^t \dot\affPart_i(s,\momentVar) \rmd s \right| \cdot |\stateVar| \\
+    &\leq C_{K,0} \cdot t + \Big( \sum_{i=1}^d C_{K,i}^2 \Big)^{1/2} \cdot t \cdot |\stateVar| \\
+    &\leq C_K  \cdot t \cdot \big( 1 + |\stateVar| \big)
+  \end{align*}
+\end{proof}

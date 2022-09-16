@@ -1,0 +1,14 @@
+\begin{remark}
+  \label{eq:poisson-remark}
+  In the final part above, the push-forward map $\thinner$ may put mass on $0$, 
+  \begin{equation*}
+    \int_\vecSpace 1_{\{0\}}\big(\thinner(\stateVar, \markVar)\big) \rmd\markVar > 0,
+  \end{equation*}
+  to \emph{thin} or \emph{delete} jumps coming from $\poisRM$ (of which there are infinitely many).
+  However, this contradicts the condition (\ref{eq:affJump-conditions}) that $\affJump(\stateVar, \{0\}) = 0$ for all $\stateVar \in \stateSpace$.
+  Explicitly, the push-forward in (\ref{eq:sde-terms}) happens on the space $\markSpace \defeq \vecSpace - \{0\}$,
+  \begin{equation*}
+    \affJump(\stateVar, \Gamma) = \int_\vecSpace 1_\Gamma\big(\thinner(\stateVar,\markVar)\big)\rmd\markVar, \quad \Gamma \in \scrB(\markSpace)
+  \end{equation*}
+  to allow for such \emph{thinning}.
+\end{remark}

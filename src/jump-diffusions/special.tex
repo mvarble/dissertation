@@ -25,7 +25,7 @@ The next result specifies conditions on which we may perform the above calculus.
 
 \input{./results/special}
 
-Seeing as $(\id_\vecSpace - \trunc) \ast \jumpMeas^\X$ may be compensated for special jump-diffusions $X$, all of the characterizing objects of Theorem \ref{theorem:jump-diffusion-characterizations} may be rewritten in terms of our drift $\affDrift$---effectively, $\trunc$ becomes the identity.
+Seeing as $(\id_\vecSpace - \trunc) \ast \jumpMeas^\X$ may be compensated for special jump-diffusions $X$, all the characterizing objects of Theorem \ref{theorem:jump-diffusion-characterizations} may be rewritten in terms of our drift $\affDrift$---effectively, $\trunc$ becomes the identity.
 \begin{gather*}
   \generator f(\stateVar) \defeq \Der f(\stateVar) \cdot \affDrift(\stateVar) + \frac12 \tr\Big( \Hess f(\stateVar) \circ \affDiff(\stateVar) \Big) + \int_\vecSpace \Big( f(\stateVar + \markVar) - f(\stateVar) - \Der f(\stateVar) \cdot \markVar \Big) \affJump(\stateVar, \rmd\markVar) \\
   \ode(\momentVar, \stateVar) = \bprj{\momentVar}{\affDrift(\stateVar)} + \frac12\bprj{\momentVar}{\affDiff(\stateVar)} + \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\markVar} \big) \affJump(\stateVar, \rmd\markVar), \\
