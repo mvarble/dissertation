@@ -6,7 +6,7 @@
     \label{eq:moment-to-twist}
     \begin{aligned}
       \twistVar_n &\defeq \momentVar_n \in \momentSpace(\Delta t_n) \\
-      \twistVar_k &\defeq \momentVar_k + \affPart\big(\Delta t_{k+1}, \momentToTwist_{\underline t,k+1}(\underline\momentVar_{k+1:n})\big) \in \momentSpace(\Delta t_k), & k = n-1, \ldots, 1
+      \twistVar_k &\defeq \momentVar_k + \affPart\big(\Delta t_{k+1}, \twistVar_{k+1}\big) \in \momentSpace(\Delta t_k), & k = n-1, \ldots, 1
     \end{aligned}
   \end{equation}
 \end{proposition}

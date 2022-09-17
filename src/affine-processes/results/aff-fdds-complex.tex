@@ -1,0 +1,64 @@
+\begin{proposition}
+  \label{proposition:aff-fdds-complex}
+  For any $\underline t \vdash [0,\infty)$, $\underline\momentVar \in \im\vecSpace^{|\underline t|}$, and $\stateVar \in \stateSpace$, we have the following identity, where we denote $n \defeq |\underline t|$ for brevity.
+  \begin{gather*}
+    \begin{aligned}
+      \twistVar_n &\defeq \momentVar_n \\
+      \twistVar_k &\defeq \momentVar_k + \affPart(\Delta t_{k+1}, \twistVar_{k+1}), & k = n-1, \ldots, 1 
+    \end{aligned} \\
+    \aff(\underline t, \underline\momentVar, \stateVar) = \sum_{k=1}^{|\underline t|} \affPart_0(\Delta t_k, \twistVar_k) + \bprj{\affPart(\Delta t_k, \twistVar_k)}{\stateVar}
+  \end{gather*}
+\end{proposition}
+\begin{proof}
+  \label{proof:proposition:aff-fdds-complex}
+  We start by recognizing that $\underline\momentVar \in \im\vecSpace$ means the following identity.
+  \begin{equation*}
+    \big| e^\prj{\momentVar_k}{\stateVar} \big| = \exp\prj{\Re(\momentVar_k)}{\stateVar} = 1, \quad k = 1, \ldots, n
+  \end{equation*}
+  In particular, we have $\twistVar_n = \momentVar_n \in \boundedSpace$; we show $\twistVar_k \in \boundedSpace$ for $k = n-1,\ldots, 1$ by induction.
+  \begin{align*}
+    \exp\prj{\Re(\twistVar_k)}{\stateVar} 
+    &= \big| e^\prj{\twistVar_k}{\stateVar} \big|  \\
+    &= \big| e^\prj{\momentVar_k + \affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} \big| \\
+    &= \big| e^\prj{\momentVar_k}{\stateVar} \big| \cdot \big| e^\prj{\affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} \big| \\
+    &= \Big| e^{-\affPart_0(\Delta t_k, \twistVar_{k+1}) + \aff(\Delta t_{k+1}, \twistVar_{k+1}, \stateVar)} \Big| \\
+    &= \Big| e^{-\affPart_0(\Delta t_{k+1}, \twistVar_{k+1})} \Big| \cdot \Big| \Exp_{\Prb_\stateVar}\exp\prj{\twistVar_{k+1}}{\X_{\Delta t_{k+1}}}  \Big| \\
+    &\leq \Big| e^{-\affPart_0(\Delta t_{k+1}, \twistVar_{k+1})} \Big| \cdot \Exp_{\Prb_\stateVar} \Big| \exp\prj{\twistVar_{k+1}}{\X_{\Delta t_{k+1}}}  \Big| \\
+    &\leq \Big| e^{-\affPart_0(\Delta t_{k+1}, \twistVar_{k+1})} \Big| \cdot \sup_{\stateVar'\in\stateSpace} \exp\Re\prj{\twistVar_{k+1}}{\stateVar'} 
+  \end{align*}
+  Now observe the following identity.
+  \begin{align}
+    \notag
+    &\aff(\underline t, \underline\momentVar, \stateVar) \\
+    \notag
+    &=\log\Exp_{\Prb_\stateVar} \exp\prj{\underline\momentVar}{\X_{\underline t}} \\
+    \label{eq:complex-tower-start}
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{\momentVar_k}{\X_{t_k}} \cdot \exp\prj{\twistVar_n}{\X_{t_n}} \right) \\
+    \notag
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{\momentVar_k}{\X_{t_k}} \cdot \Exp_{\Prb_\stateVar}\Big(\exp\prj{\twistVar_n}{\X_{t_n}} |\scrF_{t_{n-1}} \Big) \right) \\
+    \notag
+    &= \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{\momentVar_k}{\X_{t_k}} \cdot \exp\aff(\Delta t_n, \twistVar_n, \X_{t_{n-1}})\right) \\
+    \notag
+    &= \begin{aligned}[t]
+      &\affPart_0(\Delta t_n, \twistVar_n) \\
+      &+ \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-1} \prj{\momentVar_k}{\X_{t_k}} \cdot \exp\Big( \bprj{\affPart(\Delta t_n, \twistVar_n)}{\X_{t_{n-1}}} \Big)   \right) 
+    \end{aligned} \\
+    \notag
+    &= \begin{aligned}[t]
+      &\affPart_0(\Delta t_n, \twistVar_n) \\
+      &+ \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-2} \prj{\momentVar_k}{\X_{t_k}} \cdot \exp\Big( \bprj{\momentVar_{n-1} + \affPart(\Delta t_n, \twistVar_n)}{\X_{t_{n-1}}} \Big)   \right) 
+    \end{aligned} \\
+    \label{eq:complex-tower-end}
+    &= \begin{aligned}[t]
+      &\affPart_0(\Delta t_n, \twistVar_n) \\
+      &+ \log\Exp_{\Prb_\stateVar}\left( \exp\sum_{k=1}^{n-2} \prj{\twistVar_k - \affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\X_{t_k}} \cdot \exp\Big( \bprj{\twistVar_{n-1}}{\X_{t_{n-1}}} \Big)   \right) 
+    \end{aligned}
+  \end{align}
+  The final term of (\ref{eq:complex-tower-start}) is identical to that of (\ref{eq:complex-tower-end}) where we have reduced $k = n$ to $k = n-1$.
+  Repeating these equalities inductively $k = n -1, \ldots, 1$ will result in the desired identity.
+  \begin{equation*}
+    \aff(\underline t, \underline\momentVar, \stateVar) 
+    = \sum_{k=2}^n \affPart_0(\Delta t_k, \twistVar_k) + \log\Exp_{\Prb_\stateVar}\exp\prj{\twistVar_1}{\X_{t_1}} 
+    = \sum_{k=1}^n \affPart_0(\Delta t_k, \twistVar_k) + \bprj{\affPart(\Delta t_1, \twistVar_1)}{\stateVar}
+  \end{equation*}
+\end{proof}

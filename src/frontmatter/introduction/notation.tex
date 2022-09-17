@@ -50,7 +50,13 @@ The blackboard notation will generally correspond to a topological space, includ
       \Der_{ij} f(\momentVar) \defeq \bprj{\basisVec_i}{\Hess f(\momentVar) \cdot \basisVec_j}, \quad i,j = 1, \ldots, d
     \]
 \end{itemize}
-For spaces $\stateSpace$ in which there is some canonical topology, we will denote the associated Borel algebra $\scrB(\stateSpace)$.
+For any topological space $\stateSpace$ and subset $A \subseteq \stateSpace$, we denote $A^\circ$ and $\overline A$ its interior and closure, respectively.
+In the case that this topology on $\stateSpace$ is induced by some metric $d$, we denote $\ball{\stateVar}{\delta}, \closedBall{\stateVar}{\delta} \subseteq \stateSpace$ the respectively open and closed balls centered at $\stateVar \in \stateSpace$ with radius $\delta > 0$.
+\begin{equation*}
+  \ball{\stateVar}{\delta} \defeq \Big\{ \stateVar' \in \stateSpace : d(\stateVar', \stateVar) < \delta \Big\}, \quad
+  \closedBall{\stateVar}{\delta} \defeq \Big\{ \stateVar' \in \stateSpace : d(\stateVar', \stateVar) \leq \delta \Big\}
+\end{equation*}
+When the topology on $\stateSpace$ is canonical, we will denote the associated Borel algebra $\scrB(\stateSpace)$.
 Particular examples of this convention are:
 \begin{itemize}
   \item

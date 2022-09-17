@@ -39,17 +39,9 @@ Above, note that we are naturally denoting $(\Prb^\epsilon_\stateVar)_{\stateVar
 The following result shows us that our parameterization in (\ref{eq:special-characteristic-asymptotics}) and (\ref{eq:LK-asymptotics}) applies these cumulant generating functions, where $\aff \defeq \aff^1$ and $\momentSpace \defeq \momentSpace^1$.
 
 \input{./results/aff-asymptotics}
+\input{./results/aff-asymptotics-remark}
 
-% show parameterization for \affShift and \aff fdds
-Surely, this parameterization immediately applies to the cumulant generating functions of the increments.
-Denoting
-\begin{equation*}
-  \affShift^\epsilon(t, \twistVar, \stateVar/\epsilon) = \Exp_{\Prb_\stateVar} \exp\prj{\twistVar}{\Xee_t-\stateVar/\epsilon},
-\end{equation*}
-and $\affShift \defeq \affShift^1$, we have
-\begin{equation*}
-  \affShift^\epsilon(t, \twistVar, \stateVar) = \aff^\epsilon(t, \twistVar, \stateVar) - \prj{\twistVar}{\stateVar} = \frac1\epsilon \bigg( \aff(t, \twistVar, \stateVar) - \prj{\twistVar}{\epsilon\stateVar} \bigg) = \frac1\epsilon \affShift(t, \twistVar, \stateVar).
-\end{equation*}
+% show parameterization for \aff fdds
 This parameterization also applies to the liftings $\aff^\epsilon(\underline t, \cdot, \cdot)$ of $\aff^\epsilon$ to finite-dimensional projections on partitions $\underline t \vdash [0,\infty)$.
 \begin{equation*}
   \Exp_{\Prb^\epsilon_\stateVar}\exp\prj{\underline\momentVar}{\Xe_{\underline t}} \eqdef \exp\aff(\underline t, \underline\momentVar, \stateVar/\epsilon), \quad \underline\momentVar \in \vecSpace^{|\underline t|}, ~ \stateVar\in \stateSpace
@@ -58,16 +50,25 @@ Denoting $\aff(\underline t, \cdot, \cdot) \defeq \aff^1(\underline t, \cdot, \c
 
 \input{./results/aff-fdd-asymptotics}
 
+% show how this is a mean field regime
+Now that we have established parameterizations for just about every object that relates to an affine process, we establish some intuition on the relationship between these distributions $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$.
+The first of which is immediate from our preceding result, but it only makes sense when we consider the countable sequence $\epsilon_m \defeq 1/m$ for $m \in \bbN$.
+
+\input{./results/mean-field-asymptotics}
+
 % show parameterization for Brownian motion and Poisson random measure
-In Theorem \ref{theorem:jump-diffusion-characterizations}, we saw how jump-diffusions $\X$ always have a representation in which they are the weak solution of some stochastic differential equation driven by standard Brownian motion $\W$ and Poisson random measure $\poisRM$.
-\begin{gather}
+We may also intuitively understand the relationship of $(\Prb^\epsilon_\stateVar)_{\stateVar\in\stateSpace}$ from a dynamical system perspective.
+In Theorem \ref{theorem:jump-diffusion-characterizations}, we see how jump-diffusions $\X$ always correspond to a weak solution of some stochastic differential equation driven by standard Brownian motion $\W$ and Poisson random measure $\poisRM$.
+\begin{equation}
   \label{eq:sde-reminder}
-  \X_t = \X_0 + \affDrift(\X) \shortInt \leb_t + \affDiffSqrt(\X) \shortInt \W_t + \thinner(\X, \id_\vecSpace) \ast \compensate{\poisRM}_t \\
-  \forall ~ \stateVar \in \stateSpace, \quad \left\{\begin{aligned}
-    \affJump(\stateVar, \Gamma) &= \int_\vecSpace 1_\Gamma\big(\thinner(\stateVar, \markVar)\big) \rmd\markVar, & \Gamma \in \scrB(\vecSpace-\{0\}) \\
-    \affDiff(\stateVar) &= \affDiffSqrt\affDiffSqrt^*(\stateVar)
-  \end{aligned}\right.
-\end{gather}
+  \begin{gathered}
+    \X_t = \X_0 + \affDrift(\X) \shortInt \leb_t + \affDiffSqrt(\X) \shortInt \W_t + \thinner(\X, \id_\vecSpace) \ast \compensate{\poisRM}_t \\
+    \forall ~ \stateVar \in \stateSpace, \quad \left\{\begin{aligned}
+      \affJump(\stateVar, \Gamma) &= \int_\vecSpace 1_\Gamma\big(\thinner(\stateVar, \markVar)\big) \rmd\markVar, & \Gamma \in \scrB(\vecSpace-\{0\}) \\
+      \affDiff(\stateVar) &= \affDiffSqrt\affDiffSqrt^*(\stateVar)
+    \end{aligned}\right.
+  \end{gathered}
+\end{equation}
 The following proposition gives perspectives on how the processes $\Xe$ may relate through these objects in two different perturbed dynamical systems.
 
 \input{./results/sde-asymptotics}
