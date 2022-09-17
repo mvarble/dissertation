@@ -61,6 +61,7 @@
 \newaliascnt{remark}{equation}
 \newaliascnt{definition}{equation}
 \newaliascnt{example}{equation}
+\newaliascnt{assumption}{equation}
 \usepackage{ntheorem}{
   \theoremseparator{.}
   \theorembodyfont{\itshape}
@@ -71,6 +72,7 @@
   \newtheorem{remark}{Remark}[section]
   \newtheorem{definition}{Definition}[section]
   \newtheorem{example}{Example}[section]
+  \newtheorem{assumption}{Assumption}[section]
   \theoremheaderfont{\itshape}
   \theorembodyfont{}
   \newtheorem*{proof}{Proof}

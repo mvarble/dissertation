@@ -1,14 +1,14 @@
 \begin{proposition}
   \label{proposition:sde-asymptotics}
   Fix a probability space $(\Omega, \Sigma, \Prb)$ equipped with standard Brownian motion $\W$ on $\vecSpace$ and Poisson random measure $\poisRM$ on $\scrB(\bbR_+\times\vecSpace)$.
-  Let $\affDiffSqrt: \stateSpace \rightarrow \bbL(\vecSpace)$ and $\thinner: \stateSpace \times \vecSpace \rightarrow \vecSpace$ satisfy (\ref{eq:sde-reminder}) for the special differential characteristics $(\affDrift, \affDiff, \affJump)$, as granted by Theorem \ref{theorem:jump-diffusion-characterizations}.
+  Let $\affDiffSqrt: \stateSpace \rightarrow \bbL(\vecSpace)$ and $\thinner: \stateSpace \times \vecSpace \rightarrow \vecSpace$ satisfy (\ref{eq:sde-reminder}) for the $\trunc$-differential characteristics $(\affDrift^\trunc, \affDiff, \affJump)$, as granted by Theorem \ref{theorem:jump-diffusion-characterizations}.
   For each $\stateVar \in \stateSpace$, the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ of distributions $\Prb^\epsilon_\stateVar$ may be recognized as each $\Prb^\epsilon_\stateVar$ being a weak solution to the respective \emph{scaled} stochastic dynamical system,
   \begin{equation*}
-    \Xe_t = \stateVar + \affDrift(\Xe) \shortInt \leb_t + \sqrt\epsilon \affDiffSqrt(\X) \shortInt \W_t + \epsilon\thinner\big(\Xe, \sqrt[d]{\epsilon} \cdot \id_\vecSpace\big) \ast \compensate{\poisRM}_t,
+    \Xe_t = \stateVar + \affDrift^\trunc(\Xe) \shortInt \leb_t + \sqrt\epsilon \affDiffSqrt(\X) \shortInt \W_t + \trunc \circ \epsilon\thinner\big(\Xe, \sqrt[d]{\epsilon} \cdot \id_\vecSpace\big) \ast \compensate{\poisRM}_t + \trunc' \circ \epsilon\thinner\big(\Xe, \sqrt[d]{\epsilon} \cdot \id_\vecSpace\big) \ast \poisRM_t,
   \end{equation*}
   or the \emph{time-changed} stochastic dynamical system.
   \begin{gather*}
-    \Xe_t = \stateVar + \affDrift(\Xe) \shortInt \leb_t + \epsilon \affDiffSqrt(\X) \shortInt \W^\epsilon_t + \epsilon\thinner\big(\Xe, \id_\vecSpace\big) \ast \compensate{\poisRM^\epsilon}_t, \\
+    \Xe_t = \stateVar + \affDrift^\trunc(\Xe) \shortInt \leb_t + \epsilon \affDiffSqrt(\X) \shortInt \W^\epsilon_t + \trunc \circ \epsilon\thinner\big(\Xe, \id_\vecSpace\big) \ast \compensate{\poisRM^\epsilon}_t + \trunc' \circ \epsilon\thinner\big(\Xe, \id_\vecSpace\big) \ast \poisRM^\epsilon_t, \\
     \W^\epsilon_t \defeq \W_{t/\epsilon} \\
     \poisRM^\epsilon([0,t]\times \Gamma) \defeq \poisRM([0,t/\epsilon] \times \Gamma)
   \end{gather*}
