@@ -1,0 +1,44 @@
+\begin{theorem}
+  \label{theorem:fdds}
+  For each $\stateVar \in \stateSpace^\circ$ and $\underline t \vdash [0,\infty)$, the family $(\push{\Prb^\epsilon_\stateVar}{\pi_{\underline t}})_{\epsilon>0}$ satisfies a large deviation principle on $\vecSpace^{|\underline t|}$ with good convex rate function $\aff^*(\underline t, \cdot, \stateVar)$, the Fenchel-Legendre transform of $\aff(\underline t, \cdot, \stateVar)$.
+  \begin{equation*}
+    \aff^*(\underline t, \underline\stateVar, \stateVar) \defeq \sup_{\underline\momentVar \in \vecSpace^{|\underline t|}} \Big( \bprj{\underline\momentVar}{\underline\stateVar} - \aff(\underline t, \underline\momentVar, \stateVar) \Big)
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  We first prove a principle on the discrete family $(\push{\Prb^{\epsilon_m}_\stateVar}{\pi_{\underline t}})_{m\in\bbN}$ for $\epsilon_m \defeq 1/m$.
+  Note that Proposition \ref{proposition:mean-field-asymptotics} allows us to consider a space $(\Omega, \Sigma, \Prb)$ equipped with an i.i.d.\ sequence $(\X^{(j)})_{j\in\bbN}$ of elements distributing from $\Prb_\stateVar$ and realize each $\epsilon_m \X^{\epsilon_m}$.
+  \begin{equation*}
+    \epsilon_m \X^{\epsilon_m} = \frac1m\sum_{j=1}^m \X^{(j)}
+  \end{equation*}
+  We now use a specific instance of Cram\'er's theorem \cite[Corollary 6.1.6]{dembo2010} to conclude that if $\underline 0$ is an interior point in the finite domain of $\aff(\underline t, \cdot, \stateVar)$, then our principle is satisfied with good rate function $\aff^*(\underline t, \cdot, \stateVar)$.
+  Note that Proposition \ref{proposition:real-moments-revisit}\ref{proposition:real-moments-revisit:big-time-small-moments} tells us that $\underline0 \in \momentSpace(\underline t)$, an open set.
+  Denoting some ball $\ball{\underline0}{\delta} \subseteq \momentSpace(\underline t)$, Theorem \ref{theorem:mgf-fdds} indicates that $\twistToMoment_{\underline t}\ball{\underline 0}{\delta}$ is an open set containing $\underline0$ in the finite domain of $\aff(\underline t, \cdot, \stateVar)$.
+
+  Now that we have established a large deviation principle for $(\push{\Prb^{\epsilon_m}_\stateVar}{\pi_{\underline t}})_{m\in\bbN}$, we seek to establish one for $(\push{\Prb^\epsilon_\stateVar}{\pi_{\underline t}})_{\epsilon>0}$.
+  We start by defining a map $\epsilon \mapsto \tilde\epsilon$ which discretizes the nature of $\epsilon > 0$; denoting $[r] \in \bbZ$ the integer part of $r \in \bbR$, define $\tilde\epsilon \defeq [\epsilon^{-1}]^{-1}$.
+  The following quick inequalities relating $\epsilon$ and $\tilde\epsilon$,
+  \begin{equation*}
+    \tilde\epsilon - \tilde\epsilon^2 < \epsilon \leq \tilde\epsilon
+  \end{equation*}
+  make it easy to directly show $(\push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}})_{\epsilon>0}$ satisfies a large deviation principle; for each $\Gamma \in \scrB(\vecSpace^{|\underline t|})$,
+  \begin{align*}
+    -\inf_{\underline\stateVar \in \Gamma^\circ} \aff^*(\underline t, \underline\stateVar, \stateVar) 
+    &\leq \liminf_{m\rightarrow\infty} \epsilon_m \log \push{\Prb^{\epsilon_m}_\stateVar}{\pi_{\underline t}} \Gamma \\
+    &= \liminf_{\epsilon\rightarrow0} \tilde\epsilon \log \push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}} \Gamma \\
+    &\leq \liminf_{\epsilon\rightarrow0} (\epsilon + \tilde\epsilon^2) \log \push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}} \Gamma \\ 
+    &= \liminf_{\epsilon\rightarrow0} \epsilon \log \push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}} \Gamma \\
+    &\leq \limsup_{\epsilon\rightarrow0} \epsilon \log \push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}} \Gamma \\
+    &\leq \limsup_{\epsilon\rightarrow0} \tilde\epsilon \log \push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}} \Gamma \\
+    &= \limsup_{m\rightarrow\infty} \epsilon_m \log \push{\Prb^{\epsilon_m}_\stateVar}{\pi_{\underline t}} \Gamma 
+    \leq -\inf_{\underline\stateVar \in \overline\Gamma} \aff^*(\underline t, \underline\stateVar, \stateVar)
+  \end{align*}
+
+  To obtain a large deviation principle for our family $(\push{\Prb^\epsilon_\stateVar}{\pi_{\underline t}})_{\epsilon>0}$, we show regularity $\epsilon \rightarrow \push{\Prb^\epsilon_\stateVar}{\pi_{\underline t}}$ to lift the principle for the discretized family $(\push{\Prb^{\tilde\epsilon}_\stateVar}{\pi_{\underline t}})_{\epsilon>0}$.
+  This notion in the literature is known as an \emph{exponential approximation}, which is explored in \cite[Section 4.2.2]{dembo2010}.
+  From \cite[Theorem 4.2.13]{dembo2010}, it suffices to construct a probability space $(\Omega, \Sigma, \Prb)$ such that elements $(\Xe)_{\epsilon>0}$ on this space with distributions $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ satisfy the following exponential equivalence property.
+  \begin{equation*}
+    \limsup_{\epsilon\rightarrow0} \epsilon\log\Prb\Big( |\epsilon\X^\epsilon_{\underline t} - \tilde\epsilon \X^{\tilde\epsilon}_{\underline t}| > \delta \Big) = -\infty
+  \end{equation*}
+  The \emph{scaled-dynamics} realization from Proposition \ref{proposition:sde-asymptotics} will do just this.
+\end{proof}

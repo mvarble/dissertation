@@ -1,0 +1,22 @@
+\begin{theorem}
+  \label{theorem:ldp-integral}
+  For each $\stateVar \in \stateSpace$, the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ satisfies a large deviation principle on $\pathSpace{[0,\infty)}{\stateSpace}$ with good rate function $\rf_\stateVar: \pathSpace{[0,\infty)}{\stateSpace} \rightarrow [0,\infty]$ as follows.
+  \begin{equation}
+    \label{eq:rf-integral}
+    \rf_\stateVar(\pathVar) = \left\{\begin{array}{ll}
+      \displaystyle\int_0^\infty \ode^*\big(\dot\pathVar(t), \pathVar(t)\big) \rmd t & \pathVar \in \acpathSpace{[0,\infty)}{\stateSpace}, ~ \pathVar(0) = \stateVar \\
+      \infty & \text{otherwise}
+    \end{array}\right.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  Theorem \ref{theorem:ldp} gives us our large deviation principle with rate function $\rf_\stateVar$ as in (\ref{eq:rf}).
+  Fix $\pathVar \in \pathSpace{[0,\infty)}{\stateSpace}$.
+  If $\pathVar(0) \neq \stateVar$, then we already have $\rf_\stateVar(\pathVar)=\infty$.
+  Otherwise, $\rf_\stateVar(\pathVar) = \rf_{\pathVar(0)}(\pathVar) = \rf(\pathVar)$, and so Lemma \ref{lemma:need-ac} tells us $\rf_\stateVar(\pathVar) = \infty$ if $\pathVar \not\in \acpathSpace{[0,\infty)}{\stateSpace}$.
+  If $\pathVar \in \acpathSpace{[0,\infty)}{\stateSpace}$, then Propositions \ref{proposition:rf-upper-bound} and \ref{proposition:rf-lower-bound} tell us that
+  \begin{equation*}
+    \rf_\stateVar(\pathVar) = \int_0^\infty \ode^*\big( \dot\pathVar(t), \pathVar(t) \big) \rmd t.
+  \end{equation*}
+  This concludes that $\rf$ can be written as in (\ref{eq:rf-integral}).
+\end{proof}

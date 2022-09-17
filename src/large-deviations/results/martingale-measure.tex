@@ -1,0 +1,62 @@
+\begin{proposition}
+  \label{proposition:martingale-measure}
+  For each $\epsilon > 0$ and $\twistFunc \in \twistSpace$, we have the following identities, where $\calE(H)$ denotes the Dol\'eans-Dade exponential of $H$.
+  \begin{align*}
+    \mgDensity^{\epsilon,\twistFunc}
+    &\defeq \exp\Big(\frac1\epsilon\mgRf(\Xe,\twistFunc) \Big) \\
+    &= \exp\bigg( \bprj{\Xee_0}{\twistFunc(0)} - \int_0^\infty \Xee_{s-} \rmd\twistFunc(s) - \int_0^\infty \ode^\epsilon\big(\twistFunc(s), \Xee_s\big) \rmd s \bigg) \\
+    &= \exp\Big( \twistFunc \shortInt \Xee_\infty - \ode^\epsilon\big(\twistFunc, \Xee\big) \shortInt \leb_\infty \Big) \\
+    &= \calE\Big( \twistFunc \shortInt \X^{\epsilon,c} - \big( e^\prj{\twistFunc}{\id_\vecSpace} - 1 \big) \ast \compensate{\jumpMeas^{\Xee}} \Big)_\infty
+  \end{align*}
+  Furthermore, $\mgDensity^{\epsilon,\twistFunc}$ is integrable and $t \mapsto \Exp_{\Prb_\stateVar}(\mgDensity^{\epsilon,\twistFunc}| \scrF_t)$ is a martingale.
+\end{proposition}
+\begin{proof}
+  We start by establishing the first two identities.
+  Realizing $\twistFunc$ as a predictable, finite-variation process, we apply integration by parts (see \cite[Proposition I.4.49(b)]{jacod2003}) to get the following identity.
+  \begin{align*}
+    \frac1\epsilon \mgRf(\Xe, \twistFunc)
+    &= \frac1\epsilon \Big( \bprj{\Xe_0}{\twistFunc(0)} - \int_0^\infty \Xe_{s-} \rmd\twistFunc(s) - \int_0^\infty \ode\big( \twistFunc(s), \Xe_s \big) \rmd s \Big) \\
+    &= \bprj{\Xee_0}{\twistFunc(0)} - \int_0^\infty \Xee_{s-} \rmd\twistFunc(s) - \int_0^\infty \ode^\epsilon\big( \twistFunc(s), \Xee_s \big) \rmd s \\
+    &= \bprj{\Xee_0}{\twistFunc(0)} - \Xee_- \shortInt \twistFunc_\infty - \ode^\epsilon(\twistFunc, \Xee_-) \shortInt \leb_\infty \\
+    &= \twistFunc \shortInt \Xee_\infty - \ode^\epsilon(\twistVar, \Xee_-) \shortInt \leb_\infty
+  \end{align*}
+  The remaining identity is a special case of that from \cite[Theorem III.7.24]{jacod2003}, but we will perform the It\^o calculus here for completion's sake.
+  Note that Theorem \ref{theorem:exponential-martingale} tells us that $\exp(\twistFunc \shortInt \Xee)$ is a $(\Prb_\stateVar, \scrF)$ jump-diffusion, and (\ref{eq:jump-diffusion-exponentially-special}) from Theorem \ref{theorem:LK-exponential-martingale} gives us its special semimartingale decomposition.
+  \begin{equation*}
+    \exp\big( \twistFunc \shortInt \Xee_t \big) 
+    = \begin{aligned}[t]
+      &\Big(\exp\big( \twistFunc \shortInt \Xee \big) \cdot \ode(\twistFunc, \Xee) \Big) \shortInt \leb_t + \Big( \exp\big( \twistFunc \shortInt \Xee_- \big) \cdot \twistFunc \Big) \shortInt {\Xee}^{,\rmc}_t \\
+      &+ \exp\big(\twistFunc\shortInt\Xee_-\big) \Big( e^{\prj{\twistFunc}{\id_\vecSpace}} - 1 \Big) \ast \jumpMeas^{\Xee}_t
+    \end{aligned} 
+  \end{equation*}
+  Note that this allows us to define the process $H$ inside the alleged Dol\'eans-Dade exponential.
+  \begin{equation*}
+    H = \twistFunc \shortInt {\Xee}^{,c} + \big( e^\prj{\twistFunc}{\id_\vecSpace} - 1 \big) \ast \compensate{\jumpMeas^{\Xee}}
+  \end{equation*}
+  Observe that, by definition of the Dol\'eans-Dade exponential and the special semimartingale decomposition of $\Xee$,
+  \begin{gather*}
+    \Xee_t = \frac1\epsilon \affDrift(\Xe) \shortInt \leb + {\Xee}^{,\rmc}_t + \id_\vecSpace \ast \compensate{\jumpMeas^{\Xee}}_t,  \\
+    \bprj{{\Xee}^{,\rmc,i}}{{\Xee}^{,\rmc,j}} = \frac1\epsilon\affDiff(\Xe) \shortInt \leb, \\
+    \predproj{\jumpMeas^{\Xee}}(\rmd s, \rmd\markVar) = \frac1\epsilon \affJump(\Xe, \rmd\markVar) \rmd s,
+  \end{gather*}
+  we have the following.
+  \begin{align*}
+    \log\calE(H)_t
+    &= H_t - H_0 - \frac12 \prj{H^c}{H^c}_t + \big( \log(1+\id_\bbR) - \id_\bbR \big) \ast \jumpMeas^H_t \\
+    &=\begin{aligned}[t]
+      &\twistFunc \shortInt {\Xee_t}^{,c} + \big( e^\prj{\twistFunc}{\id_\vecSpace} - 1 \big) \ast \compensate{\jumpMeas^{\Xee}}_t \\
+      &- \frac12 \prj{\twistFunc \shortInt {\Xee}^{,c}}{\twistFunc \shortInt {\Xee}^{,c}}_t - \big( e^\prj{\twistFunc}{\id_\vecSpace} - 1 -\prj{\twistFunc}{\id_\vecSpace}\big) \ast \jumpMeas^{\Xee}_t
+    \end{aligned} \\
+    &=\begin{aligned}[t]
+      &\twistFunc \shortInt {\Xee_t}^{,c} - \big( e^\prj{\twistFunc}{\id_\vecSpace} - 1  - \prj{\twistFunc}{\id_\vecSpace}\big) \ast \predproj{\jumpMeas^{\Xee}}_t \\
+      &- \frac12 \prj{\twistFunc}{\affDiff^\epsilon(\Xee)\twistFunc} \shortInt \leb_t + \prj{\twistFunc}{\id_\vecSpace} \ast \compensate{\jumpMeas^{\Xee}}_t
+    \end{aligned} \\
+    &=\begin{aligned}[t]
+      &\twistFunc \shortInt \Xee_t - \affDrift^\epsilon(\Xee) \shortInt \leb_t - \prj{\twistFunc}{\id_\vecSpace} \ast \compensate{\jumpMeas^{\Xee}}_t - \big( e^\prj{\twistFunc}{\id_\vecSpace} - 1  - \prj{\twistFunc}{\id_\vecSpace}\big) \ast \predproj{\jumpMeas^{\Xee}}_t \\
+      &- \frac12 \prj{\twistFunc}{\affDiff^\epsilon(\Xee)\twistFunc} \shortInt \leb_t + \prj{\twistFunc}{\id_\vecSpace} \ast \compensate{\jumpMeas^{\Xee}}_t
+    \end{aligned} \\
+    &= \twistFunc \shortInt \Xee_t - \ode^\epsilon(\twistFunc, \Xee) \shortInt \leb_t
+  \end{align*}
+  Note that this is one argument that $\mgDensity^{\epsilon,\twistFunc} = \calE(H)_\infty$ corresponds to a $(\Prb, \scrF)$ local martingale, since $H$ is (see \cite[Theorem I.4.61(b)]{jacod2003}).
+  In any case, the martingale nature comes from Theorem \ref{theorem:exponential-martingale}.
+\end{proof}

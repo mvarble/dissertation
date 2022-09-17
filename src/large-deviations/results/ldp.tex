@@ -1,0 +1,32 @@
+\begin{theorem}
+  \label{theorem:ldp}
+  For each $\stateVar \in \stateSpace^\circ$, the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ satisfies a large deviation principle on $\pathSpace{[0,\infty)}{\stateSpace}$ with good rate function $\rf_\stateVar: \pathSpace{[0,\infty)}{\stateSpace} \rightarrow [0,\infty]$ as follows.
+  \begin{equation}
+    \label{eq:rf}
+    \rf_\stateVar(\pathVar) = \left\{\begin{array}{ll}
+      \displaystyle\sup_{\underline t\vdash \Delta_\pathVar^c} \aff^*\big(\underline t, \pathVar(\underline t), \pathVar(0)\big) & \pathVar(0) = \stateVar \\
+      \infty & \text{otherwise}
+    \end{array}\right.
+  \end{equation}
+  Above, $\Delta_\pathVar \subseteq [0,\infty)$ denotes the points of discontinuity of $\pathVar$.
+\end{theorem}
+
+\begin{proof}
+  \label{proof:theorem:ldp}
+  Provided we have some $\underline t \vdash [0,\infty)$ the vector $\hat{\underline t}$ associated with prepending $0$ to $\underline t$, 
+  \begin{equation*}
+    \hat{\underline t} = (0, t_1, \ldots, t_{|\underline t|}),
+  \end{equation*}
+  induces the following finite-dimensional distributions.
+  \begin{equation*}
+    \push{\Prb^\epsilon_\stateVar}{\pi_{\hat{\underline t}}} = \delta_\stateVar \otimes \push{\Prb^\epsilon_\stateVar}{\pi_{\underline t}}
+  \end{equation*}
+  For these partitions, it is easy to see from Theorem \ref{theorem:fdds} that the large deviations principle for $(\push{\Prb^\epsilon_\stateVar}{\pi_{\hat{\underline t}}})_{\epsilon>0}$ has good rate function as below.
+  \begin{equation*}
+    (\stateVar_0, \stateVar_1, \ldots, \stateVar_{|\underline t|}) \mapsto \left\{\begin{array}{ll}
+      \aff^*(\underline t, \underline\stateVar, \stateVar_0), & \stateVar_0 = \stateVar \\
+      \infty & \text{otherwise}
+    \end{array}\right.
+  \end{equation*}
+  By \cite[Theorem 4.28]{feng2006}, we now use Theorem \ref{theorem:fdds} and Proposition \ref{proposition:exponential-tightness} to get a large deviations principle for the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ with good rate function $\rf_\stateVar$.
+\end{proof}

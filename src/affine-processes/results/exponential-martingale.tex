@@ -1,10 +1,10 @@
 \begin{theorem}
   \label{theorem:exponential-martingale}
-  If $0 \in \odeSpace^\circ$, then any $\twistFunc \in \pathSpace{[0,\infty)}{\vecSpace}$ of finite variation, compact support, and image contained in $\odeSpace^\circ$ is such that
+  If $0 \in \odeSpace^\circ$, then any $\twistFunc \in \pathSpace{[0,\infty)}{\vecSpace}$ of finite variation, compact support, and image contained in $\odeSpace^\circ$ makes $\exp(\twistFunc \shortInt \X)$ a $(\Prb_\stateVar, \scrF)$ special jump-diffusion and
   \begin{equation*}
     \exp\Big( \twistFunc \shortInt \X - \ode\big(\twistFunc, \X\big) \shortInt \leb \Big)
   \end{equation*}
-  is a $(\Prb_\stateVar, \scrF)$ martingale for every $\stateVar \in \stateSpace$.
+  a martingale for every $\stateVar \in \stateSpace$.
 \end{theorem}
 \begin{proof}
   The quantity $M = \exp\big(\twistFunc \shortInt \X - \ode(\twistFunc, \X) \shortInt \leb \big)$ is a $(\Prb_\stateVar, \scrF)$ local martingale by our hypotheses and Theorem \ref{theorem:LK-exponential-martingale}.

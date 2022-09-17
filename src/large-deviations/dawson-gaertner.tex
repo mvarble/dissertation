@@ -1,3 +1,27 @@
-This section proves our large deviation principle from a perspective similar to that of Dawson-G\"artner (see \cite[]{dembo2010}), in which we prove the principle for the finite-dimensional projections, so that we get a principle on the projective space associated with $\pathSpace{[0,\infty)}{\stateSpace}$ that we may tighten to the Skorokhod space through exponential tightness.
-Though we attribute this approach to the names of Dawson and G\"artner, we specifically use results in \cite{feng2006} which instead use results which appeal more to Prohorov-like arguments of weak convergence on an exponential scale.
-In any case, we start with proving the principle on the finite-dimensional projections.
+This section proves our large deviation principle from a perspective similar to that of Dawson-G\"artner (see \cite[Theorem 4.6.1]{dembo2010}), in which we prove the principle for the finite-dimensional projections, so that we get a principle on the projective space associated with $\pathSpace{[0,\infty)}{\stateSpace}$ that we may tighten to the Skorokhod space through exponential tightness.
+Though we attribute this approach to the names of Dawson and G\"artner, we specifically use results in \cite{feng2006} which instead use results which appeal more to weak convergence arguments that are comparable to Prokhorov on an exponential scale.
+
+\input{./results/ldp-fdds}
+
+Cram\'er's theorem---the tool we leveraged to prove the above principle---is proven by using measure changes induced by densities of the following form.
+\begin{equation*}
+  \exp\Big( \prj{\underline\momentVar}{\Xee_{\underline t}} - \aff^\epsilon(\underline t, \underline\momentVar, \Xee_0) \Big)
+\end{equation*}
+Observe that Theorem \ref{theorem:mgf-fdds} gives us a perspective of how this measure depends on the increments; a valid moment $\underline\momentVar \in \vecSpace^{|\underline t|}$ for the above expression must satisfy $\underline\momentVar = \twistToMoment_{\underline t}(\underline\twistVar)$ for some $\underline\twistVar \in \momentSpace(\underline t)$, and
+\begin{equation*}
+  \exp\Big( \prj{\underline\momentVar}{\Xee_{\underline t}} - \aff^\epsilon(\underline t, \underline\momentVar, \Xee_0) \Big) = 
+  \exp\sum_{k=1}^{|\underline t|} \Big( \prj{\twistVar_k}{\Xee_{t_k}-\Xee_{t_{k-1}}} - \affShift^\epsilon\big(\Delta t_k, \twistVar_k, \Xee_{t_{k-1}} \big) \Big) \eqdef \fddDensity^{\epsilon, \underline t, \underline\twistVar}
+\end{equation*}
+We denote these changes of measure like so,
+\begin{equation*}
+  \fddPrb^{\epsilon,\underline t,\underline\twistVar}_\stateVar(\rmd\omega) \defeq \fddDensity^{\epsilon,\underline t,\underline\twistVar}(\omega) \cdot \Prb(\rmd\omega),
+\end{equation*}
+and observe the nature of how they make our increments distribute.
+
+\input{./results/twists}
+
+Understanding these measures $\fddPrb^{\epsilon,\underline t,\underline\twistVar}_\stateVar$ will be important for our next section, where we relate the seemingly alternative exponential martingale method to studying large deviations.
+We now proceed from that short tangent back to our large deviation principle.
+
+\input{./results/exponential-tightness}
+\input{./results/ldp}

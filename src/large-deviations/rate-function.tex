@@ -1,0 +1,34 @@
+% discuss how we intend to get integral form of rate function
+So far, for each $\stateVar \in \stateSpace^\circ$, Theorem \ref{theorem:ldp} provides us a large deviation principle for $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ with good rate function $\rf_\stateVar$ as in (\ref{eq:rf}).
+This section is concerned with simplifying the nature of $\rf_\stateVar$ to take a more explicit integral form, comparable to existing principles for other families of stochastic processes.
+\begin{equation*}
+  \rf_\stateVar(\pathVar) = \left\{\begin{array}{ll}
+    \displaystyle \int_0^\infty \ode^*\big(\dot\pathVar(t), \pathVar(t)\big) \rmd t & \pathVar(0) = \stateVar, ~ \pathVar \in \acpathSpace{[0,\infty)}{\stateSpace} \\
+    \infty & \text{otherwise}
+  \end{array}\right.
+\end{equation*}
+To show this, we start by defining a map $\rf$ which composes the initial state through our rate functions $(\rf_\stateVar)_{\stateVar\in\stateSpace}$, to remove the finiteness condition of each $\rf_\stateVar$ in (\ref{eq:rf}).
+\begin{equation*}
+  \rf(\pathVar) \defeq \rf_{\pathVar(0)}(\pathVar) = \sup_{\underline t \vdash \Delta_\pathVar^c} \aff^*\big(\underline t, \pathVar(\underline t), \pathVar(0) \big)
+\end{equation*}
+In the following results, we will--without mention--assume evaluations of $\rf(\pathVar)$ for $\pathVar(0) \in \stateSpace^\circ$, so that we can use Theorem \ref{theorem:mgf-fdds}.
+Note that this is at no loss of generality, since we are resolving our rate function $\rf_\stateVar$ for a large deviation principle that already requires $\stateVar \in \stateSpace^\circ$.
+
+% Show that we need \pathVar to be absolutely continuous for it to have finite rate.
+\input{./results/need-ac}
+
+% Write \affShift as an integral operator.
+\input{./results/fdd-rf-as-integral}
+
+% "piecewise functions" show rate function sum < rate function integral
+\input{./results/rf-upper-bound}
+
+% "piecewise functions" are dense in continuous functions
+\input{./results/span-affPart-dense}
+
+% rate function integral < rate function sum
+\input{./results/rf-lower-bound}
+
+% LDP with integral
+\input{./results/ldp-integral}
+

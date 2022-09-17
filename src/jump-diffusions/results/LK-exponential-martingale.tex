@@ -41,13 +41,14 @@
   Seeing as $\ode(\cdot, \stateVar)$ is continuously differentiable, it is uniformly bounded on $\odeSpace^\circ$.
   This, along with assumption (\ref{eq:affJump-regularity}) allow us to conclude that the preceding expression is finite.
   Thus, we may compensate the final jump integral in (\ref{eq:LK-exp-ito-pause}).
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:jump-diffusion-exponentially-special}
     \exp\big( \twistFunc \shortInt \X_t \big) 
     = \begin{aligned}[t]
       &\Big(\exp\big( \twistFunc \shortInt \X \big) \cdot \ode(\twistFunc, \X) \Big) \shortInt \leb_t + \Big( \exp\big( \twistFunc \shortInt \X_- \big) \cdot \twistFunc \Big) \shortInt \X^\rmc_t \\
       &+ \exp\big(\twistFunc\shortInt\X_-\big) \Big( e^{\prj{\twistFunc}{\id_\vecSpace}} - 1 \Big) \ast \jumpMeas^\X_t
     \end{aligned} 
-  \end{equation*}
+  \end{equation}
   The decomposition of $\exp(\twistFunc \shortInt \X)$ into a predictable finite-variation process and a  local martingale implies that it is special.
   Now, we write $M$ as the local martingale term above, $A = \exp(\twistFunc \shortInt \X)$, and $B = \exp(-\ode(\twistFunc, \X) \shortInt \leb)$.
   We now recognize that $B$ is predictable and finite-variation and use \cite[Proposition I.4.49(b)]{jacod2003} to conclude our proof.

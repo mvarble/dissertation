@@ -15,7 +15,12 @@
 \end{proposition}
 \begin{proof}
   \label{proof:proposition:sde-asymptotics}
-  By \cite[III.2.26]{jacod2003}, it suffices to check if the characteristics match; let's check those for $\Xee$.
+  By \cite[III.2.26]{jacod2003}, it suffices to check if the characteristics of the above dynamical systems match those of $\Xe$.
+  We will instead match those of the scaled $\Xee$; recall its characteristics, as specified by (\ref{eq:characteristic-asymptotics}).
+  \begin{equation*}
+    \bprj{{\Xee}^{,\rmc,i}}{{\Xee}^{,\rmc,j}} = \frac1\epsilon\affDiff_{i,j}(\Xe) \shortInt \leb, \quad
+    \predproj{\jumpMeas^{\Xee}}(\rmd s, \rmd\markVar) = \frac1\epsilon \affJump(\Xe, \rmd\markVar) \rmd s
+  \end{equation*}
   Let us first address the first system.
   Note that for any $i, j = 1, \ldots, d$, we use \cite[Theorem I.4.40(d)]{jacod2003} to resolve the predictable quadratic covariation of the continuous local martingale part $\frac{1}{\sqrt\epsilon} \affDiffSqrt(\Xe) \shortInt \W$ of $\Xee$.
   \begin{align*}

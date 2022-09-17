@@ -1,0 +1,36 @@
+\begin{proposition}
+  \label{proposition:real-moments-revisit}
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      \label{proposition:real-moments-revisit:big-time-small-moments}
+      For each $\tau > 0$, $\momentSpace(\tau)$ is open; in particular, there exists $\delta > 0$ such that $\ball{0}{\delta} \subseteq \momentSpace(\tau)$.
+    \item
+      \label{proposition:real-moments-revisit:aff-unique}
+      For each $\tau > 0$ and $\momentVar \in \momentSpace(\tau)$, $\aff(\cdot,\momentVar,\cdot)$ from Theorem \ref{theorem:KM} is the unique solution to $\system(\ode, \tau, \momentVar)$.
+    \item
+      \label{proposition:real-moments-revisit:big-moments-small-time}
+      For each $M > 0$, there exists $\delta > 0$ such that $\closedBall{0}{M} \subseteq \momentSpace(\delta)$.
+    \item
+      \label{proposition:real-moments-revisit:aff-uniform-bound}
+      For each $M > 0$, there exist $\delta > 0$ and $C_M$ such that the following holds.
+      \begin{equation*}
+        \big| \aff(t, \momentVar, \stateVar) - \aff(0, \momentVar, \stateVar) \big| \leq C_M \cdot t \cdot \big( 1 + |\stateVar| \big), \quad t \in [0,\delta], ~ \momentVar \in \closedBall{0}{M}, ~ \stateVar \in \stateSpace
+      \end{equation*}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      Proposition \ref{proposition:momentSpace-facts}\ref{proposition:momentSpace-facts:1} tells us that $\momentSpace(\tau)$ is open in $\odeSpace^\circ$, which is now $\vecSpace$ by our assumption.
+      Also, seeing as $\Exp_{\Prb_\stateVar}\exp\prj{0}{\X_\tau} = 1 < \infty$ for all $\stateVar \in \stateSpace$, $0 \in \momentSpace(\tau)$.
+      Openness of $\momentSpace(\tau)$ now grants some $\ball{0}{\delta} \subseteq \momentSpace(\tau)$.
+    \item
+      Proposition \ref{proposition:momentSpace-facts}\ref{proposition:momentSpace-facts:2} gives us uniqueness of $\aff(\cdot, \momentVar, \cdot)$ as a solution to $\system(\ode, \tau, \momentVar)$ for any $\momentVar \in \momentSpace(\tau) \cap \odeSpace^\circ$, which is now the same thing as $\momentVar \in \momentSpace(\tau)$.
+    \item
+      Seeing as $\odeSpace = \vecSpace$, we now have $\closedBall{0}{M} \subseteq \odeSpace^\circ$, so Proposition \ref{proposition:compact-ode-existence} gives us $\delta > 0$ such that $\closedBall{0}{M} \subseteq \momentSpace(\delta)$.
+    \item
+      Fix $M > 0$.
+      By part \ref{proposition:real-moments-revisit:big-moments-small-time}, there exists $\delta > 0$ such that $\closedBall{0}{2M} \subseteq \momentSpace(2\delta)$.
+      Now, $[0,\delta] \times \closedBall{0}{M}$ is a compact subset of $\momentSpace^\circ$, and so Proposition \ref{proposition:aff-differentiable} gives us our desired $C_M$.
+  \end{enumerate}
+\end{proof}

@@ -28,9 +28,6 @@
   urlcolor=mydarkblue,
 }
 
-% chapters are roman numerals
-\renewcommand\thechapter{\Roman{chapter}}
-
 % section number depth
 \setcounter{secnumdepth}{3}
 
