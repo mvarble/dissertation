@@ -1,105 +1,17 @@
 \input{introduction}
 
 \section{Mogulskii's theorem}
+\label{rate-functions:mogulskii}
 \input{mogulskii}
 
 \section{Transformations}
+\label{rate-functions:transformations}
 \input{transformations}
 
 \section{Coupling}
+\label{rate-functions:coupling}
+\input{coupling}
 
-\begin{enumerate}
-    \begin{color}{gray}
-    \item
-      {\bfseries Mogulskii's theorem.}
-      Purpose of section is to familiarize with rate functions we already have and set the stage for how we operate with our theorem.
-      \begin{enumerate}
-        \item
-          Cite Mogulskii's theorem.
-        \item
-          Brownian motion of our regime: achieved with Mogulskii's theorem with Normal increments and exponential tightness (Schilder).
-        \item
-          Poisson process of our regime: achieved with Mogulskii's theorem with Poisson increments and use exponential tightness.
-      \end{enumerate}
-    \end{color}
-  \item
-    {\bfseries Simple contraction maps.}
-    \begin{enumerate}
-      \item
-        Friedlin Wentzel (not so much our regime): use contraction mapping principles
-      \item
-        Birth rate process: Can we similarly contraction map Poisson to get this?
-      \item
-        Extension of Freidlin Wentzel to affine: KK
-    \end{enumerate}
-  \item
-    {\bfseries Coupling states.}
-    Indicate that when contraction mappings are not sufficient, we may \emph{couple correlated states}, in the sense of looking at LDPs of joint processes.
-    \begin{enumerate}
-      \item
-        Compound Poisson: Two \emph{sources} of randomness; the arrivals and the jump sizes. Appeal to Duffy results for heuristical calculations.
-      \item
-        Compound linear Hawkes: Similarly two \emph{sources} of randomness. Duffy also gives us the calculations.
-        Note on Zhu paper for \emph{sidestep}; less general jumps, more general nonlinear relationship of arrivals.
-      \item
-        The jumps of a general jump-diffusion do not have a well-posed notion of arrivals and jump sizes; we thus turn our focus to locally countable jump-diffusions, in which the three \emph{sources} of randomness are the continuous local martingale, the arrival times, and the jump sizes.
-        Note how this is discussed in next section.
-    \end{enumerate}
-  \item
-    {\bfseries Locally countable affine processes.}
-    Perform the necessary calculus and proceed to show our general formulation.
-    \begin{enumerate}
-      \item
-        State result in numerous flavors, depending on which \emph{base} quantities in which we choose to focus the large deviations.
-        \begin{align*}
-          \X &= \affDrift(\X)\shortInt \leb + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X} \\
-          \N^\X &= 1 \ast \jumpMeas^\X \\
-          V^\X &= \id_\vecSpace \ast \jumpMeas^\X 
-        \end{align*}
-        \begin{enumerate}
-          \item
-            \textbf{overdetermined flavor.}
-            $(\X, \X^\rmc, \N^\X, V^\X)$ produces an overdetermined system which requires another condition for $\rf(\pathVar, \omega, \eta, \gamma)$ to be finite.
-            \[
-              \dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t)\dot\gamma(t)
-            \]
-            However, the rate function is very simple to understand.
-          \item
-            \textbf{determine-continuous-noise flavor.}
-            Normal term gets messy
-          \item
-            \textbf{determine-arrivals flavor.}
-            Poisson and jump-term-denominator gets messy
-          \item
-            \textbf{determine-jumps flavor.}
-            This is the one we have already presented; the jump-term-numerator gets messy.
-        \end{enumerate}
-      \item
-        Discuss how the deviations of $\X$ from the dynamical system $\X = \affDrift(\X) \shortInt \leb$ are imposed from \emph{continuous deviations} $\X^\rmc$ and \emph{discontinuous deviations} $\id_\vecSpace \ast \compensate{\jumpMeas^\X}$.
-      \item
-        Discuss how four quantities $\X, \X^\rmc, \N^\X, V^\X$ heuristically relate in simple infinitesimal equality $(\X, \X^\rmc, \N^\X, V^\X) \approx (\pathVar, \omega, \eta, \gamma)$.
-        \begin{align*}
-          \dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t) \cdot \dot\gamma(t)
-        \end{align*}
-      \item
-        Each of the primitive deviations have a simple analogy, when we think of infinitesimals.
-        \begin{align*}
-          &\dot\omega(t)  & \text{\emph{normal deviations of covariance }} \affDiff\big(\pathVar(t)\big) \\
-          &\dot\eta(t) & \text{\emph{Poisson deviations of rate }} \affInt\big(\pathVar(t)\big) \\
-          &\dot\gamma(t) & \text{\emph{jump deviations from }} \affDist\big(\pathVar(t), \rmd\markVar\big) \\
-          \pathVar(t) &=\affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t)\cdot\dot\gamma(t) & \text{\emph{all combined deviations}}
-        \end{align*}
-      \item
-        Think of results from first section in this regard.
-        \begin{enumerate}
-          \item
-            birth is  $\dot\pathVar(t) = \dot\eta(t)$, so we only need $\pathVar \approx \X$.
-          \item
-            diffusion is $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t)$, and so we only need $\pathVar\approx\X$ and rate function includes $\pathVar(t) - \affDrift\big(\pathVar(t)\big)$ where $\dot\omega$ is.
-          \item
-            compound Poisson is $\dot\pathVar(t) = \dot\eta(t) \cdot \dot\gamma(t)$, so we choose one of the following pairs $(\pathVar, \eta) \approx (\X, \N^\X)$, $(\pathVar, \gamma) \approx (\X, V^\X)$, or $(\eta, \gamma) \approx (\N^\X, V^\X)$.
-          \item
-            compound linear Hawkes is $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\eta(t) \cdot \dot\gamma(t)$, so we can choose $(\pathVar, \eta) \approx (\X, \N^\X)$ or $(\pathVar, \dot\gamma) \approx (\X, V^\X)$.
-        \end{enumerate}
-    \end{enumerate}
-\end{enumerate}
+\section{Main result}
+\label{rate-functions:main}
+\input{main}

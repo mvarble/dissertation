@@ -1,4 +1,5 @@
 \begin{example}[Poisson]
+  \label{example:poisson}
   One may apply a very similar argument for when our increment distribution $\affDist$ is $\operatorname{Poisson}(1)$.
   In this case, the integral in the rate function in (\ref{eq:rf-mogulskii}) evaluates to
   \begin{equation}
@@ -15,7 +16,7 @@
   \begin{equation*}
     \affDrift(\stateVar) = 1, \quad \affDiff(\stateVar) = 0, \quad \affJump(\stateVar, \rmd\markVar) = \delta_1(\rmd\markVar)
   \end{equation*}
-  Setting the initial state $\stateVar = 0$ and looking at Theorem \ref{theorem:regime-dynamics}, we may say that $\Xe$ can be realized as follows.
+  Setting the initial state $\stateVar = 0$ and looking at Proposition \ref{proposition:sde-asymptotics}, we may say that $\Xe$ can be realized as follows.
   \begin{align*}
     \Xe_t 
     &= t + \epsilon 1_{[0,1]}(\id_\bbR) \ast \compensate{\poisRM^\epsilon}_t \\
@@ -31,12 +32,12 @@
   \end{equation*}
   As with the normal increments, our rate function (\ref{eq:rf-integral}) resolves this immediately.
   \begin{align*}
-    \ode^*(\dot\stateVar, \stateVar) 
-    = \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\dot\stateVar - \momentVar - \int_\bbR \big( e^{\momentVar\markVar} - 1 - \momentVar\markVar \big) \delta_1(\rmd\markVar) \bigg) 
-    &= \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\dot\stateVar - e^\momentVar + 1 \bigg) \\
+    \ode^*(\diffVar, \stateVar) 
+    = \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\diffVar - \momentVar - \int_\bbR \big( e^{\momentVar\markVar} - 1 - \momentVar\markVar \big) \delta_1(\rmd\markVar) \bigg) 
+    &= \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\diffVar - e^\momentVar + 1 \bigg) \\
     &= \left\{\begin{array}{ll}
-      \dot\stateVar \log\dot\stateVar - \dot\stateVar + 1 & \dot\stateVar \geq 0 \\
-      \infty & \text{otherwise}
+      \diffVar \log\diffVar - \diffVar + 1, & \diffVar \geq 0 \\
+      \infty, & \text{otherwise}
     \end{array}\right.
   \end{align*}
 \end{example}

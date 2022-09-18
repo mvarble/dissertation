@@ -1,8 +1,18 @@
-% discuss how contraction maps allow for state-dependent processes
-While Mogulskii's theorem specifies that the processes $(Y^\epsilon)_{\epsilon>0}$---by design---have independent increments, we may use the contraction principle \cite[Theorem 4.2.1]{dembo2010} to develop a large deviation principle for families of processes with state-dependent increments.
-Indeed, by introducing a continuous map $F$, we will have a large deviation principle for the family $(\push{\Prb^\epsilon}{F})_{\epsilon>0}$ of measures $\push{\Prb^\epsilon}{F}$ associated with respective quantities $F(Y^\epsilon)$, and $F$ can be chosen so that each $F(Y^\epsilon)$ is a process with state-dependent increments.
-Seeing as this section serves as a survey for intuition on rate functions, we will digress from discussing the specifics of continuity of $F$ on restricted spaces and/or exponentially equivalent families in our examples below.
+% discuss how transforms + measure changes allow for state-dependent processes
+While Mogulskii's theorem specifies that the processes $(Y^\epsilon)_{\epsilon>0}$---by design---have independent increments, we may use transformation arguments to produce large deviation principles for families of processes with state-dependent increments.
+The two ways of leveraging this are via the contraction principle or measure-change arguments.
+
+% discuss transforms
+The contraction principle states that mapping the quantities $F(Y^\epsilon)$ via a continuous map $F$ produces a large deviation principle for the family $(\push{\Prb^\epsilon}{F})_{\epsilon>0}$ of measures $\push{\Prb^\epsilon}{F}$ associated with these respective quantities $F(Y^\epsilon)$ (see \cite[Theorem 4.2.1]{dembo2010}).
+Seeing as this section serves as a survey for intuition on rate functions, we will digress from discussing the specifics of continuity of $F$ on restricted spaces and/or exponentially equivalent families in our example below.
 
 % introduce drift to Brownian motion
 \input{./results/diffusion}
 
+% discuss measure changes
+The above result leveraged a large deviation principle for Brownian motions $(\sqrt\epsilon\W)_{\epsilon>0}$ to one on state-dependent diffusions $(\Xe)_{\epsilon>0}$ via mappings $\Xe = F(\sqrt\epsilon\W)$.
+The analogue of the Brownian motion $\W$ for jump processes---in the sense of homogeneous independent-increments---is the Poisson process $\N$.
+To introduce state-dependence to our sequence $(\epsilon\N_{\cdot/\epsilon})_{\epsilon>0}$ from Example \ref{example:poisson}, we may perform a simple measure change argument.
+
+% introduce intensity to Poisson
+\input{./results/hawkes}

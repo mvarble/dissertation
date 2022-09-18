@@ -1,0 +1,30 @@
+\begin{theorem}
+  \label{eq:ldp-closed-form}
+  Let $\X$ be an affine process with special differential characteristics $(\affDrift, \affDiff, \affJump)$ satisfying the assumptions specified in Section \ref{large-deviations:assumptions} and the local countability condition (\ref{eq:assumption-affJump-finite}) and subsequent factoring denoted by (\ref{eq:affJump-factoring}).
+  Consider the family $(\Xe)_{\epsilon>0}$ parameterized by $\X$ through (\ref{eq:characteristic-asymptotics}).
+  Then, for each $\epsilon > 0$, the tuple $\hat\Xe = (\Xe, {\Xe}^{,\rmc}, \V^{\Xe}, \N^{\Xe})$ is an affine process on $\vecSpace \times \vecSpace \times \vecSpace \times \bbR_+$ satisfying the conditions of Theorem \ref{theorem:ldp-integral}.
+  Denoting $\hat\stateVar\in \stateSpace^\circ$ its starting point, the rate function $\rf_{\hat\stateVar}$ in (\ref{eq:rf-integral}) simplifies to the following semi-closed form, where we denote the components of an arbitrary function $\hat\pathVar$ by $\hat\pathVar \defeq (\pathVar, \omega, \gamma, \eta)$.
+  \begin{equation*}
+    \rf_{\hat\stateVar}(\hat\pathVar) = 
+    \begin{aligned}[t]
+      &\int_0^\infty \frac12 \Bprj{\dot\omega(t)}{\affDiff\big(\pathVar(t)\big)^\dagger \dot\omega(t)} \Big) \rmd t 
+      + \int_0^\infty \bigg( \dot\eta(t)\log\Big(\frac{\dot\eta(t)}{\affInt\big(\pathVar(t)\big)} \Big) - \dot\eta(t) + \affInt\big(\pathVar(t)\big) \bigg) \rmd t  \\
+      &\qquad+ \int_0^\infty \ode_{\affDist(\pathVar(t),\cdot)}\bigg( \frac{\dot\gamma(t) + \affInt\big(\pathVar(t)\big)\overline{\affDist(\pathVar(t), \cdot)}}{\dot\eta(t)} \bigg) \rmd t
+    \end{aligned}
+  \end{equation*}
+  In the evaluation above, we are insisting that $\hat\pathVar$ satisfies the following properties below, where statements involving $t$ are taken Lebesgue-almost-everywhere; otherwise $\rf_{\hat\stateVar}(\hat\pathVar) = \infty$.
+  \begin{itemize}
+    \item
+      $\hat\pathVar(0) = \hat\stateVar$,
+    \item
+      $\pathVar \in \acpathSpace{[0,\infty)}{\stateSpace}$, $\omega \in \acpathSpace{[0,\infty)}{\vecSpace}$, $\gamma \in \acpathSpace{[0,\infty)}{\vecSpace}$, and $\eta \in \acpathSpace{[0,\infty)}{\bbR_+}$,
+    \item
+      $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\gamma(t)$,
+    \item
+      $\dot\eta(t) \geq 0$,
+    \item
+      $\affInt\big(\pathVar(t)\big) \geq 0$.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+\end{proof}

@@ -2,9 +2,9 @@
   \label{theorem:LK-exponential-martingale}
   Fix a $(\Prb, \scrF)$ jump-diffusion $\X$ with differential $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$.
   Suppose we have the regularity condition (\ref{eq:affJump-regularity}) above and that $0 \in \odeSpace^\circ$.
-  For each $\twistFunc \in \pathSpace{[0,\infty)}{\vecSpace}$ of finite-variation with image contained in $\odeSpace^\circ$, the process $\exp(\twistFunc \shortInt \X)$ is special and 
+  For each $(\Prb, \scrF)$ predictable $H$ of finite-variation with image contained in $\odeSpace^\circ$, the process $\exp(H \shortInt \X)$ is special and 
   \[
-    \exp\Big(\twistFunc \shortInt \X - \ode(\twistFunc, \X) \shortInt \leb\Big)
+    \exp\Big(H \shortInt \X - \ode(H, \X) \shortInt \leb\Big)
   \]
   is a $(\Prb, \scrF)$ local martingale.
 \end{theorem}
@@ -14,50 +14,50 @@
   Perform It\^o's formula \cite[Theoerem I.4.57]{jacod2003} in addition to its jump-diffusion variant in Lemma \ref{lemma:ito} and various stochastic integral identities \cite[Remarks I.4.36, I.4.37, Theorem I.4.40(d), Proposition II.1.30(b)]{jacod2003}.
   \begin{align}
     \notag
-    &\exp\big( \twistFunc \shortInt \X_t \big) \\
+    &\exp\big( H \shortInt \X_t \big) \\
     \notag
     &= \begin{aligned}[t]
-      &\exp\big( \twistFunc \shortInt \X_- \big) \shortInt \big( \twistFunc \shortInt \X \big)_t + \frac12 \exp\big( \twistFunc \shortInt \X_- \big) \shortInt \bprj{(\twistFunc\shortInt \X)^\rmc}{(\twistFunc\shortInt\X)^\rmc}_t \\
-      &+ \sum_{0<s\leq t} \Big( \exp\big(\twistFunc \shortInt \X_{s-} + \Delta\big(\twistFunc \shortInt \X\big)_s \big) - \exp\big(\twistFunc\shortInt \X_{s-}\big) - \exp\big(\twistFunc \shortInt\X_{s-}\big) \Delta \big(\twistFunc \shortInt \X\big)_s\Big)
+      &\exp\big( H \shortInt \X_- \big) \shortInt \big( H \shortInt \X \big)_t + \frac12 \exp\big( H \shortInt \X_- \big) \shortInt \bprj{(H\shortInt \X)^\rmc}{(H\shortInt\X)^\rmc}_t \\
+      &+ \sum_{0<s\leq t} \Big( \exp\big(H \shortInt \X_{s-} + \Delta\big(H \shortInt \X\big)_s \big) - \exp\big(H\shortInt \X_{s-}\big) - \exp\big(H \shortInt\X_{s-}\big) \Delta \big(H \shortInt \X\big)_s\Big)
     \end{aligned} \\
     \notag
     &= \begin{aligned}[t]
-      &\Big(\exp\big( \twistFunc \shortInt \X_- \big) \cdot \twistFunc \Big) \shortInt \X_t + \frac12 \exp\big( \twistFunc \shortInt \X \big) \bprj{\twistFunc}{\affDiff(\X)\twistFunc} \shortInt \leb_t \\
-      &+ \exp\big(\twistFunc\shortInt\X_-\big) \Big( e^{\prj{\twistFunc}{\id_\vecSpace}} - 1 - \prj{\twistFunc}{\id_\vecSpace} \big) \ast \jumpMeas^\X_t
+      &\Big(\exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X_t + \frac12 \exp\big( H \shortInt \X \big) \bprj{H}{\affDiff(\X)H} \shortInt \leb_t \\
+      &+ \exp\big(H\shortInt\X_-\big) \Big( e^{\prj{H}{\id_\vecSpace}} - 1 - \prj{H}{\id_\vecSpace} \big) \ast \jumpMeas^\X_t
     \end{aligned} \\
     \label{eq:LK-exp-ito-pause}
     &= \begin{aligned}[t]
-      &\Big(\exp\big( \twistFunc \shortInt \X \big) \cdot \prj{\twistFunc}{\affDrift} + \frac12 \exp\big( \twistFunc \shortInt \X \big) \bprj{\twistFunc}{\affDiff(\X)\twistFunc} \Big) \shortInt \leb_t + \Big( \exp\big( \twistFunc \shortInt \X_- \big) \cdot \twistFunc \Big) \shortInt \X^\rmc_t \\
-      &+ \exp\big( \twistFunc \shortInt \X_- \big) \prj{\twistFunc}{\id_\vecSpace} \ast \compensate{\jumpMeas^\X}_t \\
-      &+ \exp\big(\twistFunc\shortInt\X_-\big) \Big( e^{\prj{\twistFunc}{\id_\vecSpace}} - 1 - \prj{\twistFunc}{\id_\vecSpace} \Big) \ast \jumpMeas^\X_t
+      &\Big(\exp\big( H \shortInt \X \big) \cdot \prj{H}{\affDrift} + \frac12 \exp\big( H \shortInt \X \big) \bprj{H}{\affDiff(\X)H} \Big) \shortInt \leb_t + \Big( \exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X^\rmc_t \\
+      &+ \exp\big( H \shortInt \X_- \big) \prj{H}{\id_\vecSpace} \ast \compensate{\jumpMeas^\X}_t \\
+      &+ \exp\big(H\shortInt\X_-\big) \Big( e^{\prj{H}{\id_\vecSpace}} - 1 - \prj{H}{\id_\vecSpace} \Big) \ast \jumpMeas^\X_t
     \end{aligned} 
   \end{align}
   Now, choosing our $(\Prb, \scrF)$ localizing sequence $(T_n)_{n\in\bbN}$ as in \ref{eq:stopping-times}, we have the following bound.
   \begin{align*}
-    &\Exp_\Prb \Big| \exp\big(\twistFunc \shortInt \X_- \big) \Big(e^\prj{\twistFunc}{\id_\vecSpace} - 1 - \prj{\twistFunc}{\id_\vecSpace} \Big) \ast \predproj{\jumpMeas^\X}_{T_n} \Big| \\
-    &= \Exp_\Prb \int_0^{T_n} \int_\vecSpace \Big| \exp\big(\twistFunc \shortInt \X_s \big) \Big( e^\prj{\twistFunc(s)}{\markVar} - 1 - \prj{\twistFunc(s)}{\markVar} \Big) \Big| \affJump(\X_s, \rmd\markVar) \rmd s \\
-    &\leq n \cdot \sup_{|\stateVar| \leq n} \sup_{s \in [0,n]} e^{|\stateVar|\cdot|\twistFunc(s)|} \int_\vecSpace \big| e^\prj{\twistFunc(s)}{\markVar} - 1 - \prj{\twistFunc(s)}{\markVar} \big| \affJump(\stateVar, \rmd\markVar) 
+    &\Exp_\Prb \Big| \exp\big(H \shortInt \X_- \big) \Big(e^\prj{H}{\id_\vecSpace} - 1 - \prj{H}{\id_\vecSpace} \Big) \ast \predproj{\jumpMeas^\X}_{T_n} \Big| \\
+    &= \Exp_\Prb \int_0^{T_n} \int_\vecSpace \Big| \exp\big(H \shortInt \X_s \big) \Big( e^\prj{H(s)}{\markVar} - 1 - \prj{H(s)}{\markVar} \Big) \Big| \affJump(\X_s, \rmd\markVar) \rmd s \\
+    &\leq n \cdot \sup_{|\stateVar| \leq n} \sup_{s \in [0,n]} e^{|\stateVar|\cdot|H(s)|} \int_\vecSpace \big| e^\prj{H(s)}{\markVar} - 1 - \prj{H(s)}{\markVar} \big| \affJump(\stateVar, \rmd\markVar) 
   \end{align*}
   Seeing as $\ode(\cdot, \stateVar)$ is continuously differentiable, it is uniformly bounded on $\odeSpace^\circ$.
-  This, along with assumption (\ref{eq:affJump-regularity}) allow us to conclude that the preceding expression is finite.
+  This, along with the fact that $H$ is bounded (it has finite variation) and assumption (\ref{eq:affJump-regularity}) allow us to conclude that the preceding expression is finite.
   Thus, we may compensate the final jump integral in (\ref{eq:LK-exp-ito-pause}).
   \begin{equation}
     \label{eq:jump-diffusion-exponentially-special}
-    \exp\big( \twistFunc \shortInt \X_t \big) 
+    \exp\big( H \shortInt \X_t \big) 
     = \begin{aligned}[t]
-      &\Big(\exp\big( \twistFunc \shortInt \X \big) \cdot \ode(\twistFunc, \X) \Big) \shortInt \leb_t + \Big( \exp\big( \twistFunc \shortInt \X_- \big) \cdot \twistFunc \Big) \shortInt \X^\rmc_t \\
-      &+ \exp\big(\twistFunc\shortInt\X_-\big) \Big( e^{\prj{\twistFunc}{\id_\vecSpace}} - 1 \Big) \ast \jumpMeas^\X_t
+      &\Big(\exp\big( H \shortInt \X \big) \cdot \ode(H, \X) \Big) \shortInt \leb_t + \Big( \exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X^\rmc_t \\
+      &+ \exp\big(H\shortInt\X_-\big) \Big( e^{\prj{H}{\id_\vecSpace}} - 1 \Big) \ast \compensate{\jumpMeas^\X}_t
     \end{aligned} 
   \end{equation}
-  The decomposition of $\exp(\twistFunc \shortInt \X)$ into a predictable finite-variation process and a  local martingale implies that it is special.
-  Now, we write $M$ as the local martingale term above, $A = \exp(\twistFunc \shortInt \X)$, and $B = \exp(-\ode(\twistFunc, \X) \shortInt \leb)$.
+  The decomposition of $\exp(H \shortInt \X)$ into a predictable finite-variation process and a  local martingale implies that it is special.
+  Now, we write $M$ as the local martingale term above, $A = \exp(H \shortInt \X)$, and $B = \exp(-\ode(H, \X) \shortInt \leb)$.
   We now recognize that $B$ is predictable and finite-variation and use \cite[Proposition I.4.49(b)]{jacod2003} to conclude our proof.
   \begin{align*}
-    \exp\big( \twistFunc \shortInt \X_t - \ode(\twistFunc, \X) \shortInt \leb_t \big) 
+    \exp\big( H \shortInt \X_t - \ode(H, \X) \shortInt \leb_t \big) 
     &= A_t B_t \\
     &= A_- \shortInt B_t + B \shortInt A_t \\
-    &= \big( A \cdot B \cdot -\ode(\twistFunc, \X) \big) \shortInt \leb_t + B \shortInt \Big( \big( \exp( \twistFunc \shortInt \X ) \cdot \ode(\twistFunc, \X) \big) \shortInt \leb + M \Big)_t \\
-    &= \big( A \cdot B \cdot -\ode(\twistFunc, \X) \big) \shortInt \leb_t + \big( B \cdot A \cdot \ode(\twistFunc, \X) \big) \shortInt \leb_t + B \shortInt M_t \\
+    &= \big( A \cdot B \cdot -\ode(H, \X) \big) \shortInt \leb_t + B \shortInt \Big( \big( \exp( H \shortInt \X ) \cdot \ode(H, \X) \big) \shortInt \leb + M \Big)_t \\
+    &= \big( A \cdot B \cdot -\ode(H, \X) \big) \shortInt \leb_t + \big( B \cdot A \cdot \ode(H, \X) \big) \shortInt \leb_t + B \shortInt M_t \\
     &= B \shortInt M_t
   \end{align*}
 \end{proof}

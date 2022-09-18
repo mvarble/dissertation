@@ -13,10 +13,10 @@
 
   Note that $(\sqrt\epsilon\W)_{\epsilon>0}$ is a family of affine processes covered Theorem \ref{theorem:ldp-integral}.
   We have $\Xe = \sqrt\epsilon\W$, where the base process $\X$ has special differential characteristics $(0, \id_\vecSpace, 0)$.
-  The easiest way to see this is by considering Theorem \ref{theorem:regime-dynamics} with initial state $\stateVar = 0$.
+  The easiest way to see this is by considering Proposition \ref{proposition:sde-asymptotics} with initial state $\stateVar = 0$.
   Our theorem also immediately resolves (\ref{eq:rf-integral}) the same rate function.
   \begin{equation*}
-    \ode^*(\dot\stateVar, \stateVar)
-    = \sup_{\momentVar \in \vecSpace} \bigg( \prj{\momentVar}{\dot\stateVar} - \frac12\prj{\momentVar}{\id_\vecSpace\cdot \momentVar} \bigg) = \frac12 |\dot\stateVar|
+    \ode^*(\diffVar, \stateVar)
+    = \sup_{\momentVar \in \vecSpace} \bigg( \prj{\momentVar}{\diffVar} - \frac12\prj{\momentVar}{\id_\vecSpace\cdot \momentVar} \bigg) = \frac12 |\diffVar|
   \end{equation*}
 \end{example}

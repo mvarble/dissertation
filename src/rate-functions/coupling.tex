@@ -1,0 +1,59 @@
+% intuitively describe "multiple sources" of randomness
+The previous result did not include any examples in which the jump distribution was non-degenerate.
+Intuitively speaking, there is no way to naturally transform a Poisson process to a \emph{compound-}Poisson process, for the distribution of the jumps introduces a new source of randomness.
+This intuition coincides with our difficulties in evaluating our rate function (\ref{eq:rf-integral}) for such processes.
+
+% show technical difficulties in rate function
+Consider the simple example of a compound-Poisson process $\X$ driven by standard Poisson process $\N$ and independent jumps $(V_k)_{k\in\bbN}$ distributing with common distribution $\affDist$.
+\[
+  \X_t = \sum_{k=1}^{\N_t} \V_k
+\]
+This process has special differential characteristics $(\affDrift, \affDiff, \affJump)$ as below,
+\[
+  \affDrift(\stateVar) = \overline\affDist, \quad
+  \affDiff(\stateVar) = 0, \quad
+  \affJump(\stateVar, \rmd\markVar) = \affDist(\rmd\markVar),
+\]
+where $\overline\affDist \defeq \int_\vecSpace \markVar \affDist(\rmd\markVar)$ denotes the mean of $\affDist$.
+Associating an asymptotic family $(\Xe)_{\epsilon>0}$ with this base process $\X$ will result in the large deviation principle of Theorem \ref{theorem:ldp-integral}, where the rate function (\ref{eq:rf-integral}) will involve the following expression,
+\begin{align*}
+  \ode^*(\diffVar, \stateVar) 
+  &= \sup_{\momentVar\in\vecSpace} \bigg( \prj{\momentVar}{\diffVar} - \prj{\momentVar}{\overline\affDist} - \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\markVar} \big) \affDist(\rmd\markVar) \bigg) \\
+  &= \sup_{\momentVar\in\vecSpace} \bigg( \prj{\momentVar}{\diffVar} - e^{\ode_\affDist(\momentVar)} + 1 \bigg),
+\end{align*}
+where we recall $\ode_\affDist$ is the cumulant generating function associated with $\affDist$.
+The arbitrary nature of this function means that resolving even a semi-closed form for the above expression is a difficult task.
+
+% discuss how problem was "underdetermined" and can be resolved with coupling
+Our expression $\ode^*$ is determined by the special differential characteristics $(\affDrift, \affDiff, \affJump)$ associated with $\X$, which---if we are familiar with the theory of semimartingales---serve as the predictable projections of a semimartingale.
+This somehow suggests to us that $\ode^*$ is insufficient in understanding the deviations of $\X$, since the jump times of $\N$ are totally inaccessible.
+This raises the question of if somehow coupling $(\X, \N)$ will provide us \emph{more} information.
+From the technical perspective of $\sigma$-algebras, the answer is \emph{no}, since $\X$ determines $\N$.
+However, as moot of a discussion as this is from a technical perspective, it turns out to head us in the right direction.
+
+We will see in the below examples that coupling $(\X, \N)$ will give us semi-closed forms for our rate function.
+For illustrative purposes, these examples will again include heuristics on how to prove a principle and derive the rate function without Theorem \ref{theorem:ldp-integral}.
+However, these arguments are no longer backed by results in literature, for we are now entering uncharted territory.
+We reiterate that these results need not extend past heuristics, for Theorem \ref{theorem:ldp-integral} already provides us the principle.
+
+% compound-poisson example
+\input{./results/compound-poisson}
+
+% compound-hawkes example
+\input{./results/compound-hawkes}
+
+
+\begin{color}{gray}
+  {\bfseries Coupling states.}
+  Indicate that when contraction mappings are not sufficient, we may \emph{couple correlated states}, in the sense of looking at LDPs of joint processes.
+  \begin{enumerate}
+    \item
+      Compound Poisson: Two \emph{sources} of randomness; the arrivals and the jump sizes. Appeal to Duffy results for heuristical calculations.
+    \item
+      Compound linear Hawkes: Similarly two \emph{sources} of randomness. Duffy also gives us the calculations.
+      Note on Zhu paper for \emph{sidestep}; less general jumps, more general nonlinear relationship of arrivals.
+    \item
+      The jumps of a general jump-diffusion do not have a well-posed notion of arrivals and jump sizes; we thus turn our focus to locally countable jump-diffusions, in which the three \emph{sources} of randomness are the continuous local martingale, the arrival times, and the jump sizes.
+      Note how this is discussed in next section.
+  \end{enumerate}
+\end{color}
