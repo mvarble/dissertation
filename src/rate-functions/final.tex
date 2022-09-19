@@ -1,0 +1,44 @@
+\begin{color}{gray}
+  \begin{enumerate}
+    \item
+      Discuss how contraction maps or an alternative proof can deal with the \textbf{overdetermined} nature, at the expense of a nastier rate function.
+      \begin{enumerate}
+        \item
+          \textbf{determine-continuous-noise flavor.}
+          Normal term gets messy
+        \item
+          \textbf{determine-arrivals flavor.}
+          Poisson and jump-term-denominator gets messy
+        \item
+          \textbf{determine-jumps flavor.}
+          This is the one we have already presented; the jump-term-numerator gets messy.
+      \end{enumerate}
+    \item
+      Discuss how the deviations of $\X$ from the dynamical system $\X = \affDrift(\X) \shortInt \leb$ are imposed from \emph{continuous deviations} $\X^\rmc$ and \emph{discontinuous deviations} $\id_\vecSpace \ast \compensate{\jumpMeas^\X}$.
+    \item
+      Discuss how four quantities $\X, \X^\rmc, \N^\X, V^\X$ heuristically relate in simple infinitesimal equality $(\X, \X^\rmc, \N^\X, V^\X) \approx (\pathVar, \omega, \eta, \gamma)$.
+      \begin{align*}
+        \dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t) \cdot \dot\gamma(t)
+      \end{align*}
+    \item
+      Each of the primitive deviations have a simple analogy, when we think of infinitesimals.
+      \begin{align*}
+        &\dot\omega(t)  & \text{\emph{normal deviations of covariance }} \affDiff\big(\pathVar(t)\big) \\
+        &\dot\eta(t) & \text{\emph{Poisson deviations of rate }} \affInt\big(\pathVar(t)\big) \\
+        &\dot\gamma(t) & \text{\emph{jump deviations from }} \affDist\big(\pathVar(t), \rmd\markVar\big) \\
+        \pathVar(t) &=\affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t)\cdot\dot\gamma(t) & \text{\emph{all combined deviations}}
+      \end{align*}
+    \item
+      Think of results from first section in this regard.
+      \begin{enumerate}
+        \item
+          birth is  $\dot\pathVar(t) = \dot\eta(t)$, so we only need $\pathVar \approx \X$.
+        \item
+          diffusion is $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t)$, and so we only need $\pathVar\approx\X$ and rate function includes $\pathVar(t) - \affDrift\big(\pathVar(t)\big)$ where $\dot\omega$ is.
+        \item
+          compound Poisson is $\dot\pathVar(t) = \dot\eta(t) \cdot \dot\gamma(t)$, so we choose one of the following pairs $(\pathVar, \eta) \approx (\X, \N^\X)$, $(\pathVar, \gamma) \approx (\X, V^\X)$, or $(\eta, \gamma) \approx (\N^\X, V^\X)$.
+        \item
+          compound linear Hawkes is $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\eta(t) \cdot \dot\gamma(t)$, so we can choose $(\pathVar, \eta) \approx (\X, \N^\X)$ or $(\pathVar, \dot\gamma) \approx (\X, V^\X)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{color}

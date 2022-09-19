@@ -2,7 +2,7 @@ We have now gathered enough familiarity with rate functions that appear in the l
 This will allow us to more easily understand the nature and derivation of our semi-closed form for (\ref{eq:rf-integral}) in Theorem \ref{theorem:ldp-integral}.
 Let us now elaborate on the family on which we derive our semi-closed form.
 
-Firstly, in order for us to perform the tricks of coupling we explored in the previous section, we need to keep track of our arrivals and/or accumulated jumps.
+Firstly, in order for us to perform the tricks of coupling we explored in the previous section, we need to couple our arrivals and/or accumulated jumps.
 We will need these objects to be locally integrable, so we impose that our base process $\X$ is \emph{locally countable} in the sense of our definition in Appendix \ref{jump-diffusions:countable}.
 In particular, suppose that our base process $\X$ has special differential characteristics $(\affDrift, \affDiff, \affJump)$, where $\affJump$ has the finiteness condition below.
 \begin{equation}
@@ -15,7 +15,16 @@ Note that Proposition \ref{proposition:locally-countable} thus provides us with 
   \affJump(\stateVar,\rmd\markVar) = \affInt(\stateVar) \affDist(\stateVar, \rmd\markVar)
 \end{equation}
 into an intensity function $\affInt \in \scrB(\stateSpace)/\scrB(\bbR_+)$ and conditional jump distribution $\affDist$ from $(\stateSpace, \scrB(\stateSpace))$ to $(\vecSpace, \scrB(\vecSpace))$.
-Furthermore, the following process is locally integrable.
+Denote to each $\affJump(\stateVar, \cdot)$ the notation from Sections \ref{rate-functions:mogulskii} and \ref{rate-functions:coupling}.
+\begin{equation*}
+  \overline{\affDist(\stateVar, \cdot)} \defeq \int_\vecSpace \markVar \affDist(\stateVar, \rmd\markVar), \quad
+  \ode_{\affDist(\stateVar,\cdot)}(\momentVar) \defeq \int_\vecSpace e^\prj{\momentVar}{\markVar} \affDist(\stateVar, \rmd\markVar)
+\end{equation*}
+Note that our finiteness assumption (\ref{eq:assumption-affJump-finite}) and our light-tails assumption $\odeSpace = \vecSpace$ (along with Lemma \ref{lemma:odeSpace-rationale}) give us the following properties.
+\begin{equation*}
+  \overline{\affDist(\stateVar, \cdot)} < \infty, \quad \ode_{\affDist(\stateVar, \cdot)}(\momentVar) < \infty, \quad \stateVar \in \stateSpace
+\end{equation*}
+We also have local integrability of the following process by our finiteness assumption (\ref{eq:assumption-affJump-finite}).
 \begin{equation}
   \label{eq:arrivals}
   \N^\X \defeq 1 \ast \jumpMeas^\X
@@ -28,62 +37,3 @@ Note that this is a stronger restriction than local integrability of the compens
 which we already have from the special property of $\X$; nonetheless, we intend to use this object as well.
 
 \input{./results/ldp-closed-form}
-
-\begin{color}{gray}
-  {\bfseries Locally countable affine processes.}
-  Perform the necessary calculus and proceed to show our general formulation.
-  \begin{enumerate}
-    \item
-      State result in numerous flavors, depending on which \emph{base} quantities in which we choose to focus the large deviations.
-      \begin{align*}
-        \X &= \affDrift(\X)\shortInt \leb + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X} \\
-        \N^\X &= 1 \ast \jumpMeas^\X \\
-        V^\X &= \id_\vecSpace \ast \jumpMeas^\X 
-      \end{align*}
-      \begin{enumerate}
-        \item
-          \textbf{overdetermined flavor.}
-          $(\X, \X^\rmc, \N^\X, V^\X)$ produces an overdetermined system which requires another condition for $\rf(\pathVar, \omega, \eta, \gamma)$ to be finite.
-          \[
-            \dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t)\dot\gamma(t)
-          \]
-          However, the rate function is very simple to understand.
-        \item
-          \textbf{determine-continuous-noise flavor.}
-          Normal term gets messy
-        \item
-          \textbf{determine-arrivals flavor.}
-          Poisson and jump-term-denominator gets messy
-        \item
-          \textbf{determine-jumps flavor.}
-          This is the one we have already presented; the jump-term-numerator gets messy.
-      \end{enumerate}
-    \item
-      Discuss how the deviations of $\X$ from the dynamical system $\X = \affDrift(\X) \shortInt \leb$ are imposed from \emph{continuous deviations} $\X^\rmc$ and \emph{discontinuous deviations} $\id_\vecSpace \ast \compensate{\jumpMeas^\X}$.
-    \item
-      Discuss how four quantities $\X, \X^\rmc, \N^\X, V^\X$ heuristically relate in simple infinitesimal equality $(\X, \X^\rmc, \N^\X, V^\X) \approx (\pathVar, \omega, \eta, \gamma)$.
-      \begin{align*}
-        \dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t) \cdot \dot\gamma(t)
-      \end{align*}
-    \item
-      Each of the primitive deviations have a simple analogy, when we think of infinitesimals.
-      \begin{align*}
-        &\dot\omega(t)  & \text{\emph{normal deviations of covariance }} \affDiff\big(\pathVar(t)\big) \\
-        &\dot\eta(t) & \text{\emph{Poisson deviations of rate }} \affInt\big(\pathVar(t)\big) \\
-        &\dot\gamma(t) & \text{\emph{jump deviations from }} \affDist\big(\pathVar(t), \rmd\markVar\big) \\
-        \pathVar(t) &=\affDrift\big(\pathVar(t)\big) + \dot\omega(t) + \dot\eta(t)\cdot\dot\gamma(t) & \text{\emph{all combined deviations}}
-      \end{align*}
-    \item
-      Think of results from first section in this regard.
-      \begin{enumerate}
-        \item
-          birth is  $\dot\pathVar(t) = \dot\eta(t)$, so we only need $\pathVar \approx \X$.
-        \item
-          diffusion is $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\omega(t)$, and so we only need $\pathVar\approx\X$ and rate function includes $\pathVar(t) - \affDrift\big(\pathVar(t)\big)$ where $\dot\omega$ is.
-        \item
-          compound Poisson is $\dot\pathVar(t) = \dot\eta(t) \cdot \dot\gamma(t)$, so we choose one of the following pairs $(\pathVar, \eta) \approx (\X, \N^\X)$, $(\pathVar, \gamma) \approx (\X, V^\X)$, or $(\eta, \gamma) \approx (\N^\X, V^\X)$.
-        \item
-          compound linear Hawkes is $\dot\pathVar(t) = \affDrift\big(\pathVar(t)\big) + \dot\eta(t) \cdot \dot\gamma(t)$, so we can choose $(\pathVar, \eta) \approx (\X, \N^\X)$ or $(\pathVar, \dot\gamma) \approx (\X, V^\X)$.
-      \end{enumerate}
-  \end{enumerate}
-\end{color}

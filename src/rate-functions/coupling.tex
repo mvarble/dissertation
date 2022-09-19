@@ -4,7 +4,7 @@ Intuitively speaking, there is no way to naturally transform a Poisson process t
 This intuition coincides with our difficulties in evaluating our rate function (\ref{eq:rf-integral}) for such processes.
 
 % show technical difficulties in rate function
-Consider the simple example of a compound-Poisson process $\X$ driven by standard Poisson process $\N$ and independent jumps $(V_k)_{k\in\bbN}$ distributing with common distribution $\affDist$.
+Consider the simple example of a compound-Poisson process $\X$ driven by standard Poisson process $\N$ and independent jumps $(V_k)_{k\in\bbN}$ distributing with common distribution $\affDist$ satisfying the light-tails condition (\ref{eq:cumulant-generating-function}).
 \[
   \X_t = \sum_{k=1}^{\N_t} \V_k
 \]
@@ -41,19 +41,3 @@ We reiterate that these results need not extend past heuristics, for Theorem \re
 
 % compound-hawkes example
 \input{./results/compound-hawkes}
-
-
-\begin{color}{gray}
-  {\bfseries Coupling states.}
-  Indicate that when contraction mappings are not sufficient, we may \emph{couple correlated states}, in the sense of looking at LDPs of joint processes.
-  \begin{enumerate}
-    \item
-      Compound Poisson: Two \emph{sources} of randomness; the arrivals and the jump sizes. Appeal to Duffy results for heuristical calculations.
-    \item
-      Compound linear Hawkes: Similarly two \emph{sources} of randomness. Duffy also gives us the calculations.
-      Note on Zhu paper for \emph{sidestep}; less general jumps, more general nonlinear relationship of arrivals.
-    \item
-      The jumps of a general jump-diffusion do not have a well-posed notion of arrivals and jump sizes; we thus turn our focus to locally countable jump-diffusions, in which the three \emph{sources} of randomness are the continuous local martingale, the arrival times, and the jump sizes.
-      Note how this is discussed in next section.
-  \end{enumerate}
-\end{color}
