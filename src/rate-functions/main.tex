@@ -1,7 +1,9 @@
+% discuss that we are coming up with semi-closed form
 We have now gathered enough familiarity with rate functions that appear in the large deviations literature and the various tools we may use to lift existing principles to new ones.
 This will allow us to more easily understand the nature and derivation of our semi-closed form for (\ref{eq:rf-integral}) in Theorem \ref{theorem:ldp-integral}.
-Let us now elaborate on the family on which we derive our semi-closed form.
+Let us now elaborate on the family on which we derive our semi-closed form; it is assumed that $\X$ is selected with our assumptions of Section \ref{large-deviations:assumptions} that we needed for Theorem \ref{theorem:ldp-integral}.
 
+% introduce the factors of our new process from the original one
 Firstly, in order for us to perform the tricks of coupling we explored in the previous section, we need to couple our arrivals and/or accumulated jumps.
 We will need these objects to be locally integrable, so we impose that our base process $\X$ is \emph{locally countable} in the sense of our definition in Appendix \ref{jump-diffusions:countable}.
 In particular, suppose that our base process $\X$ has special differential characteristics $(\affDrift, \affDiff, \affJump)$, where $\affJump$ has the finiteness condition below.
@@ -34,6 +36,74 @@ Note that this is a stronger restriction than local integrability of the compens
   \label{eq:jumps}
   \V^\X \defeq \id_\vecSpace \ast \compensate{\jumpMeas^\X},
 \end{equation}
-which we already have from the special property of $\X$; nonetheless, we intend to use this object as well.
+which we already have from the special property of $\X$.
 
+% technical measure space stuff for joint process
+The remainder of this section will assume $\hat\X \defeq (\X, \X^\rmc, \V^\X, \N^\X)$ is specified from an affine process $\X$ with the properties discussed above.
+We will also factor our kernel $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$ even further to one $(\hat\Prb_{\hat\stateVar})_{\hat\stateVar\in\hat\stateSpace}$ derived from the regular conditional $\Prb_\stateVar$-distribution of $(\Prb_\stateVar, \scrF)$ time-homogeneous Markov process $(\X^\rmc, \V^\X, \N^\X)$.
+We will see in the coming results that $\hat\X$ and its associated kernel $(\hat\Prb_{\hat\stateVar})_{\hat\stateVar\in\hat\stateSpace}$ and filtration $\scrF$ still satisfy the assumptions of Section \ref{large-deviations:assumptions} needed to apply Theorem \ref{theorem:ldp-integral}; furthermore, its coupling structure will allow us to derive a semi-closed form for (\ref{eq:rf-integral}).
+This is a process on 
+\begin{equation*}
+  \hat\stateSpace \defeq \stateSpace \times \vecSpace \times \vecSpace \times \bbR_+,
+\end{equation*}
+which is a subset of vector space
+\begin{equation*}
+  \hat\vecSpace \defeq \vecSpace \times \vecSpace \times \vecSpace \times \bbR,
+\end{equation*}
+when equipped with componentwise operations.
+We henceforth denote elements $\hat\vecVar \in \hat\vecSpace$ with components,
+\begin{equation*}
+  \hat\vecVar \defeq (\vecVar_1, \vecVar_2, \vecVar_3, \vecVar_4),
+\end{equation*}
+and equip $\hat\vecSpace$ with the inner-product below.
+\begin{equation*}
+  \bprj{\hat\markVar}{\hat w} \defeq \prj{\markVar_1}{w_1} + \prj{\markVar_2}{w_2} + \prj{\markVar_3}{w_3} + \markVar_4 w_4
+\end{equation*}
+We will also indifferently treat such tuples as column vectors, so that operators on $\bbL(\hat\vecSpace)$ can be seen as $4\times4$ block-matrices of operators on $\bbL(\vecSpace)$ and $\bbL(\bbR)$ (with the natural blocking).
+If we want to go a level deeper within coordinates, we will use the following notation.
+\begin{equation*}
+  \hat\vecVar \defeq \big(\vecVar^{11}, \ldots, \vecVar^{1d}, \vecVar^{21}, \ldots, \vecVar^{2d}, \vecVar^{31}, \ldots, \vecVar^{3d}, \vecVar^{41} \big)
+\end{equation*}
+
+% preliminary results to ensure theorem is satsified
+\input{./results/joint-cone}
+\input{./results/joint-characteristics}
+
+% annoying assumption I cannot work out
+Unfortunately, despite $\hat\X$ having affine characteristics, this is not enough to ensure it is an affine process.
+We technically need existence of a solution $\hat\aff$ to its associated system $\partial_t\hat\aff(t, \hat\momentVar, \hat\stateVar) = \ode\big(\hat\affPart(t, \hat\momentVar), \hat\stateVar)$.
+It is partially solved by the state-independence of $\ode$ in the coordinates $\stateVar_2, \stateVar_3, \stateVar_4$, but we cannot find a way to leverage the equation associated with $\ode$.
+Thus is the following assumption.
+\begin{assumption}
+  \label{assumption:joint-affine}
+  Assume that $\X$ is such that the associated special differential characteristics $(\affDrift, \affDiff, \affJump)$ and the associated parts $\affDriftPart_i, \affDiffPart_i, \affJumpPart_i, \affIntPart_i$ for $i = 0, \ldots, d$ induce a solution to the following equation, for each $\hat\momentVar\in\boundedSpaceJoint$.
+  \begin{equation*}
+    \begin{aligned}[t]
+      &i = 0, \ldots, d \\
+      & \partial_t\hat{\affPart_i}(t, \hat\momentVar) = \begin{aligned}[t]
+        &\Bprj{\hat\affPart(t, \hat\momentVar)}{\affDriftPart_i} +  \frac12\Bprj{\hat\affPart(t, \hat\momentVar)+\momentVar_2}{\affDiffPart_i\big(\hat\affPart(t,\hat\momentVar)+\momentVar_2\big)} \\
+        &+ \int_\vecSpace \Big( e^{\prj{\hat\affPart(t,\hat\momentVar) + \momentVar_3}{\markVar} + \momentVar_4} - 1 - \Bprj{\hat\affPart(t,\hat\momentVar) + \momentVar_3}{\markVar} \Big) \affJumpPart_i(\rmd\markVar) 
+      \end{aligned} \\
+      & \affPart_0(t, \momentVar) = 0, ~ \affPart_i(t, \momentVar) = \momentVar_i
+    \end{aligned}
+  \end{equation*}
+\end{assumption}
+\begin{remark}
+  \begin{enumerate}
+    \item
+      When we are dealing with the canonical space $\stateSpace = \bbR^m_+ \times \bbR^n$, then $\hat\stateSpace = \bbR^{\hat m}_+ \times \bbR^{\hat n}$, up to reordering the factors.
+      In this scenario, we have admissibility conditions on the special differential characteristics which impose existence of the solution, for each $\hat\momentVar \in \boundedSpaceJoint$.
+    \item
+      Note that we already have a solution to the following equation for each $\momentVar \in \boundedSpace$, by existence of $\X$ as an affine process and Theorem \ref{theorem:affine-regularity}.
+      \begin{equation*}
+        \begin{aligned}[t]
+          &i = 0, \ldots, d \\
+          & \dot\affPart_i(t, \momentVar) = \prj{\affPart(t, \momentVar)}{\affDriftPart_i} + \frac12\prj{\affPart(t, \momentVar)}{\affDiffPart_i\affPart(t,\momentVar)} + \int_\vecSpace \big( e^\prj{\affPart(t,\momentVar)}{\markVar} - 1 - \prj{\affPart(t,\momentVar)}{\markVar} \big) \affJumpPart_i(\rmd\markVar) \\
+          & \affPart_0(t, \momentVar) = 0, ~ \affPart_i(t, \momentVar) = \momentVar_i
+        \end{aligned}
+      \end{equation*}
+  \end{enumerate}
+\end{remark}
+
+% restatement of main theorem
 \input{./results/ldp-closed-form}

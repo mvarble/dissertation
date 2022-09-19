@@ -1,6 +1,6 @@
 \begin{lemma}
   \label{lemma:fdd-rf-as-integral}
-  For each $\pathVar \in \acpathSpace{[0,\infty)}{\stateSpace}$, $\underline t \vdash [0,\infty)$ and $\underline\twistVar \in \prod_{k=1}^{|\underline t|} \momentSpace(\Delta t_k)$, we have an identity similar to that of Theorem \ref{theorem:equivalence}.
+  For each $\pathVar \in \acpathSpace{[0,\infty)}{\stateSpace}$, $\underline t \vdash [0,\infty)$ and $\underline\twistVar \in \momentSpace(\underline t)$, we have an identity similar to that of Theorem \ref{theorem:equivalence}.
   \begin{equation*}
     \fddRf(\pathVar, \underline t, \underline\twistVar) = \mgRf\big(\pathVar, \twistFunc(\cdot, \underline t, \underline\twistVar)\big) = \int_0^\infty \Big( \bprj{\twistFunc(t, \underline t, \underline\twistVar)}{\dot\pathVar(t)} - \ode\big(\twistFunc(t, \underline t, \underline\twistVar), \pathVar(t)\big) \Big) \rmd t.
   \end{equation*}

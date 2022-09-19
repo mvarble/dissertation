@@ -1,13 +1,13 @@
 \begin{theorem}
   \label{eq:ldp-closed-form}
-  Let $\X$ be an affine process with special differential characteristics $(\affDrift, \affDiff, \affJump)$ satisfying the assumptions specified in Section \ref{large-deviations:assumptions} and the local countability condition (\ref{eq:assumption-affJump-finite}) and subsequent factoring denoted by (\ref{eq:affJump-factoring}).
-  Consider the family $(\Xe)_{\epsilon>0}$ parameterized by $\X$ through (\ref{eq:characteristic-asymptotics}).
-  Then, for each $\epsilon > 0$, the tuple $\hat\Xe = (\Xe, {\Xe}^{,\rmc}, \V^{\Xe}, \N^{\Xe})$ is an affine process on $\vecSpace \times \vecSpace \times \vecSpace \times \bbR_+$ satisfying the conditions of Theorem \ref{theorem:ldp-integral}.
-  Denoting $\hat\stateVar\in \stateSpace^\circ$ its starting point, the rate function $\rf_{\hat\stateVar}$ in (\ref{eq:rf-integral}) simplifies to the following semi-closed form, where we denote the components of an arbitrary function $\hat\pathVar$ by $\hat\pathVar \defeq (\pathVar, \omega, \gamma, \eta)$.
+  Let $\X$ be an affine process as introduced above with Assumption \ref{assumption:joint-affine} satisfied.
+  Then $\hat\X$ is a base affine process with which we may parameterize $\hat\Xe$ with distribution as in Section \ref{large-deviations:asymptotics}.
+  Fixing $\hat\stateVar \in \hat\stateSpace^\circ$ and denoting $\hat\Prb^\epsilon_{\hat\stateVar}$ the distribution associated with $\hat\Xe$ starting at $\hat\stateVar$, we have a large deviation principle for $(\hat\Prb^\epsilon_{\hat\stateVar})_{\epsilon>0}$.
+  The rate function $\rf_{\hat\stateVar}$ simplifies to the following semi-closed form, where we denote the components of an arbitrary function $\hat\pathVar$ by $\hat\pathVar \defeq (\pathVar, \omega, \gamma, \eta)$.
   \begin{equation*}
     \rf_{\hat\stateVar}(\hat\pathVar) = 
     \begin{aligned}[t]
-      &\int_0^\infty \frac12 \Bprj{\dot\omega(t)}{\affDiff\big(\pathVar(t)\big)^\dagger \dot\omega(t)} \Big) \rmd t 
+      &\int_0^\infty \frac12 \Bprj{\dot\omega(t)}{\affDiff\big(\pathVar(t)\big)^\dagger \dot\omega(t)} \rmd t 
       + \int_0^\infty \bigg( \dot\eta(t)\log\Big(\frac{\dot\eta(t)}{\affInt\big(\pathVar(t)\big)} \Big) - \dot\eta(t) + \affInt\big(\pathVar(t)\big) \bigg) \rmd t  \\
       &\qquad+ \int_0^\infty \dot\eta(t) \ode_{\affDist(\pathVar(t),\cdot)}\bigg( \frac{\dot\gamma(t) + \affInt\big(\pathVar(t)\big)\overline{\affDist(\pathVar(t), \cdot)}}{\dot\eta(t)} \bigg) \rmd t
     \end{aligned}
@@ -29,4 +29,76 @@
   \end{itemize}
 \end{theorem}
 \begin{proof}
+  Assumption \ref{assumption:joint-affine} is precisely the Riccati equation with which the following process
+  \[
+    t \mapsto \exp\Big( \hat\affPart_0(\tau-t, \hat\momentVar) + \Bprj{\hat\affPart(\tau-t, \hat\momentVar)}{\hat\X_t} \Big)
+  \]
+  is a martingale which gives us our desired transform formula.
+  This makes $\hat\X$ an affine process, so Lemma \ref{lemma:joint-cone} and Proposition \ref{proposition:joint-characteristics} tell us that $\hat\X$ satisfies the assumptions of Section \ref{large-deviations:assumptions}.
+  Thus, the parameterization $\hat\Xe$ is a family described by Theorem \ref{theorem:ldp-integral}, and so we have a large deviation principle for $(\hat\Prb^\epsilon_{\hat\stateVar})_{\epsilon>0}$.
+  Again using Proposition \ref{proposition:joint-characteristics}, we see that the integrand evaluates the following function.
+  \begin{align*}
+    \hat\ode^*(\hat{\diffVar}, \hat\stateVar) 
+    &= \sup_{\hat\momentVar \in \hat\vecSpace} \bigg( \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) \bigg) \\
+    &= \sup_{\hat\momentVar \in \hat\vecSpace} \bigg(\begin{aligned}[t]
+      &\prj{\momentVar_1}{\diffVar_1} 
+      + \prj{\momentVar_2}{\diffVar_2} 
+      + \prj{\momentVar_3}{\diffVar_3} 
+      + \momentVar_4\diffVar_4
+      - \prj{\momentVar_1}{\affDrift(\stateVar_1)}  \\
+      &- \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar)(\momentVar_1+\momentVar_2)} 
+      - \affInt(\stateVar_1)\exp\Big(\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \\
+      &+ \affInt(\stateVar_1) 
+      + \bprj{\momentVar_1+\momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}  \bigg)
+    \end{aligned}
+  \end{align*}
+  We now break the problem into cases.
+  \begin{enumerate}
+    \item
+      First, assume $\diffVar_1 = \affDrift(\stateVar_1) + \diffVar_2 + \diffVar_3$, $\diffVar_2 \in \operatorname{range}(\affDiff(\stateVar_1))$, $\diffVar_4 \geq 0$, and $\affInt(\stateVar_1) \geq 0$.
+      Using Lemma \ref{lemma:ode-differentiable}, we are able to take the gradients of the above expression to get the following system of equations.
+      \begin{align*}
+        0 &= \begin{aligned}[t]
+          &\diffVar_1 - \affDrift(\stateVar_1) - \affDiff(\stateVar_1) (\momentVar_1 + \momentVar_2) \\
+          &- \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \affInt(\stateVar_1) \overline{\affDist(\stateVar_1, \cdot)}
+        \end{aligned} \\
+        0 &= \diffVar_2 - \affDiff(\stateVar_1) ( \momentVar_1 + \momentVar_2 ) \\
+        0 &= \diffVar_3 - \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \affInt(\stateVar_1) \overline{\affDist(\stateVar_1, \cdot)} \\
+        0 &= \diffVar_4 - \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) 
+      \end{align*}
+      These equations yield the following via simple algebra.
+      \begin{equation}
+        \label{eq:semi-closed-algebra}
+        \begin{aligned}
+          \momentVar_1 + \momentVar_2 &= \affDiff(\stateVar_1)^\dagger \diffVar_2 \\
+          \diffVar_4 &= \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big)  \\
+          \diffVar_4\log\Big(\frac{\diffVar_4}{\affInt(\stateVar_1)}\Big) &=   \diffVar_4\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\diffVar_4 \\
+          \frac{\diffVar_3 + \affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4} &= \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3)
+        \end{aligned}
+      \end{equation}
+      Seeing as $\ode_{\affDist(\stateVar_1,\cdot)}$ is a convex function, the last equality of (\ref{eq:semi-closed-algebra}) corresponds to the unique extreme point of the Fenchel-Legendre transform.
+      \begin{equation*}
+        \Bprj{\momentVar_1 + \momentVar_3}{\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}} - \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) = \ode_{\affDist(\stateVar_1,\cdot)}^*\Big(\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}\Big)
+      \end{equation*}
+      Combining this equality with those of (\ref{eq:semi-closed-algebra}) now gives us the following identity.
+      \begin{align*}
+        \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) 
+        &=\begin{aligned}[t]
+          &\prj{\momentVar_1}{\diffVar_1} 
+          + \prj{\momentVar_2}{\diffVar_2} 
+          + \prj{\momentVar_3}{\diffVar_3} 
+          + \momentVar_4\diffVar_4
+          - \prj{\momentVar_1}{\affDrift(\stateVar_1)}  \\
+          &\quad- \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar)(\momentVar_1+\momentVar_2)} \\
+          &\quad- \affInt(\stateVar_1)\exp\Big(\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \\
+          &\quad+ \affInt(\stateVar_1) 
+          + \bprj{\momentVar_1+\momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}
+        \end{aligned} \\
+        &= \begin{aligned}[t]
+          &\frac12\Bprj{\diffVar_2}{\affDiff(\stateVar_1)^\dagger\diffVar_2} + \diffVar_4 \log\Big(\frac{\diffVar_4}{\affInt(\stateVar_1)}\Big) - \diffVar_4 + \affInt(\stateVar_1) \\
+          &+ \ode_{\affDist(\stateVar_1,\cdot)}^*\Big(\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}\Big)
+        \end{aligned}
+      \end{align*}
+    \item
+  \end{enumerate}
 \end{proof}

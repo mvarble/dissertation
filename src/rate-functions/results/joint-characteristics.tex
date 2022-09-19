@@ -1,0 +1,105 @@
+\begin{proposition}
+  \label{proposition:joint-characteristics}
+  For each $\hat\stateVar \in \hat\stateSpace$, the process $\hat\X$ is a $(\hat\Prb_{\hat\stateVar}, \scrF)$ special jump-diffusion with affine special differential characteristics $(\hat\affDrift, \hat\affDiff, \hat\affJump)$ as below,
+  \begin{equation}
+    \label{eq:joint-characteristics}
+    \begin{gathered}
+      \hat\affDrift(\hat\stateVar) = \begin{pmatrix} \affDrift(\stateVar_1) \\ 0 \\ 0 \\ \affInt(\stateVar_1) \end{pmatrix}, \quad
+      \hat\affDiff(\hat\stateVar) = \begin{pmatrix} \affDiff(\stateVar_1) & \affDiff(\stateVar_1) & 0 & 0 \\ \affDiff(\stateVar_1) & \affDiff(\stateVar_1) & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}, \\
+      \hat\affJump(\hat\stateVar, \rmd\hat\markVar) = \affInt(\stateVar_1) \affDist(\stateVar_1, \rmd\markVar_1) \zeta(\rmd\markVar_2) \delta_{\markVar_1}(\rmd\markVar_3) \delta_1(\rmd\markVar_4),
+    \end{gathered}
+  \end{equation}
+  where $\zeta$ is the zero measure on $\scrB(\vecSpace)$.
+  Moreover, denoting $\hat\ode$ the associated L\'evy-Khintchine map, we have $\odeSpaceJoint = \hat\vecSpace$ and the following.
+  \begin{equation*}
+    \hat\ode(\hat\momentVar, \hat\stateVar) = \begin{aligned}[t]
+      &\prj{\momentVar_1}{\affDrift(\stateVar_1)} + \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar)(\momentVar_1+\momentVar_2)} \\
+      &+ \affInt(\stateVar_1)\exp\Big(\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) - \affInt(\stateVar_1) -  \bprj{\momentVar_1+\momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}} 
+    \end{aligned}
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  \label{proof:proposition:joint-characteristics}
+  The fact that $\hat\X$ is special simply comes from the following decomposition.
+  \begin{align*}
+    \hat\X 
+    = \begin{pmatrix}
+      \X \\ \X^\rmc \\ \V^\X \\ \N^\X 
+    \end{pmatrix}  
+    &= \begin{pmatrix} 
+      \stateVar_1 + \affDrift(\X) \shortInt \leb_t + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X}_t \\ \stateVar_2 + \X^\rmc \\ \stateVar_3 + \id_\vecSpace \ast \compensate{\jumpMeas^\X}_t  \\ \stateVar_4 + 1 \ast \jumpMeas^\X_t
+    \end{pmatrix}  \\
+    &= \begin{pmatrix} 
+      \stateVar_1 + \affDrift(\X) \shortInt \leb_t + \X^\rmc + \id_\vecSpace \ast \compensate{\jumpMeas^\X}_t \\ \stateVar_2 + \X^\rmc \\ \stateVar_3 + \id_\vecSpace \ast \compensate{\jumpMeas^\X}_t  \\ \stateVar_4 + 1 \ast \predproj{\jumpMeas^\X}_t + 1 \ast \compensate{\jumpMeas^\X}_t
+    \end{pmatrix}  \\
+    &= \hat\stateVar 
+    + \begin{pmatrix} 
+      \affDrift(\X) \\
+      0 \\
+      0 \\
+      \affInt(\X)
+    \end{pmatrix} \shortInt \leb_t
+    + \begin{pmatrix}
+      \X^\rmc \\
+      \X^\rmc \\
+      0 \\
+      0
+    \end{pmatrix}
+    + \begin{pmatrix}
+      \id_\vecSpace \\
+      0 \\
+      \id_\vecSpace \\
+      1 
+    \end{pmatrix} \ast \compensate{\jumpMeas^\X}_t
+  \end{align*}
+  Observe that the first term establishes the drift $\hat\affDrift$ as in (\ref{eq:joint-characteristics}).
+  The diffusion $\hat\affDiff$ in (\ref{eq:joint-characteristics}) is verified by the following identities.
+  \begin{align*}
+    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,1j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, &
+    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,2j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, \\
+    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,3j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, &
+    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,4j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, \\
+    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,2j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, &
+    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,3j}} &= \Bprj{\X^{\rmc,i}}{0} = 0,  \\
+    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,4j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, &
+    \Bprj{\hat\X^{\rmc,3i}}{\hat\X^{\rmc,4j}} &= \Bprj{0}{0} = 0, 
+  \end{align*}
+  Lastly, for any predictable $H: \Omega \times \bbR_+ \times \hat\vecSpace \rightarrow \bbR_+$, we have the following.
+  \begin{align*}
+    \Exp_{\Prb_\stateVar} \big( H \ast \jumpMeas^{\hat\X}_\infty \big)
+    &= \Exp_{\Prb_\stateVar} \int_{\bbR_+\times\vecSpace} H(\cdot, s, \markVar_1, 0, \markVar_1, 1) \jumpMeas^\X(\rmd s, \rmd\hat\markVar) \\
+    &= \Exp_{\Prb_\stateVar} \int_0^\infty \int_\vecSpace H(\cdot, s, \markVar_1, 0, \markVar_1, 1) \affJump(\X_s, \rmd\markVar_1) \rmd s \\
+    &= \Exp_{\Prb_\stateVar} \int_0^\infty \int_\vecSpace H(\cdot, s, \markVar_1, 0, \markVar_1, 1) \affInt(\X_s) \affDist(\X_s, \rmd\markVar_1)  \rmd s \\
+    &= \Exp_{\Prb_\stateVar} \int_0^\infty \int_{\hat\vecSpace} H(\cdot, s, \hat\markVar) \affInt(\X_s) \affDist(\X_s, \rmd\markVar_1) \zeta(\rmd\markVar_2) \delta_{\markVar_1}(\rmd\markVar_3) \delta_1(\rmd\markVar_4)  \rmd s
+  \end{align*}
+  This concludes that, $\predproj{\jumpMeas^{\hat\X}}(\rmd s, \rmd\hat\markVar) = \hat\affJump(\hat\X_s, \rmd\hat\markVar) \rmd s$, where $\hat\affJump$ is as in (\ref{eq:joint-characteristics}).
+  This work shows that $\hat\X$ is a $(\hat\Prb_{\hat\stateVar\in\hat\stateSpace}, \scrF)$ special jump-diffusion; its special differential characteristics are also affine.
+  \begin{align*}
+    \hat\affDrift(\hat\stateVar) &= \begin{pmatrix} \affDriftPart_0 \\ 0 \\ 0 \\ \affIntPart_0 \end{pmatrix} + \sum_{i=1}^d \stateVar^{1i} \begin{pmatrix} \affDriftPart_i \\ 0 \\ 0 \\ \affIntPart_i \end{pmatrix} \\
+    \hat\affDiff(\hat\stateVar) &=  \begin{pmatrix} \affDiffPart_0 & \affDiffPart_0 & 0 & 0 \\ \affDiffPart_0 & \affDiffPart_0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} + \sum_{i=1}^d \stateVar^{1i} \begin{pmatrix} \affDiffPart_0 & \affDiffPart_0 & 0 & 0 \\ \affDiffPart_0 & \affDiffPart_0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \\
+    \hat\affJump(\hat\stateVar, \rmd\hat\markVar) &= \affJumpPart_0(\rmd\markVar_1)\zeta(\rmd\markVar_2)\delta_{\markVar_1}(\rmd\markVar_3)\delta_1(\rmd\markVar_4) + \sum_{i=1}^d \stateVar^{1i}  \affJumpPart_i(\rmd\markVar_1)\zeta(\rmd\markVar_2)\delta_{\markVar_1}(\rmd\markVar_3)\delta_1(\rmd\markVar_4)
+  \end{align*}
+  The associated L\'evy-Khintchine map $\hat\ode$ associated with it satisfies $\odeSpaceJoint = \hat\vecSpace$ by Lemma \ref{lemma:odeSpace-rationale}.
+  \begin{equation*}
+    \int_{|\hat\markVar|>1} e^\prj{\hat\momentVar}{\hat\markVar} \hat\affJump(\hat\stateVar, \rmd\hat\markVar)
+    = \int_{|\hat\markVar|>1} e^{\prj{\momentVar_1+\momentVar_3}{\markVar_1} + \momentVar_4\markVar_4} \affInt(\stateVar_1) \affDist(\rmd\markVar_1)\delta_1(\rmd\markVar_4) < \infty
+  \end{equation*}
+  We may also simplify it to the desired expression.
+  \begin{align*}
+    \hat\ode(\hat\momentVar, \hat\stateVar) 
+    &= \bprj{\hat\momentVar}{\hat\affDrift(\hat\stateVar)} + \frac12\bprj{\hat\momentVar}{\hat\affDiff(\hat\stateVar)\hat\momentVar} + \int_{\hat\vecSpace} \Big( e^\prj{\hat\momentVar}{\hat\markVar} - 1 - \bprj{\hat\momentVar}{\hat\markVar} \Big) \hat\affJump(\hat\stateVar, \rmd\hat\markVar) \\
+    &= \begin{aligned}[t]
+      &\prj{\momentVar_1}{\affDrift(\stateVar_1)} + \momentVar_4\affInt(\stateVar_1) \\
+      &+ \frac12\bprj{\momentVar_1}{\affDiff(\stateVar_1)\momentVar_1}  + \frac12\bprj{\momentVar_1}{\affDiff(\stateVar_1)\momentVar_2}  + \frac12\bprj{\momentVar_2}{\affDiff(\stateVar_1)\momentVar_1}+ \frac12\bprj{\momentVar_2}{\affDiff(\stateVar_1)\momentVar_2}\\
+      &+ \int_\vecSpace \Big( e^{\prj{\momentVar_1}{\markVar} + \prj{\momentVar_3}{\markVar} + \momentVar_4} - 1 - \prj{\momentVar_1}{\markVar_1} - \prj{\momentVar_3}{\markVar} - \momentVar_4  \Big) \affInt(\stateVar_1) \affDist(\stateVar_1, \rmd\markVar)
+    \end{aligned} \\
+    &= \begin{aligned}[t]
+      &\prj{\momentVar_1}{\affDrift(\stateVar_1)} + \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar_1)(\momentVar_1+\momentVar_2)}  \\
+      &+ \affInt(\stateVar_1)\Big(\int_\vecSpace e^\prj{\momentVar_1+\momentVar_3}{\markVar} \affDist(\stateVar_1, \rmd\markVar) \Big) e^{\momentVar_4} - \affInt(\stateVar_1) - \bprj{\momentVar_1 + \momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}
+    \end{aligned} \\
+    &= \begin{aligned}[t]
+      &\prj{\momentVar_1}{\affDrift(\stateVar_1)} + \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar)(\momentVar_1+\momentVar_2)} \\
+      &+ \affInt(\stateVar_1)\exp\Big(\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) - \affInt(\stateVar_1) -  \bprj{\momentVar_1+\momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}} 
+    \end{aligned}
+  \end{align*}
+\end{proof}

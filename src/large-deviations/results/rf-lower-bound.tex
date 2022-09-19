@@ -39,7 +39,7 @@
     &= \int_0^{1/\epsilon} \bigg( \Big( \ode^*\big(\dot\pathVar(t),\pathVar(t)\big) - \epsilon \Big) \wedge \frac1\epsilon \bigg) \rmd t - \epsilon
     \label{eq:reduce-to-continuous}
   \end{align}
-  By Lemma \ref{lemma:span-affPart-dense}, the fact that each $f(t,0) = 0$, and continuity of each $f(t,\cdot)$, we may now use Fatou's lemma to guarantee some $\underline t \vdash [0,\infty)$ and $\underline\twistVar \in \prod_{k=1}^{|\underline t|} \momentSpace(\Delta t_k)$ such that
+  By Lemma \ref{lemma:span-affPart-dense}, the fact that each $f(t,0) = 0$, and continuity of each $f(t,\cdot)$, we may now use Fatou's lemma to guarantee some $\underline t \vdash [0,\infty)$ and $\underline\twistVar \in \momentSpace(\underline t)$ such that
   \begin{equation}
     \label{eq:reduce-to-affPart-span}
     \int_0^{1/\epsilon} f\big(t, \twistFunc(t, \underline t, \underline\twistVar)\big) \rmd t
