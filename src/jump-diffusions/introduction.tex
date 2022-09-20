@@ -20,12 +20,21 @@ We find it important to highlight the following important notation of objects in
     \[
       H \shortInt \leb_t = \int_0^t H_s \rmd s
     \]
+    Throughout, we will often use the following fact without mention; any c\`adl\`ag process $H$ is such that $H_t=H_{t-}$ at all but a countable amount of times $t \in \bbR$, and so 
+    \[
+      H_- \shortInt \leb_t = \int_0^t H_{s-} \rmd s = \int_0^t H_s \rmd s = H \shortInt \leb_t
+    \]
   \item
     Given a random measure $\jumpMeas: \Omega \times \scrB(\bbR_+ \times \vecSpace) \rightarrow [0,\infty]$, denote the stochastic integral process against some suitably integrable process $H: \Omega \times \bbR_+ \times \vecSpace \rightarrow \bbR$ as follows.
     \[
       H \ast \jumpMeas_t = \int_{[0,t] \times \vecSpace} H_s(\markVar) \jumpMeas(\rmd s, \rmd\markVar)
     \]
     Denote its $(\Prb, \scrF)$ predictable projection by $\predproj{\jumpMeas}$ and the compensated measure $\compensate{\jumpMeas} = \jumpMeas - \predproj{\jumpMeas}$.
+    We will frequently use, without mention, that $\predproj{\jumpMeas}$ is characterized by the property that any $\scrF$ predictable $H: \Omega \times \bbR_+ \times \vecSpace \rightarrow \bbR_+$ is such that
+    \[
+      \Exp_\Prb\big( H \ast \jumpMeas_\infty \big)
+      = \Exp_\Prb\big( H \ast \predproj{\jumpMeas}_\infty \big)
+    \]
     Also denote $H \ast \compensate{\jumpMeas}$ the compensated local martingale process for suitable $H \in G_\loc(\jumpMeas)$, as constructed in \cite[Definition II.1.27]{jacod2003}.
     Lift these integration notions to vector-valued $H$ componentwise.
     Instead of choosing a canonical variable for integrating expressions in this form, we use the identity maps $\id_\vecSpace$ or $\leb$.

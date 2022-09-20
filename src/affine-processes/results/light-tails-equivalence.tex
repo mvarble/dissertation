@@ -1,0 +1,16 @@
+\begin{proposition}
+  We have $\odeSpace = \vecSpace$ if and only if each $\momentVar \in \vecSpace$ is such that there exists $\tau > 0$ in which $\momentVar$ is a finite moment of the associated marginal $\X_\tau$.
+  \begin{equation*}
+    \Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_\tau} < \infty, \quad \stateVar \in \stateSpace
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  For sufficiency, first see that any $\momentVar \in \vecSpace$ is such that $\closedBall{\momentVar}{1} \subseteq \vecSpace = \odeSpace^\circ$ is compact.
+  By Proposition \ref{proposition:compact-ode-existence}, we then have some $\tau > 0$ so that $\momentVar \in \closedBall{\momentVar}{1} \subseteq \momentSpace(\tau)$.
+  Then, Theorem \ref{theorem:KM}\ref{theorem:KM:1} gives us the desired finiteness condition.
+  \begin{equation*}
+    \Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_\tau} = \exp\aff(\tau, \momentVar, \stateVar) < \infty, \quad \stateVar \in \stateSpace
+  \end{equation*}
+  Conversely, if $\momentVar \in \vecSpace$ satisfies $\Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_\tau} < \infty$ for all $\stateVar \in \stateSpace$, then it certainly does for some $\stateVar \in \stateSpace^\circ$, and so Theorem \ref{theorem:KM}\ref{theorem:KM:2} gives us $(\tau, \momentVar) \in \momentSpace$.
+  Surely, this then means that $\momentVar \in \momentSpace(\tau) \subseteq \odeSpace$.
+\end{proof}
