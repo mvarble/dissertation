@@ -5,7 +5,7 @@
   \begin{equation*}
     \affInt: \bbR_+ \rightarrow \bbR_+, \quad \affInt(\stateVar) = \affIntPart_0 + \affIntPart_1 \stateVar
   \end{equation*}
-  The martingale that induces this change of measure is familiar from Theorem \ref{theorem:LK-exponential-martingale}, selecting $H = \log\affInt(J^\epsilon)$.
+  The martingale that induces this change of measure is familiar from Theorem \ref{theorem:LK-girsanov}, selecting $\twistFunc(s, \stateVar) = \log\affInt(\stateVar)$.
   The L\'evy-Khintchine map associated with $\frac1\epsilon J^\epsilon$ is $\ode(\momentVar, \stateVar) = \frac1\epsilon (e^\momentVar - 1)$, and it resolves to the following.
   \begin{equation*}
     \mgDensity^\epsilon \defeq \exp\bigg( \frac1\epsilon \log\affInt(J^\epsilon_-) \shortInt J^\epsilon + \frac1\epsilon\big( 1 - \affInt(J^\epsilon) \big) \shortInt \leb \bigg)
@@ -43,7 +43,7 @@
   From here, we lift our large deviation principle back to the interval $[0,\infty)$ by another application of Dawson-G\"artner.
 
   Of course, many technical details are missing in the above argument, but we again reiterate that this is merely to gather intuition on rate functions.
-  For a rigorous proof involving such analysis, we refer the reader to \cite{Gao2018b}, where they prove a large deviation principle for an asymptotic family of nonlinear Hawkes processes.
+  For a rigorous proof involving such analysis, we refer the reader to \cite{gao2018b}, where they prove a large deviation principle for an asymptotic family of nonlinear Hawkes processes.
   In any case, we again note that Theorem \ref{theorem:ldp-integral} covers the large deviation principle and rate function mentioned above.
   A continuous-branching process $\X$ with intensity $\affInt(\X)$ has special semimartingale decomposition as below,
   \begin{equation*}
@@ -82,9 +82,9 @@
     &= \sup_{\momentVar\in\bbR} \bigg( \momentVar\diffVar - \momentVar\Big(\hawkesRate(\mu - \stateVar) - \affInt(\stateVar)\Big) - \int_\bbR \big( e^{\momentVar\markVar} - 1 - \momentVar\markVar \big) \affInt(\stateVar) \delta_1(\rmd\markVar) \bigg) \\
     &= \sup_{\momentVar\in\bbR} \bigg( \momentVar\Big(\diffVar - \hawkesRate(\mu-\stateVar)\Big) - \affInt(\stateVar)e^\momentVar + \affInt(\stateVar) \bigg) \\
     &= \left\{\begin{array}{ll}
-      \displaystyle \diffVar \log\Big(\frac{\diffVar-\hawkesRate(\mu-\stateVar)}{\affInt(\stateVar)}\Big) - \diffVar + \affInt(\stateVar), & \diffVar - \hawkesRate(\mu-\stateVar) \geq 0, ~ \affInt(\stateVar) \geq 0, \\
+      \displaystyle \diffVar \log\Big(\frac{\diffVar-\hawkesRate(\mu-\stateVar)}{\affInt(\stateVar)}\Big) - \diffVar + \affInt(\stateVar), &  \affInt(\stateVar) > 0, ~ \diffVar - \hawkesRate(\mu-\stateVar) \geq 0, \\
       \infty, & \text{otherwise}
     \end{array}\right.
   \end{align*}
-  which is similar to the linear case of \cite{Gao2018b}.
+  which is similar to the linear case of \cite{gao2018b}.
 \end{example}

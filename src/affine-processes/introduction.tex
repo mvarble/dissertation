@@ -1,12 +1,22 @@
-\begin{color}{gray}
-  Here I put a summary of chapter, along with a short history.
-  It will include the following important notes.
-  \begin{itemize}
-    \item
-      Chapter addresses important fundamental results of affine processes.
-    \item
-      Chapter addresses consequences of mgf results that are important for us, though not specified exactly much in the literature
-    \item
-      Chapter presents results in full generality, even though we have light-tails assumption; this helps for future extensions.
-  \end{itemize}
-\end{color}
+Our first chapter will get us familiar with affine processes.
+Most of the results will be simple consequences of \cite{cuchiero2011} and \cite{keller2015}, which pretty much comprehensively prove everything there is to know about affine processes on convex state spaces.
+It is still important for us to have this chapter, for we will need to have a careful understanding of how the spaces of finite moments change with respect to time, and these facts only seem to exist in the case of affine diffusions.
+Furthermore, the magnificent papers above provide us so much information at the cost of being very formal.
+Readers which have not found themselves familiar with massive texts like \cite{jacod2003} may not be able to decipher the results involving semimartingale characteristics in intuitive terms.
+It is for this reason that we found it beneficial to provide some calculus-heavy proofs that somehow \emph{demystify} these objects.
+In particular, we translate many of the results of \cite{jacod2003} to the special setting of \emph{jump-diffusions}, in which the semimartingales are differentiable.
+While certainly less powerful than their general semimartingale brethren, jump-diffusions involve deterministic functions which make calculations far more intuitive.
+These results are mostly in Appendix \ref{jump-diffusions}---a choice which was made less because the information is unrelated to affine processes, and more that the extra generality of non-affine differential characteristics come at little-to-no cost.
+In any case, we suggest the reader familiarize themselves with Appendix \ref{jump-diffusions} sooner than later, as we use this material very often throughout the chapters.
+The remainder of this chapter is organized as follows.
+
+\begin{enumerate}[leftmargin=20mm]
+  \item[\,{\hyperref[affine-processes:formulation]{Section }}\ref{affine-processes:formulation}.]
+    Defines an affine process and identifies some relevant notions from which we begin our investigation.
+  \item[\,{\hyperref[affine-processes:real-moments]{Section }}\ref{affine-processes:real-moments}.]
+    Explores consequences of the affine transform formula on real moments.
+  \item[\,{\hyperref[affine-processes:fdds]{Section }}\ref{affine-processes:fdds}.]
+    Lifts the notions of the preceding section from marginals to finite-dimensional distributions.
+  \item[\,{\hyperref[affine-processes:jump-diffusions]{Section }}\ref{affine-processes:jump-diffusions}.]
+    Explores more on the path-based properties---particularly the jump-diffusion nature---of affine processes.
+\end{enumerate}

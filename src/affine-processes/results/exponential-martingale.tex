@@ -2,9 +2,18 @@
   \label{theorem:exponential-martingale}
   If $0 \in \odeSpace^\circ$, then any $\twistFunc \in \pathSpace{[0,\infty)}{\vecSpace}$ of finite variation, compact support, and image contained in $\odeSpace^\circ$ makes $\exp(\twistFunc \shortInt \X)$ a $(\Prb_\stateVar, \scrF)$ special jump-diffusion and
   \begin{equation*}
-    \exp\Big( \twistFunc \shortInt \X - \ode\big(\twistFunc, \X\big) \shortInt \leb \Big)
+    \mgDensity^\twistFunc \defeq \exp\Big( \twistFunc \shortInt \X - \ode\big(\twistFunc, \X\big) \shortInt \leb \Big)
   \end{equation*}
   a martingale for every $\stateVar \in \stateSpace$.
+  Moreover, we may define a new measure $\mgPrb^\twistFunc$ by
+  \begin{equation*}
+    \mgPrb^\twistFunc(\rmd\omega) \defeq \mgDensity^\twistFunc(\omega) \cdot \Prb(\rmd\omega)
+  \end{equation*}
+  such that $\X$ is a $(\mgPrb^\twistFunc, \scrF)$ special jump-diffusion with affine $(\mgPrb^\twistFunc, \scrF)$ special differential characteristics $(\affDrift^\twistFunc, \affDiff, \affJump^\twistFunc)$.
+  \begin{align*}
+    \affDrift^\twistFunc(s, \stateVar) &\defeq \affDrift(\stateVar) + \affDiff(\stateVar) \twistFunc(s) + \int_\vecSpace \markVar \big(e^\prj{\twistFunc(s)}{\markVar} -1 \big) \affJump(\stateVar, \rmd\markVar) \\
+    \affJump^\twistFunc(s, \stateVar, \rmd\markVar) &\defeq e^\prj{\twistFunc(s)}{\markVar} \affJump(\stateVar, \rmd\markVar)
+  \end{align*}
 \end{theorem}
 \begin{proof}
   The quantity $M = \exp\big(\twistFunc \shortInt \X - \ode(\twistFunc, \X) \shortInt \leb \big)$ is a $(\Prb_\stateVar, \scrF)$ local martingale by our hypotheses and Theorem \ref{theorem:LK-exponential-martingale}.
@@ -17,4 +26,5 @@
   \end{equation*}
   are bounded on compact sets of points $(s, \stateVar)$.
   This comes from the fact that the image of $\twistFunc$ is contained in some compact subset of $\odeSpace^\circ$ and that $\ode$ is uniformly bounded on compact subsets of $\odeSpace^\circ \times \stateSpace$ by Lemma \ref{lemma:ode-differentiable}.
+  The $(\mgPrb^\twistFunc, \scrF)$ special differential characteristics then come from Theorem \ref{theorem:LK-girsanov}.
 \end{proof}

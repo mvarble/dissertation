@@ -1,12 +1,12 @@
 % declare asymptotic family
-We will prove a large deviation principle for a family $(\Prb^\epsilon_{\stateVar_0})_{\epsilon>0}$ of distributions $\Prb^\epsilon_{\stateVar_0}$ of affine processes $\Xe$ with initial point $\stateVar_0 \in \stateSpace^\circ$ in which the differential $\trunc$-characteristics $(\affDrift^{\trunc,\epsilon}, \affDiff^\epsilon, \affJump^\epsilon)$ of each respective $\Xee$ have the following parameterization.
+Fix family $(\Xe)_{\epsilon>0}$ of affine processes $\Xe$ with associated conditional distributions $(\Prb^\epsilon_\stateVar)_{\stateVar\in\stateSpace}$ such that the differential $\trunc$-characteristics $(\affDrift^{\trunc,\epsilon}, \affDiff^\epsilon, \affJump^\epsilon)$ relate through the following parameterization.
 \begin{equation}
   \label{eq:characteristic-asymptotics}
   \affDrift^{\trunc,\epsilon}(\stateVar) = \frac1\epsilon \affDrift^{\trunc,1}(\epsilon\stateVar), \quad
   \affDiff^\epsilon(\stateVar) = \frac1\epsilon \affDiff^1(\epsilon\stateVar), \quad
   \affJump^\epsilon(\stateVar, \rmd\markVar) = \frac1\epsilon \affJump^1(\epsilon\stateVar, \rmd\markVar), \quad \stateVar \in \stateSpace
 \end{equation}
-In effect, the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ is induced by a \emph{base distribution} $\Prb_\stateVar \defeq \Prb^1_\stateVar$ associated with \emph{base affine process} $\X \defeq \X^1$ and \emph{base differential characteristics} $(\affDrift^\trunc, \affDiff, \affJump) \defeq (\affDrift^{\trunc,1}, \affDiff^1, \affJump^1)$.
+In effect, for each $\stateVar \in \stateSpace$, the family $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ is induced by a \emph{base distribution} $\Prb_\stateVar \defeq \Prb^1_\stateVar$ associated with \emph{base affine process} $\X \defeq \X^1$ and \emph{base differential characteristics} $(\affDrift^\trunc, \affDiff, \affJump) \defeq (\affDrift^{\trunc,1}, \affDiff^1, \affJump^1)$.
 This also implies a similar parameterization for the L\'evy-Khintchine maps $\ode^\epsilon$ associated with $(\affDrift^{\trunc,\epsilon}, \affDiff^\epsilon, \affJump^\epsilon)$ in terms of the base map $\ode$ from $(\affDrift^\trunc, \affDiff, \affJump)$.
 \begin{equation}
   \label{eq:LK-asymptotics}
@@ -35,7 +35,7 @@ and is the cumulant generating function of each marginal.
 \begin{equation*}
   \Exp_{\Prb^\epsilon_\stateVar} \exp\prj{\momentVar}{\Xee_\tau} = \exp\aff^\epsilon(\tau, \momentVar, \stateVar/\epsilon), \quad (\tau, \momentVar) \in \momentSpace, ~ \stateVar \in \stateSpace
 \end{equation*}
-Above, note that we are naturally denoting $(\Prb^\epsilon_\stateVar)_{\stateVar\in\stateSpace}$ the other distributions $\Prb^\epsilon_\stateVar$ of $\Xe$ in which it starts at various $\stateVar \in \stateSpace$ (hence why we have a $\stateVar/\epsilon$ in the last coordinate).
+Above, note that the $\stateVar/\epsilon$ in the last coordinate is because $\Prb^\epsilon_\stateVar$ is the distribution associated with $\Xe$, not $\Xee$.
 The following result shows us that our parameterization in (\ref{eq:characteristic-asymptotics}) and (\ref{eq:LK-asymptotics}) applies these cumulant generating functions, where $\aff \defeq \aff^1$ and $\momentSpace \defeq \momentSpace^1$.
 
 \input{./results/aff-asymptotics}

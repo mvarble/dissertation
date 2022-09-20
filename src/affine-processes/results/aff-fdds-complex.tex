@@ -13,18 +13,15 @@
   \label{proof:proposition:aff-fdds-complex}
   We start by recognizing that $\underline\momentVar \in \im\vecSpace$ means the following identity.
   \begin{equation*}
-    \big| e^\prj{\momentVar_k}{\stateVar} \big| = \exp\prj{\Re(\momentVar_k)}{\stateVar} = 1, \quad k = 1, \ldots, n
+    \big| e^\prj{\momentVar_k}{\stateVar} \big| = \exp\Re\prj{\momentVar_k}{\stateVar} = 1, \quad k = 1, \ldots, n
   \end{equation*}
-  In particular, we have $\twistVar_n = \momentVar_n \in \boundedSpace$; we show $\twistVar_k \in \boundedSpace$ for $k = n-1,\ldots, 1$ by induction.
+  In particular, we have $\twistVar_n = \momentVar_n \in \boundedSpace$; we show $\twistVar_k \in \boundedSpace$ for $k = n-1,\ldots, 1$ by induction and Lemma \ref{lemma:affPart-bounded}.
   \begin{align*}
-    \exp\prj{\Re(\twistVar_k)}{\stateVar} 
-    &= \big| e^\prj{\twistVar_k}{\stateVar} \big|  \\
-    &= \big| e^\prj{\momentVar_k + \affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} \big| \\
-    &= \big| e^\prj{\momentVar_k}{\stateVar} \big| \cdot \big| e^\prj{\affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} \big| \\
-    &= \Big| e^{-\affPart_0(\Delta t_k, \twistVar_{k+1}) + \aff(\Delta t_{k+1}, \twistVar_{k+1}, \stateVar)} \Big| \\
-    &= \Big| e^{-\affPart_0(\Delta t_{k+1}, \twistVar_{k+1})} \Big| \cdot \Big| \Exp_{\Prb_\stateVar}\exp\prj{\twistVar_{k+1}}{\X_{\Delta t_{k+1}}}  \Big| \\
-    &\leq \Big| e^{-\affPart_0(\Delta t_{k+1}, \twistVar_{k+1})} \Big| \cdot \Exp_{\Prb_\stateVar} \Big| \exp\prj{\twistVar_{k+1}}{\X_{\Delta t_{k+1}}}  \Big| \\
-    &\leq \Big| e^{-\affPart_0(\Delta t_{k+1}, \twistVar_{k+1})} \Big| \cdot \sup_{\stateVar'\in\stateSpace} \exp\Re\prj{\twistVar_{k+1}}{\stateVar'} 
+    \sup_{\stateVar\in\stateSpace}\exp\Re\prj{\twistVar_k}{\stateVar} 
+    &= \sup_{\stateVar\in\stateSpace}\big| e^\prj{\twistVar_k}{\stateVar} \big|  \\
+    &= \sup_{\stateVar\in\stateSpace}\big| e^\prj{\momentVar_k + \affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} \big| \\
+    &= \sup_{\stateVar\in\stateSpace}\big| e^\prj{\momentVar_k}{\stateVar} \big| \cdot \big| e^\prj{\affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} \big| \\
+    &= \sup_{\stateVar\in\stateSpace} \exp\Re\prj{\affPart(\Delta t_{k+1}, \twistVar_{k+1})}{\stateVar} < \infty
   \end{align*}
   Now observe the following identity.
   \begin{align}

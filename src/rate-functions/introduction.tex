@@ -1,0 +1,66 @@
+We dedicate this final chapter to interpreting the rate function (\ref{eq:rf-integral}) from Theorem \ref{theorem:ldp-integral} and deriving a semi-closed form for $\ode^*$ which illustrates more on the nature of our distributions $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$.
+Before doing this, let us establish some intuition with what our integral form \emph{already} tells us.
+
+Firstly, we recognize that a large deviation principle introduces a first-order exponential asymptotic;
+the principle shows us that the following limit holds,
+\begin{equation*}
+  \lim_{\delta\rightarrow0} \lim_{\epsilon\rightarrow0} \epsilon\log\Prb^\epsilon_{\stateVar}\Big( \Xe \in \ball{\pathVar}{\delta} \Big) = -\rf_{\stateVar}(\pathVar),
+\end{equation*}
+and so we may introduce a correction term $o(\epsilon, \delta)$,
+\begin{equation*}
+  \Prb^\epsilon_{\stateVar}\Big( \Xe \in \ball{\pathVar}{\delta} \Big)
+  = \exp\Big( -\frac1\epsilon\rf_{\stateVar}(\pathVar) + o(\epsilon, \delta) \Big), 
+  \qquad
+\end{equation*}
+which satisfies growth smaller than $1/\epsilon$, in the explicit sense of the following limit.
+\begin{equation*}
+  \lim_{\delta\rightarrow0} \lim_{\epsilon\rightarrow0} \epsilon o(\epsilon,\delta) = 0
+\end{equation*}
+By ignoring this expression $o(\epsilon, \delta)$, we are concerning ourselves with a first-order exponential approximation of the following probabilities.
+\begin{equation}
+  \label{eq:asymptotic-intuition}
+  \Prb^\epsilon_{\stateVar}\Big( \Xe \in \ball{\pathVar}{\delta} \Big) \approx 
+  \exp\Big( -\frac1\epsilon\rf_{\stateVar}(\pathVar) \Big)
+\end{equation}
+To this end, $\rf_\stateVar$ interprets properties of $\pathVar$ that the family $(\Xe)_{\epsilon>0}$ is systematically trending towards/against.
+Should $\rf_\stateVar(\pathVar)$ be large, the decay of (\ref{eq:asymptotic-intuition}) is faster, demonstrating that $\pathVar$ exhibits some property that the family $(\Xe)_{\epsilon>0}$ does not tend to satisfy.
+Thus is the notion of $\rf_\stateVar$ governing a \emph{principle} for what behaviors make a path $\pathVar$ \emph{largely deviate} from the typical behavior of $(\Xe)_{\epsilon>0}$.
+
+The integral nature of $\rf_\stateVar$ indicates to us that there are local properties that the family $(\Xe)_{\epsilon>0}$ systematically exhibits which lends to faster/slower decay from some $\pathVar$.
+Take, for instance, if we perturbed some $\pathVar$ only on some interval $[t,\tau]$, coercing the values of $\ode^*(\dot\pathVar(s), \pathVar(s))$ to be larger on this interval $s \in [t,\tau]$.
+This will increase the value of $\rf_\stateVar(\pathVar)$, indicating that it was this behavior on the interval $[t,\tau]$ that produced a deviation from the behavior of our family $(\Xe)_{\epsilon>0}$.
+Knowing this, it is imperative that we derive some form for $\ode^*$.
+Doing so will allow us to see local properties that the family $(\Xe)_{\epsilon>0}$ exhibits.
+
+Unfortunately, the $\stateSpace$-affine nature of $\ode$ provides us no simplification in evaluating $\ode^*$.
+\begin{align*}
+  \ode^*(\diffVar, \stateVar) 
+  &= \prj{\momentVar}{\diffVar} - \ode(\momentVar, \stateVar)  \\
+  &= \prj{\momentVar}{\diffVar} -  \bprj{\momentVar}{\affDrift^\trunc(\stateVar)} - \frac12\bprj{\momentVar}{\affDiff(\stateVar)} - \int_\vecSpace \big( e^\prj{\momentVar}{\markVar} - 1 - \prj{\momentVar}{\trunc(\markVar)} \big) \affJump(\stateVar, \rmd\markVar),
+\end{align*}
+However, by looking to existing rate functions from the literature \cite{duffy2004,dembo2010,kang2014,gao2018b}, we will be able to build an intuition and a toolbox for developing a semi-closed form for $\ode*$.
+We find this result remarkable for multiple reasons.
+\begin{enumerate}
+  \item
+    The representation of $\ode^*$ will feel familiar to already-known results
+  \item
+    The representation of $\ode^*$ will generalize the results we list
+  \item
+    The representation (though not the large deviation principle) of $\ode^*$ and the corresponding rate function $\rf_\stateVar$ exist independently of the affine assumption.
+\end{enumerate}
+This chapter is very example heavy, and so we find it to be the most intuitive of the chapters.
+By the end, we hope rate functions, as well as large deviations, will be better understood from a general perspective.
+All this said, let us now proceed to our final chapter, which is organized as follows.
+
+\begin{enumerate}[leftmargin=20mm]
+  \item[\,{\hyperref[rate-functions:mogulskii]{Section }}\ref{rate-functions:mogulskii}.]
+    Introduces an important large deviation principle for stochastic processes with independent increments.
+  \item[\,{\hyperref[rate-functions:transformations]{Section }}\ref{rate-functions:transformations}.]
+    Introduces tools which allow us to lift the preceding principles to stochastic processes with state-dependence.
+  \item[\,{\hyperref[rate-functions:coupling]{Section }}\ref{rate-functions:coupling}.]
+    Introduces a trick which allows one to evaluate rate functions in the case of there being \emph{multiple sources} of randomness.
+  \item[\,{\hyperref[rate-functions:main]{Section }}\ref{rate-functions:main}.]
+    Establishes our main result of developing a semi-closed form for $\ode^*$.
+  \item[\,{\hyperref[rate-functions:final]{Section }}\ref{rate-functions:final}.]
+    Discusses the intuition and potential extensions of our result.
+\end{enumerate}
