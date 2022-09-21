@@ -1,7 +1,11 @@
 \begin{lemma}
   \label{lemma:odeSpace-rationale}
-  For any $\stateVar \in \stateSpace$, we have $\momentVar \in \odeSpace(\stateVar)$ if and only if 
-  $\int_{|\vecVar|>1} e^\prj{\momentVar}{\vecVar} \affJump(\stateVar, \rmd\markVar) < \infty$.
+  For any $\stateVar \in \stateSpace$, we have the following equivalence.
+  \begin{equation*}
+    \momentVar \in \odeSpace(\stateVar)
+    \quad\Leftrightarrow\quad
+    \int_{|\vecVar|>1} e^\prj{\momentVar}{\vecVar} \affJump(\stateVar, \rmd\markVar) < \infty
+  \end{equation*}
 \end{lemma}
 \begin{proof}
   \label{proof:lemma:odeSpace-rationale}

@@ -53,9 +53,9 @@
   \end{align}
   The final term of (\ref{eq:complex-tower-start}) is identical to that of (\ref{eq:complex-tower-end}) where we have reduced $k = n$ to $k = n-1$.
   Repeating these equalities inductively $k = n -1, \ldots, 1$ will result in the desired identity.
-  \begin{equation*}
+  \begin{align*}
     \aff(\underline t, \underline\momentVar, \stateVar) 
-    = \sum_{k=2}^n \affPart_0(\Delta t_k, \twistVar_k) + \log\Exp_{\Prb_\stateVar}\exp\prj{\twistVar_1}{\X_{t_1}} 
-    = \sum_{k=1}^n \affPart_0(\Delta t_k, \twistVar_k) + \bprj{\affPart(\Delta t_1, \twistVar_1)}{\stateVar}
-  \end{equation*}
+    &= \sum_{k=2}^n \affPart_0(\Delta t_k, \twistVar_k) + \log\Exp_{\Prb_\stateVar}\exp\prj{\twistVar_1}{\X_{t_1}} \\
+    &= \sum_{k=1}^n \affPart_0(\Delta t_k, \twistVar_k) + \bprj{\affPart(\Delta t_1, \twistVar_1)}{\stateVar}
+  \end{align*}
 \end{proof}

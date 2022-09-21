@@ -16,18 +16,27 @@
     &\exp\big( H \shortInt \X_t \big) \\
     \notag
     &= \begin{aligned}[t]
-      &\exp\big( H \shortInt \X_- \big) \shortInt \big( H \shortInt \X \big)_t + \frac12 \exp\big( H \shortInt \X_- \big) \shortInt \bprj{(H\shortInt \X)^\rmc}{(H\shortInt\X)^\rmc}_t \\
-      &+ \sum_{0<s\leq t} \Big( \exp\big(H \shortInt \X_{s-} + \Delta\big(H \shortInt \X\big)_s \big) - \exp\big(H\shortInt \X_{s-}\big) - \exp\big(H \shortInt\X_{s-}\big) \Delta \big(H \shortInt \X\big)_s\Big)
+      &\exp\big( H \shortInt \X_- \big) \shortInt \big( H \shortInt \X \big)_t 
+      + \frac12 \exp\big( H \shortInt \X_- \big) \shortInt \bprj{(H\shortInt \X)^\rmc}{(H\shortInt\X)^\rmc}_t \\
+      &+ \sum_{0<s\leq t} \Big(\begin{aligned}[t]
+        &\exp\big(H \shortInt \X_{s-} 
+        + \Delta\big(H \shortInt \X\big)_s \big) 
+        - \exp\big(H\shortInt \X_{s-}\big) \\
+        &\hspace{45mm}- \exp\big(H \shortInt\X_{s-}\big) \Delta \big(H \shortInt \X\big)_s\Big)
+      \end{aligned}
     \end{aligned} \\
     \notag
     &= \begin{aligned}[t]
-      &\Big(\exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X_t + \frac12 \exp\big( H \shortInt \X \big) \bprj{H}{\affDiff(\X)H} \shortInt \leb_t \\
+      &\Big(\exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X_t 
+      + \frac12 \exp\big( H \shortInt \X \big) \bprj{H}{\affDiff(\X)H} \shortInt \leb_t \\
       &+ \exp\big(H\shortInt\X_-\big) \Big( e^{\prj{H}{\id_\vecSpace}} - 1 - \prj{H}{\id_\vecSpace} \Big) \ast \jumpMeas^\X_t
     \end{aligned} \\
     \label{eq:LK-exp-ito-pause}
     &= \begin{aligned}[t]
-      &\Big(\exp\big( H \shortInt \X \big) \cdot \prj{H}{\affDrift} + \frac12 \exp\big( H \shortInt \X \big) \bprj{H}{\affDiff(\X)H} \Big) \shortInt \leb_t + \Big( \exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X^\rmc_t \\
-      &+ \exp\big( H \shortInt \X_- \big) \prj{H}{\id_\vecSpace} \ast \compensate{\jumpMeas^\X}_t \\
+      &\Big(\exp\big( H \shortInt \X \big) \cdot \prj{H}{\affDrift} 
+      + \frac12 \exp\big( H \shortInt \X \big) \bprj{H}{\affDiff(\X)H} \Big) \shortInt \leb_t \\
+      &+ \Big( \exp\big( H \shortInt \X_- \big) \cdot H \Big) \shortInt \X^\rmc_t 
+      + \exp\big( H \shortInt \X_- \big) \prj{H}{\id_\vecSpace} \ast \compensate{\jumpMeas^\X}_t \\
       &+ \exp\big(H\shortInt\X_-\big) \Big( e^{\prj{H}{\id_\vecSpace}} - 1 - \prj{H}{\id_\vecSpace} \Big) \ast \jumpMeas^\X_t
     \end{aligned} 
   \end{align}
@@ -52,7 +61,7 @@
   Now, we write $M$ as the local martingale term above, $A = \exp(H \shortInt \X)$, and $B = \exp(-\ode(H, \X) \shortInt \leb)$.
   We now recognize that $B$ is predictable and finite-variation and use \cite[Proposition I.4.49(b)]{jacod2003} to conclude our proof.
   \begin{align*}
-    \exp\big( H \shortInt \X_t - \ode(H, \X) \shortInt \leb_t \big) 
+    &\exp\big( H \shortInt \X_t - \ode(H, \X) \shortInt \leb_t \big) \\
     &= A_t B_t \\
     &= A_- \shortInt B_t + B \shortInt A_t \\
     &= \begin{aligned}[t]

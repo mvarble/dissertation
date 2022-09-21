@@ -7,7 +7,11 @@
     \item
       For each bounded $f \in \ccpathSpace{2}{\vecSpace}{\bbR}$, the process $f(\X_t) - \generator f(\X_t) \shortInt \leb_t$ is a $(\Prb, \scrF)$ local martingale, where
       \[
-        \generator f(\stateVar) \defeq \Der f(\stateVar) \cdot \affDrift^\trunc(\stateVar) + \frac12 \tr\Big( \Hess f(\stateVar) \circ \affDiff(\stateVar) \Big) + \int_\vecSpace \Big( f(\stateVar + \markVar) - f(\stateVar) - \Der f(\stateVar) \cdot \trunc(\markVar) \Big) \affJump(\stateVar, \rmd\markVar)
+        \generator f(\stateVar) \defeq \begin{aligned}[t]
+          &\Der f(\stateVar) \cdot \affDrift^\trunc(\stateVar) 
+          + \frac12 \tr\Big( \Hess f(\stateVar) \circ \affDiff(\stateVar) \Big) \\
+          &+ \int_\vecSpace \Big( f(\stateVar + \markVar) - f(\stateVar) - \Der f(\stateVar) \cdot \trunc(\markVar) \Big) \affJump(\stateVar, \rmd\markVar)
+        \end{aligned}
       \]
     \item
       For each $\momentVar \in \im\vecSpace$, the process $\exp\Big(\prj{\momentVar}{\X} - \ode(\momentVar, \X) \shortInt \leb \Big)$ is a $(\Prb, \scrF)$ local martingale, where $\ode$ is our L\'evy-Khintchine map.
@@ -19,8 +23,8 @@
       \begin{equation}
         \label{eq:sde-terms}
         \begin{aligned}
-          \affDiffSqrt: \stateSpace \rightarrow \bbL(\vecSpace) && \affDiffSqrt\affDiffSqrt^*(\stateVar) &= \affDiff(\stateVar) \\
-          \thinner: \stateSpace \times \vecSpace \rightarrow \vecSpace && \affJump(\stateVar, \Gamma) &= \int_\vecSpace 1_\Gamma\big( \thinner(\stateVar, \markVar) \big) \rmd\markVar
+          \affDiffSqrt: \stateSpace \rightarrow \bbL(\vecSpace) &&\quad \affDiffSqrt\affDiffSqrt^*(\stateVar) &= \affDiff(\stateVar) \\
+          \thinner: \stateSpace \times \vecSpace \rightarrow \vecSpace &&\quad \affJump(\stateVar, \Gamma) &= \int_\vecSpace 1_\Gamma\big( \thinner(\stateVar, \markVar) \big) \rmd\markVar
         \end{aligned}
       \end{equation}
       each $\Prb_\stateVar$ is a solution to the equation associated with a standard Brownian motion $\W$ and Poisson random measure $\poisRM$, where $\trunc' = \id_\vecSpace - \trunc$.

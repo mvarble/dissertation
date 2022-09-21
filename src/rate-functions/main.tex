@@ -98,7 +98,10 @@ Thus is the following assumption.
       \begin{equation*}
         \begin{aligned}[t]
           &i = 0, \ldots, d \\
-          & \dot\affPart_i(t, \momentVar) = \prj{\affPart(t, \momentVar)}{\affDriftPart_i} + \frac12\prj{\affPart(t, \momentVar)}{\affDiffPart_i\affPart(t,\momentVar)} + \int_\vecSpace \big( e^\prj{\affPart(t,\momentVar)}{\markVar} - 1 - \prj{\affPart(t,\momentVar)}{\markVar} \big) \affJumpPart_i(\rmd\markVar) \\
+          & \dot\affPart_i(t, \momentVar) = \begin{aligned}[t]
+            &\prj{\affPart(t, \momentVar)}{\affDriftPart_i} + \frac12\prj{\affPart(t, \momentVar)}{\affDiffPart_i\affPart(t,\momentVar)} \\
+            &+ \int_\vecSpace \big( e^\prj{\affPart(t,\momentVar)}{\markVar} - 1 - \prj{\affPart(t,\momentVar)}{\markVar} \big) \affJumpPart_i(\rmd\markVar) 
+          \end{aligned} \\
           & \affPart_0(t, \momentVar) = 0, ~ \affPart_i(t, \momentVar) = \momentVar_i
         \end{aligned}
       \end{equation*}

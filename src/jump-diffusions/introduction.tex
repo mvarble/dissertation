@@ -25,7 +25,7 @@ We find it important to highlight the following important notation of objects in
       H_- \shortInt \leb_t = \int_0^t H_{s-} \rmd s = \int_0^t H_s \rmd s = H \shortInt \leb_t
     \]
   \item
-    Given a random measure $\jumpMeas: \Omega \times \scrB(\bbR_+ \times \vecSpace) \rightarrow [0,\infty]$, denote the stochastic integral process against some suitably integrable process $H: \Omega \times \bbR_+ \times \vecSpace \rightarrow \bbR$ as follows.
+    For a random measure $\jumpMeas: \Omega \times \scrB(\bbR_+ \times \vecSpace) \rightarrow [0,\infty]$ and (suitably integrable) process $H: \Omega \times \bbR_+ \times \vecSpace \rightarrow \bbR$, we denote the stochastic integral as follows.
     \[
       H \ast \jumpMeas_t = \int_{[0,t] \times \vecSpace} H_s(\markVar) \jumpMeas(\rmd s, \rmd\markVar)
     \]
@@ -41,8 +41,6 @@ We find it important to highlight the following important notation of objects in
     \[
       f(\leb, \id_\vecSpace) \ast \jumpMeas_t = \int_{[0,t] \times \vecSpace} f(s, \markVar) \jumpMeas(\rmd s, \rmd\markVar)
     \]
-  \item
-    Given $(\Prb, \scrF)$ semimartingales $\X, Y: \Omega \times \bbR_+ \rightarrow \bbR$, denote $[\X,Y]$ the quadratic covariation.
   \item
     Given a semimartingale $\X$, denote $\X^\rmc$ its continuous local martingale component and $\jumpMeas^\X$ its jump measure.
 \end{itemize}

@@ -12,8 +12,12 @@
   Moreover, denoting $\hat\ode$ the associated L\'evy-Khintchine map, we have $\odeSpaceJoint = \hat\vecSpace$ and the following.
   \begin{equation*}
     \hat\ode(\hat\momentVar, \hat\stateVar) = \begin{aligned}[t]
-      &\prj{\momentVar_1}{\affDrift(\stateVar_1)} + \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar)(\momentVar_1+\momentVar_2)} \\
-      &+ \affInt(\stateVar_1)\exp\Big(\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) - \affInt(\stateVar_1) -  \bprj{\momentVar_1+\momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}} 
+      &\prj{\momentVar_1}{\affDrift(\stateVar_1)} 
+      + \frac12\bprj{\momentVar_1+\momentVar_2}{\affDiff(\stateVar)(\momentVar_1+\momentVar_2)} \\
+      &+ \affInt(\stateVar_1)\exp\Big(\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) 
+      + \momentVar_4\Big) 
+      - \affInt(\stateVar_1) \\
+      &-  \bprj{\momentVar_1+\momentVar_3}{\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}} 
     \end{aligned}
   \end{equation*}
 \end{proposition}
@@ -55,13 +59,14 @@
   The diffusion $\hat\affDiff$ in (\ref{eq:joint-characteristics}) is verified by the following identities.
   \begin{align*}
     \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,1j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, &
-    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,2j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, \\
-    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,3j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, &
+    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,3j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, \\
+    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,2j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, &
     \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,4j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, \\
     \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,2j}} &= \Bprj{\X^{\rmc,i}}{\X^{\rmc,j}} = \affDiff_{ij}(\X) \shortInt \leb, &
-    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,3j}} &= \Bprj{\X^{\rmc,i}}{0} = 0,  \\
-    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,4j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, &
-    \Bprj{\hat\X^{\rmc,3i}}{\hat\X^{\rmc,4j}} &= \Bprj{0}{0} = 0, 
+    \Bprj{\hat\X^{\rmc,2i}}{\hat\X^{\rmc,4j}} &= \Bprj{\X^{\rmc,i}}{0} = 0,  \\
+    \Bprj{\hat\X^{\rmc,1i}}{\hat\X^{\rmc,3j}} &= \Bprj{\X^{\rmc,i}}{0} = 0, &
+    \Bprj{\hat\X^{\rmc,3i}}{\hat\X^{\rmc,4j}} &= \Bprj{0}{0} = 0, \\
+    &&\Bprj{\hat\X^{\rmc,4i}}{\hat\X^{\rmc,4j}} &= \Bprj{0}{0} = 0
   \end{align*}
   Lastly, for any predictable $H: \Omega \times \bbR_+ \times \hat\vecSpace \rightarrow \bbR_+$, we have the following.
   \begin{align*}

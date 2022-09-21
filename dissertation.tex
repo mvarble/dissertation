@@ -1,61 +1,86 @@
-% --------------------------------------------------------------------------------------------------
+% ==================================================================================================
 % preamble
-% --------------------------------------------------------------------------------------------------
-% our class file establishes our document class, defines fundamental 
-% environments, and includes all of our required packages
-\documentclass[leqno]{./preamble/dissertation}
+% ==================================================================================================
+\documentclass[leqno]{./preamble/ucthesis-CA2012}
 
 % we define our own package for anything involving notation or macros
+\usepackage{./preamble/packages}
 \usepackage{./preamble/macros}
 
-% our document class requires the following variables to be established
-\title{Large deviations of affine processes}
-\author{Matthew Varble}
-\date{\today}
-
-% --------------------------------------------------------------------------------------------------
+% ==================================================================================================
 % document
-% --------------------------------------------------------------------------------------------------
+% ==================================================================================================
 \begin{document}
 
-% change the equation numbering to not include chapter
-\renewcommand{\theequation}{\arabic{equation}}
+% --------------------------------------------------------------------------------------------------
+% title + frontmatter
+% --------------------------------------------------------------------------------------------------
+\begin{frontmatter}
+  \renewcommand{\theequation}{\arabic{equation}}
+  \import{src/frontmatter/}{index}
+\end{frontmatter}
 
-% title page
-\maketitle
+% --------------------------------------------------------------------------------------------------
+% body of thesis
+% --------------------------------------------------------------------------------------------------
+\begin{mainmatter}
+  % add chapters back to equations
+  \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
-% abstract, acknowledgment, table of contents, and introduction in `src/frontmatter/`
-\frontmatter
-\import{src/frontmatter/}{index}
+  % set headers and foothers according to UC thesis 
+  \pagestyle{fancy}
+  \renewcommand{\chaptermark}[1]{\markboth{{\sf #1 \hspace*{\fill} Chapter~\thechapter}}{} }
+  \renewcommand{\sectionmark}[1]{\markright{ {\sf Section~\thesection \hspace*{\fill} #1 }}}
+  \fancyhf{}
+  \makeatletter \if@twoside \fancyhead[LO]{\small \rightmark} \fancyhead[RE]{\small\leftmark} \else \fancyhead[LO]{\small\leftmark}
+  \fancyhead[RE]{\small\rightmark} \fi
+  \def\cleardoublepage{\clearpage\if@openright \ifodd\c@page\else
+    \hbox{}
+    \vspace*{\fill}
+    \begin{center}
+      This page intentionally left blank
+    \end{center}
+    \vspace{\fill}
+    \thispagestyle{plain}
+    \newpage
+    \fi \fi}
+  \makeatother
+  \fancyfoot[c]{\textrm{\textup{\thepage}}} % page number
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancypagestyle{plain} { \fancyhf{} \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
 
+  % Chapter 1: Affine processes
+  \chapter{Affine processes}
+  \label{affine-processes}
+  \import{src/affine-processes/}{index}
 
-% all the chapters in their respective `src/*` directory
-\mainmatter
+  % Chapter 2: Large deviations of affine processes
+  \chapter{Large deviations of affine processes}
+  \label{large-deviations}
+  \import{src/large-deviations/}{index}
 
-% change the equation numbering to include chapter
-\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+  % Chapter 3: Large deviation rate functions
+  \chapter{Large deviation rate functions}
+  \label{rate-functions}
+  \import{src/rate-functions/}{index}
 
-\chapter{Affine processes}
-\label{affine-processes}
-\import{src/affine-processes/}{index}
+\end{mainmatter}
 
-\chapter{Large deviations of affine processes}
-\label{large-deviations}
-\import{src/large-deviations/}{index}
+% --------------------------------------------------------------------------------------------------
+% appendix
+% --------------------------------------------------------------------------------------------------
+\begin{appendix}
+  % Appendix A: Jump-diffusions
+  \chapter{Jump-diffusions}
+  \label{jump-diffusions}
+  \import{src/jump-diffusions/}{index}
 
-\chapter{Large deviation rate functions}
-\label{rate-functions}
-\import{src/rate-functions/}{index}
-
-% appendix chapters in their respective `src/*` directory
-\appendix
-
-\chapter{Jump-diffusions}
-\label{jump-diffusions}
-\import{src/jump-diffusions/}{index}
-
-% bibliography top-level file
-\clearpage
-\bibliography{references}
+  % bibliography
+  \clearpage
+  \bibliography{references}
+\end{appendix}
 
 \end{document}

@@ -14,7 +14,7 @@
     C_{K,i} \defeq \sup_{(t, \momentVar) \in K} |\dot\affPart_i(t, \momentVar)|, \quad i = 0, \ldots, d \\
     C_K \defeq \max\Big\{ C_{K,0}, C_{K,1}\sqrt d, \ldots, C_{K,d} \sqrt d \Big\} < \infty
   \end{gather*}
-  Using the fundamental theorem of calculus and that $\aff(\cdot,\momentVar,\cdot)$ solves $\system(\ode,\tau,\momentVar)$, we produce the following bound for all $(t, \momentVar) \in K$.
+  Using the fundamental theorem of calculus and the fact that $\aff(\cdot,\momentVar,\cdot)$ solves $\system(\ode,\tau,\momentVar)$, we produce the following bound for all $(t, \momentVar) \in K$.
   \begin{align*}
     \big|\aff(t, \momentVar, \stateVar) - \aff(0, \momentVar, \stateVar)\big| 
     &= \Big| \affPart_0(t, \momentVar) + \bprj{\affPart(t, \momentVar) - \momentVar}{\stateVar} \Big| \\

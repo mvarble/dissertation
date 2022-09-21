@@ -7,8 +7,8 @@
   \begin{equation*}
     \rf_{\hat\stateVar}(\hat\pathVar) = 
     \begin{aligned}[t]
-      &\int_0^\infty \frac12 \Bprj{\dot\omega(t)}{\affDiff\big(\pathVar(t)\big)^\dagger \dot\omega(t)} \rmd t 
-      + \int_0^\infty \bigg( \dot\eta(t)\log\Big(\frac{\dot\eta(t)}{\affInt\big(\pathVar(t)\big)} \Big) - \dot\eta(t) + \affInt\big(\pathVar(t)\big) \bigg) \rmd t  \\
+      &\int_0^\infty \frac12 \Bprj{\dot\omega(t)}{\affDiff\big(\pathVar(t)\big)^\dagger \dot\omega(t)} \rmd t \\
+      &+ \int_0^\infty \bigg( \dot\eta(t)\log\Big(\frac{\dot\eta(t)}{\affInt\big(\pathVar(t)\big)} \Big) - \dot\eta(t) + \affInt\big(\pathVar(t)\big) \bigg) \rmd t  \\
       &\qquad+ \int_0^\infty \dot\eta(t) \ode_{\affDist(\pathVar(t),\cdot)}^*\bigg( \frac{\dot\gamma(t) + \affInt\big(\pathVar(t)\big)\overline{\affDist(\pathVar(t), \cdot)}}{\dot\eta(t)} \bigg) \rmd t
     \end{aligned}
   \end{equation*}
@@ -75,9 +75,9 @@
       \end{align*}
     \item
       Now assume $\diffVar_2 \not\in \operatorname{image}\affDiff(\stateVar_1)$.
-      Observe that the expression in (\ref{eq:optimizing-integrand}) can have all expressions other than the quadratic term canceled, if $\momentVar_1 = \momentVar_3 = \momentVar_4 = 0$. 
+      Observe that the expression in (\ref{eq:optimizing-integrand}) can have all expressions other than the quadratic term canceled, if we set $\momentVar_1 = \momentVar_3 = \momentVar_4 = 0$. 
       Denote $w_2, w_2^\bot \in \vecSpace$ the projections of $\diffVar_2$ onto $\operatorname{image}(\affDiff(\stateVar_1))$ and its orthogonal complement, respectively.
-      Select $\tilde w_2 \in \vecSpace$ so that $w_2 = \frac12\affDiff(\stateVar_1) \tilde w_2$,
+      Select $\tilde w_2 \in \vecSpace$ such that $w_2 = \frac12\affDiff(\stateVar_1) \tilde w_2$,
       \begin{equation*}
         \diffVar_2 = w_2 + w_2^\bot = \frac12 \affDiff(\stateVar_1) \tilde w_2 + w_2^\bot,
       \end{equation*}
@@ -93,11 +93,11 @@
       \end{align*}
     \item
       Now suppose $\affInt(\stateVar_1) = 0$.
-      Then, (\ref{eq:optimizing-integrand}) shows us that selecting $\momentVar_1=\momentVar_2=\momentVar_4=0$ will cancel all terms not involving $\diffVar_3$.
+      Then, (\ref{eq:optimizing-integrand}) shows us that evaluating at $\momentVar_1=\momentVar_2=\momentVar_4=0$ will cancel all terms not involving $\diffVar_3$.
       \begin{align*}
         \hat\ode^*(\hat{\diffVar}, \hat\stateVar) 
         = \sup_{\hat\momentVar \in \hat\vecSpace} \bigg( \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) \bigg) 
-        \geq \sup_{\substack{\hat\momentVar=(0, 0, \momentVar, 0)  \\ \momentVar = \rho \diffVar_3 \\ \rho \in \bbR}} \bigg( \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) \bigg) 
+        &\geq \sup_{\substack{\hat\momentVar=(0, 0, \momentVar, 0)  \\ \momentVar = \rho \diffVar_3 \\ \rho \in \bbR}} \bigg( \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) \bigg) \\
         &= \sup_{\rho\in\bbR} \rho\big|\diffVar_3\big|^2 \\
         &= \infty
       \end{align*}
@@ -129,10 +129,14 @@
       \begin{align*}
         0 &= \begin{aligned}[t]
           &\diffVar_1 - \affDrift(\stateVar_1) - \affDiff(\stateVar_1) (\momentVar_1 + \momentVar_2) \\
-          &- \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \affInt(\stateVar_1) \overline{\affDist(\stateVar_1, \cdot)}
+          &- \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) \\
+          &+ \affInt(\stateVar_1) \overline{\affDist(\stateVar_1, \cdot)}
         \end{aligned} \\
         0 &= \diffVar_2 - \affDiff(\stateVar_1) ( \momentVar_1 + \momentVar_2 ) \\
-        0 &= \diffVar_3 - \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \affInt(\stateVar_1) \overline{\affDist(\stateVar_1, \cdot)} \\
+        0 &= \begin{aligned}[t]
+          &\diffVar_3 - \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) \nabla\ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) \\
+          &+ \affInt(\stateVar_1) \overline{\affDist(\stateVar_1, \cdot)} 
+        \end{aligned} \\
         0 &= \diffVar_4 - \affInt(\stateVar_1) \exp\Big( \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) + \momentVar_4\Big) 
       \end{align*}
       These equations yield the following via simple algebra.
@@ -146,9 +150,10 @@
         \end{aligned}
       \end{equation}
       Seeing as $\ode_{\affDist(\stateVar_1,\cdot)}$ is a convex function, the last equality of (\ref{eq:semi-closed-algebra}) corresponds to the unique extreme point of the Fenchel-Legendre transform.
-      \begin{equation*}
-        \Bprj{\momentVar_1 + \momentVar_3}{\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}} - \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) = \ode_{\affDist(\stateVar_1,\cdot)}^*\Big(\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}\Big)
-      \end{equation*}
+      \begin{align*}
+        &\Bprj{\momentVar_1 + \momentVar_3}{\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}} - \ode_{\affDist(\stateVar_1,\cdot)}(\momentVar_1+\momentVar_3) \\
+        &\hspace{55mm}= \ode_{\affDist(\stateVar_1,\cdot)}^*\Big(\frac{\diffVar_3+\affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}}{\diffVar_4}\Big)
+      \end{align*}
       Combining this equality with those of (\ref{eq:semi-closed-algebra}) now gives us the following identity.
       \begin{align*}
         \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) 
@@ -176,8 +181,8 @@
         \hat\ode^*(\hat{\diffVar}, \hat\stateVar) 
         &= \sup_{\hat\momentVar \in \hat\vecSpace} \bigg( \bprj{\hat\momentVar}{\hat\diffVar} - \hat\ode\big(\hat\momentVar, \hat\stateVar\big) \bigg)  \\
         &= \sup_{\momentVar_1,\momentVar_2,\momentVar_3 \in \vecSpace} \bigg[ \begin{aligned}[t]
-          & \bprj{\momentVar_1}{\diffVar_1 - \affDrift(\stateVar_1) - \diffVar_2 - \diffVar_3} 
-          + \Bprj{\momentVar_1+\momentVar_2}{\diffVar_2 
+          & \bprj{\momentVar_1}{\diffVar_1 - \affDrift(\stateVar_1) - \diffVar_2 - \diffVar_3} \\
+          &+ \Bprj{\momentVar_1+\momentVar_2}{\diffVar_2 
           - \frac12\affDiff(\stateVar_1)(\momentVar_1+\momentVar_2)} \\
           &+ \Bprj{\momentVar_1+\momentVar_3}{\diffVar_3 + \affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}} 
           + \affInt(\stateVar_1) \\
@@ -185,8 +190,8 @@
           \bigg]
         \end{aligned} \\
         &= \sup_{\momentVar_1,\momentVar_2,\momentVar_3 \in \vecSpace} \bigg[ \begin{aligned}[t]
-          & \bprj{\momentVar_1}{\diffVar_1 - \affDrift(\stateVar_1) - \diffVar_2 - \diffVar_3} 
-          + \Bprj{\momentVar_1+\momentVar_2}{\diffVar_2 
+          & \bprj{\momentVar_1}{\diffVar_1 - \affDrift(\stateVar_1) - \diffVar_2 - \diffVar_3}  \\
+          &+ \Bprj{\momentVar_1+\momentVar_2}{\diffVar_2 
           - \frac12\affDiff(\stateVar_1)(\momentVar_1+\momentVar_2)} \\
           &+ \Bprj{\momentVar_1+\momentVar_3}{\diffVar_3 + \affInt(\stateVar_1)\overline{\affDist(\stateVar_1,\cdot)}} 
           + \affInt(\stateVar_1) 

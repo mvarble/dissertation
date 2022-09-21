@@ -28,12 +28,12 @@
     \momentToTwist_{\underline t, n}(\underline\momentVar_{n:n}) = \momentVar_n = \twistToMoment_{\underline t,n}(\underline\twistVar) = \twistVar_n,
   \end{equation*}
   while an inductive hypothesis $\momentToTwist_{\underline t, k}(\underline\momentVar_{k:n}) = \twistVar_k$ gives us the next step.
-  \begin{equation*}
+  \begin{align*}
     \momentToTwist_{\underline t, k-1}(\underline\momentVar_{k-1:n}) 
-    = \twistToMoment_{\underline t, k-1}(\underline\twistVar) + \affPart\big(\Delta t_k, \momentToTwist_{\underline t, k}(\underline\momentVar_{k:n}) \big)
-    = \twistVar_{k-1} - \affPart(\Delta t_k, \twistVar_k) + \affPart(\Delta t_k, \twistVar_k )
-    = \twistVar_{k-1}
-  \end{equation*}
+    &= \twistToMoment_{\underline t, k-1}(\underline\twistVar) + \affPart\big(\Delta t_k, \momentToTwist_{\underline t, k}(\underline\momentVar_{k:n}) \big) \\
+    &= \twistVar_{k-1} - \affPart(\Delta t_k, \twistVar_k) + \affPart(\Delta t_k, \twistVar_k )\\
+    &= \twistVar_{k-1}
+  \end{align*}
   Dual to this, fix $\underline\momentVar \in \vecSpace^{|\underline t|}$ for which $\aff(\underline t, \underline\momentVar, \stateVar_0) < \infty$ and define $\underline\twistVar \defeq \momentToTwist_{\underline t}(\underline\momentVar)$.
   Again, we immediately have
   \begin{equation*}

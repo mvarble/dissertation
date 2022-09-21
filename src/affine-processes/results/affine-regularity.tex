@@ -1,11 +1,11 @@
 \begin{theorem}
   \label{theorem:affine-regularity}
   An affine process $\X$ on $\stateSpace$ is a $(\Prb_\stateVar, \scrF)$ jump-diffusion in which the differential $\trunc$-characteristics $(\affDrift^\trunc, \affDiff, \affJump)$ are affine maps of the following form.
-  \begin{equation*}
-    \affDrift^\trunc(\stateVar) \defeq \affDriftPart^\trunc_0 + \sum_{i=1}^d \stateVar^i \affDriftPart^\trunc_i, \quad
-    \affDiff(\stateVar) \defeq \affDiffPart_0 + \sum_{i=1}^d \stateVar^i \affDiffPart_i, \quad
-    \affJump(\stateVar, \rmd\markVar) \defeq \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\rmd\markVar)
-  \end{equation*}
+  \begin{align*}
+    \affDrift^\trunc(\stateVar) &\defeq \affDriftPart^\trunc_0 + \sum_{i=1}^d \stateVar^i \affDriftPart^\trunc_i, \\
+    \affDiff(\stateVar) &\defeq \affDiffPart_0 + \sum_{i=1}^d \stateVar^i \affDiffPart_i,  \\
+    \affJump(\stateVar, \rmd\markVar) &\defeq \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\rmd\markVar)
+  \end{align*}
   The associated \emph{L\'evy-Khintchine map} $\ode$ then also affine,
   \begin{align*}
     \ode(\momentVar, \stateVar) 

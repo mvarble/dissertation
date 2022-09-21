@@ -7,12 +7,12 @@ Cram\'er's theorem---the tool we leveraged to prove the above principle---is pro
 \begin{equation*}
   \exp\Big( \prj{\underline\momentVar}{\Xee_{\underline t}} - \aff^\epsilon(\underline t, \underline\momentVar, \Xee_0) \Big)
 \end{equation*}
-Observe that Theorem \ref{theorem:mgf-fdds} gives us a perspective of how this measure depends on the increments; a valid moment $\underline\momentVar \in \vecSpace^{|\underline t|}$ for the above expression must satisfy $\underline\momentVar = \twistToMoment_{\underline t}(\underline\twistVar)$ for some $\underline\twistVar \in \momentSpace(\underline t)$, and
+Observe that Theorem \ref{theorem:mgf-fdds} gives us a perspective of how this measure depends on the increments; a valid moment $\underline\momentVar \in \vecSpace^{|\underline t|}$ for the above expression must satisfy $\underline\momentVar = \twistToMoment_{\underline t}(\underline\twistVar)$ for some $\underline\twistVar \in \momentSpace(\underline t)$, and the following.
 \begin{equation*}
   \exp\Big( \prj{\underline\momentVar}{\Xee_{\underline t}} - \aff^\epsilon(\underline t, \underline\momentVar, \Xee_0) \Big) = 
-  \exp\sum_{k=1}^{|\underline t|} \Big( \prj{\twistVar_k}{\Xee_{t_k}-\Xee_{t_{k-1}}} - \affShift^\epsilon\big(\Delta t_k, \twistVar_k, \Xee_{t_{k-1}} \big) \Big) \eqdef \fddDensity^{\epsilon, \underline t, \underline\twistVar}
+  \exp\sum_{k=1}^{|\underline t|} \Big( \prj{\twistVar_k}{\Xee_{t_k}-\Xee_{t_{k-1}}} - \affShift^\epsilon\big(\Delta t_k, \twistVar_k, \Xee_{t_{k-1}} \big) \Big) 
 \end{equation*}
-We denote these changes of measure like so,
+We denote the above quantity $\fddDensity^{\epsilon,\underline t, \underline\twistVar}$, its associated measure change by
 \begin{equation*}
   \fddPrb^{\epsilon,\underline t,\underline\twistVar}_\stateVar(\rmd\omega) \defeq \fddDensity^{\epsilon,\underline t,\underline\twistVar}(\omega) \cdot \Prb(\rmd\omega),
 \end{equation*}

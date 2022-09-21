@@ -62,7 +62,7 @@
     Q^\momentVar(t,\stateVar) &\defeq q^\momentVar_0(t) + \bprj{q^\momentVar(t)}{\stateVar} \\
     q_0^\momentVar(t) &\defeq \int_0^t \odePart_0\big(q^\momentVar(s)\big) \rmd s
   \end{align*}
-  By linearity, $Q^\momentVar$ is a solution to $\system(\ode, \delta, \momentVar)$ for each $\momentVar \in K$, and so $K \subseteq \momentSpace(\delta)$.
+  By linearity, $Q^\momentVar$ is a solution to $\system(\ode, \delta, \momentVar)$ for each $\momentVar \in K$, and so we have $K \subseteq \momentSpace(\delta)$.
   For each $\momentVar \in K \subseteq \momentSpace(\delta)$, a solution $\tilde Q^\momentVar$ to $\system(\ode,\delta,\momentVar)$ is such that the associated $\tilde q^\momentVar$ solves (\ref{eq:system''}) and so $\tilde q^\momentVar = q^\momentVar$.
   From here, it is thus the case that $\tilde Q^\momentVar = Q^\momentVar$.
   This means $\aff$ from Theorem \ref{theorem:KM} is such that $\aff(\cdot,\momentVar,\cdot)$ is the unique solution to $\system(\ode,\momentVar,\delta)$ for all $\momentVar \in K$.

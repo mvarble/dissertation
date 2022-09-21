@@ -50,7 +50,9 @@
   \end{align}
   The final term of (\ref{eq:tower-end}) is identical to that of (\ref{eq:tower-start}), where we have reduced $k = n$ to $k = n-1$.
   Repeating these equalities inductively $k = n -1, \ldots, 1$ will result in the desired identity.
-  \begin{equation*}
-    \aff\big(\underline t, \twistToMoment_{\underline t}(\underline\twistVar), \stateVar\big) =  \sum_{k=2}^n \affPart_0(\Delta t_k, \twistVar_k)  + \log\Exp_{\Prb_\stateVar} \exp\prj{\twistVar_1}{\X_{t_1}} = \sum_{k=1}^n \affPart_0(\Delta t_k, \twistVar_k) + \bprj{\affPart(\Delta t_1, \twistVar_1)}{\stateVar}
-  \end{equation*}
+  \begin{align*}
+    \aff\big(\underline t, \twistToMoment_{\underline t}(\underline\twistVar), \stateVar\big) 
+    &=  \sum_{k=2}^n \affPart_0(\Delta t_k, \twistVar_k)  + \log\Exp_{\Prb_\stateVar} \exp\prj{\twistVar_1}{\X_{t_1}}  \\
+    &= \sum_{k=1}^n \affPart_0(\Delta t_k, \twistVar_k) + \bprj{\affPart(\Delta t_1, \twistVar_1)}{\stateVar}
+  \end{align*}
 \end{proof}

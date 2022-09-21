@@ -1,15 +1,8 @@
-\ProvidesClass{dissertation}
-
-% inherits book
-\LoadClassWithOptions{book}
-
-% update geometry
-\usepackage[margin=1.5in]{geometry}
-
 % project directories
 \usepackage{import}
 
-% basic packages for math stuff
+% basic packages for formatting
+\usepackage{fancyhdr}
 \usepackage{array}
 \usepackage[inline]{enumitem}
 \usepackage{float}
@@ -31,10 +24,9 @@
 % section number depth
 \setcounter{secnumdepth}{3}
 
+% https://tex.stackexchange.com/questions/232051/numbering-equations-in-sections-and-sub-sections
 % equation counter includes chapter+section and resets within chapter
 \counterwithin{equation}{section}
-
-% https://tex.stackexchange.com/questions/232051/numbering-equations-in-sections-and-sub-sections
 \let\oldsection\section
 \renewcommand{\section}{
   \renewcommand{\theequation}{\thesection.\arabic{equation}}
@@ -46,11 +38,8 @@
   \oldsubsection
 }
 
-
 % theorem environments
 \usepackage{aliascnt}
-%\newcounter{environment}[chapter]
-%\counterwithin{environment}{chapter}
 \newaliascnt{theorem}{equation}
 \newaliascnt{proposition}{equation}
 \newaliascnt{lemma}{equation}
@@ -72,10 +61,10 @@
   \newtheorem{assumption}{Assumption}[section]
   \theoremheaderfont{\itshape}
   \theorembodyfont{}
-  \newtheorem*{proof}{Proof}
+  %\newtheorem*{proof}{Proof}
 }
 
 % bibliography
-\usepackage{natbib}
-\usepackage{bibentry}
+%\usepackage{natbib}
+%\usepackage{bibentry}
 \bibliographystyle{alpha}

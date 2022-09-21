@@ -1,6 +1,6 @@
 \begin{example}[Compound-Hawkes]
   \label{example:compound-hawkes}
-  We could similarly come up with a family $(\Xe)_{\epsilon>0}$ of compound-Hawkes processes with affine intensity $\affInt(\stateVar) = \affIntPart_0 + \affIntPart_1 \stateVar$,
+  We can also consider a family $(\Xe)_{\epsilon>0}$ of compound-Hawkes processes with affine intensity $\affInt(\stateVar) = \affIntPart_0 + \affIntPart_1 \stateVar$.
   \begin{gather*}
     \Xe_t = \stateVar + \hawkesRate\big(\mu - \Xe\big) \shortInt \leb_t + \epsilon \sum_{k=1}^{N^\epsilon_t} \V_k, \\
     \N^\epsilon \text{ intensity } \frac1\epsilon\affInt(\Xe), \\
@@ -49,7 +49,10 @@
       The work is the exact same, and so our rate function associated with $(\Xe, \epsilon\N^\epsilon)_{\epsilon>0}$ will become the following.
       \begin{equation}
         \label{eq:rf-compound-hawkes}
-        \rf_{\X\N}(\pathVar, \eta) = \int_0^\infty \bigg( \dot\eta(t) \log\Big( \frac{\dot\eta(t)}{\affInt\big(\pathVar(t)\big)} \Big) - \dot\eta(t) + \affInt\big(\pathVar(t)\big) + \dot\eta(t) \ode_\affDist^*\Big(\frac{\dot\pathVar(t) - \hawkesRate(\mu-\pathVar(t))}{\dot\eta(t)} \Big) \bigg) \rmd t
+          \rf_{\X\N}(\pathVar, \eta) = \begin{aligned}[t]
+            &\int_0^\infty \bigg( \dot\eta(t) \log\Big( \frac{\dot\eta(t)}{\affInt\big(\pathVar(t)\big)} \Big) - \dot\eta(t) + \affInt\big(\pathVar(t)\big) \bigg) \rmd t \\
+            &+ \int_0^\infty \dot\eta(t) \ode_\affDist^*\Big(\frac{\dot\pathVar(t) - \hawkesRate(\mu-\pathVar(t))}{\dot\eta(t)} \Big) \rmd t
+          \end{aligned}
       \end{equation}
   \end{enumerate}
   Instead of working through the numerous details of the lengthy argument above, we can again use Theorem \ref{theorem:ldp-integral} and its rate function (\ref{eq:rf-integral}).
@@ -62,7 +65,10 @@
   Our associated L\'evy-Khintchine map is then the following $\ode$.
   \begin{align*}
     \ode(\hat\momentVar, \hat\stateVar) 
-    &= \momentVar_1\big(\hawkesRate(\mu - \stateVar_1) + \overline\affDist\big) + \momentVar_2 \affInt(\stateVar_1) + \int_{\bbR_+^2} \Big( e^{\momentVar_1\markVar_1 + \momentVar_2} - 1 - \momentVar_1\markVar_1 - \momentVar_2\markVar_2 \Big) \affDist(\rmd\markVar_1)\delta_1(\rmd\markVar_2) \\
+    &= \begin{aligned}[t]
+      &\momentVar_1\big(\hawkesRate(\mu - \stateVar_1) + \overline\affDist\big) + \momentVar_2 \affInt(\stateVar_1) \\
+      &+ \int_{\bbR_+^2} \Big( e^{\momentVar_1\markVar_1 + \momentVar_2} - 1 - \momentVar_1\markVar_1 - \momentVar_2\markVar_2 \Big) \affDist(\rmd\markVar_1)\delta_1(\rmd\markVar_2)
+    \end{aligned} \\
     &= \momentVar_1 \hawkesRate(\mu-\stateVar_1) + e^{\ode_\affDist(\momentVar_1)+\momentVar_2} - 1
   \end{align*}
   Almost identical calculus to Example \ref{example:compound-poisson} also provides us with the following expression, which agrees with \ref{eq:rf-compound-hawkes}.

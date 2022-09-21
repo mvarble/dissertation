@@ -33,7 +33,7 @@
   As with the normal increments, our rate function (\ref{eq:rf-integral}) resolves this immediately.
   \begin{align*}
     \ode^*(\diffVar, \stateVar) 
-    = \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\diffVar - \momentVar - \int_\bbR \big( e^{\momentVar\markVar} - 1 - \momentVar\markVar \big) \delta_1(\rmd\markVar) \bigg) 
+    &= \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\diffVar - \momentVar - \int_\bbR \big( e^{\momentVar\markVar} - 1 - \momentVar\markVar \big) \delta_1(\rmd\markVar) \bigg)  \\
     &= \sup_{\momentVar\in\vecSpace} \bigg( \momentVar\diffVar - e^\momentVar + 1 \bigg) \\
     &= \left\{\begin{array}{ll}
       \diffVar \log\diffVar - \diffVar + 1, & \diffVar \geq 0 \\

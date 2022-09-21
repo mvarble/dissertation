@@ -11,7 +11,7 @@ A stochastic process $\X$ with a marginal-index-set $I$ and state space $(\state
     or its curried version $\X: \Omega \rightarrow \stateSpace^I$.
 \end{itemize}
 With this convention, we find it appropriate to denote filtrations $\scrF=(\scrF_t)_{t\geq0}$ of increasing $\sigma$-algebras $\scrF_t$.
-Seeing as $\scrF$ denotes the actual family of $\sigma$-algebras, we denote the joined algebra with an infinity subscript, $\scrF_\infty \defeq \bigvee_{t\geq0} \scrF_t$.
+Seeing as $\scrF$ denotes the actual family of $\sigma$-algebras, we denote the joined algebra with infinity subscript, $\scrF_\infty \defeq \bigvee_{t\geq0} \scrF_t$.
 The blackboard notation will generally correspond to a topological space, including those objects we typically introduce in analysis.
 \begin{itemize}
   \item
@@ -35,7 +35,7 @@ The blackboard notation will generally correspond to a topological space, includ
     \[
       \bprj{\vecVar}{\nabla f(\momentVar)} \defeq \Der f(\momentVar) \cdot \vecVar,
     \]
-    If there is some canonical ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote $\Der_i f \in \cpathSpace{\bbU}{\bbR}$ the $i$-th partial derivative.
+    If there is some canonical ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote the $i$-th partial derivative by $\Der_i f \in \cpathSpace{\bbU}{\bbR}$.
     \[
       \Der_i f(\momentVar) \defeq \Der f(\momentVar) \cdot \basisVec_i, \quad i = 1,\ldots, d
     \]
@@ -45,7 +45,7 @@ The blackboard notation will generally correspond to a topological space, includ
     \[
       \Hess f(\momentVar) \defeq \Der\big( \nabla f(u) \big)
     \]
-    If there is some canonical ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote $\Der_{ij} f \in \cpathSpace{\bbU}{\bbR}$ the second-order $ij$-th partial derivative.
+    If there is some canonical ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote the second-order $ij$-th partial derivative $\Der_{ij} f \in \cpathSpace{\bbU}{\bbR}$.
     \[
       \Der_{ij} f(\momentVar) \defeq \bprj{\basisVec_i}{\Hess f(\momentVar) \cdot \basisVec_j}, \quad i,j = 1, \ldots, d
     \]
@@ -64,11 +64,11 @@ Particular examples of this convention are:
   \item
     the Borel algebra $\scrB(\stateSpace)$ associated to the relative topology of some subset $\stateSpace$ of a space $\vecSpace$ with itself some canonical topology.
 \end{itemize}
-In the case that we are dealing with a finite-dimensional real vector space $\vecSpace$ with inner-product $\prj\cdot\cdot$, we assume some canonical orthonormal basis $\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace} \in \vecSpace$ and establish the associated isometric isomorphism $\vecSpace \equiv \bbR^d$.
+In the case that we are dealing with a finite-dimensional real vector space $\vecSpace$ with inner-product $\prj\cdot\cdot$, we fix an orthonormal basis $\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace} \in \vecSpace$ and establish the associated isometric isomorphism $\vecSpace \equiv \bbR^d$.
 \begin{equation*}
   \vecVar \in \vecSpace \quad\longleftrightarrow\quad \big(\vecVar^1, \ldots, \vecVar^{\operatorname{dim}\vecSpace}\big); \qquad \vecVar^i \defeq \prj{\vecVar}{\basisVec_i}, \quad i = 1, \ldots, \operatorname{dim}\vecSpace
 \end{equation*}
-Similarly identify any map $f: \bbA \rightarrow \vecSpace$ with component maps $f_1, \ldots, f_d: \bbA \rightarrow \bbR$.
+Similarly identify any map $f: \bbA \rightarrow \vecSpace$ with its respective component maps $f_1, \ldots, f_d: \bbA \rightarrow \bbR$.
 \begin{equation*}
   f: \bbA \rightarrow \vecSpace \quad\longleftrightarrow\quad \big(f_1,\ldots, f_d\big): \bbA \rightarrow \bbR^d; \qquad f_i(a) \defeq \prj{f(a)}{\basisVec_i}
 \end{equation*}

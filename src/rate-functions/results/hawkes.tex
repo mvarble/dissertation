@@ -14,28 +14,30 @@
   The large deviation principle associated with $(\mgPrb^\epsilon_\tau)_{\epsilon>0}$ then comes from that of $(\Prb^\epsilon|_{\scrF^\epsilon_\tau})_{\epsilon>0}$.
   The change in rate function comes from exponential corrections of our martingale term.
   Indeed, we observe that if $J^\epsilon$ is uniformly within $\delta > 0$ of some absolutely continuous increasing $\pathVar$ on some compact interval $[0,\tau]$, then we have the following inequalities.
-  \begin{align*}
+  \begin{gather*}
     \bigg| \int_0^\tau \Big( 1 - \affInt\big(J^\epsilon_t\big) \Big) \rmd t - \int_0^\tau \Big( 1 - \affInt\big( \pathVar(t) \big) \Big) \rmd t \bigg|
-    &\leq \ell_1 \delta \tau \\
+    \leq \ell_1 \delta \tau \\
     %
-    \bigg| \int_0^\tau \log\affInt\big(J^\epsilon_{t-}\big) \rmd J^\epsilon_t - \int_0^\tau \log\affInt\big(\pathVar(t-)\big) \rmd J^\epsilon_t \bigg| 
-    &\leq \sup_{t\in[0,\tau]} \Big| \log\affInt\big(J^\epsilon_t\big) - \log\affInt\big(\pathVar(t)\big) \Big| \cdot J^\epsilon_T \\
-    &\leq \frac{\affIntPart_1}{\affIntPart_0} \delta \Big( \pathVar(\tau) + \delta \Big), \\
+    \begin{aligned}[t]
+      &\bigg| \int_0^\tau \log\affInt\big(J^\epsilon_{t-}\big) \rmd J^\epsilon_t - \int_0^\tau \log\affInt\big(\pathVar(t-)\big) \rmd J^\epsilon_t \bigg| \\
+      &\leq \sup_{t\in[0,\tau]} \Big| \log\affInt\big(J^\epsilon_t\big) - \log\affInt\big(\pathVar(t)\big) \Big| \cdot J^\epsilon_T \\
+      &\leq \frac{\affIntPart_1}{\affIntPart_0} \delta \Big( \pathVar(\tau) + \delta \Big), 
+    \end{aligned} \\
     %
     \bigg| \int_0^\tau \log\affInt\big(\pathVar(t-)\big) \rmd J^\epsilon_t - \int_0^\tau \log\affInt\big(\pathVar(t-)\big) \rmd \pathVar(t)  \bigg| 
-    &\leq \log\affInt\big(\pathVar(\tau)\big) \delta \\
+    \leq \log\affInt\big(\pathVar(\tau)\big) \delta \\
     %
     \bigg| \int_0^\tau \log\affInt\big(J^\epsilon_{t-}\big) \rmd J^\epsilon_t - \int_0^\tau \log\affInt\big(\pathVar(t-)\big) \rmd \pathVar(t) \bigg| 
-    &\leq \frac{\affIntPart_1}{\affIntPart_0} \delta \Big( \pathVar(\tau) + \delta \Big) + \log\affInt\big(\pathVar(\tau)\big) \delta 
-  \end{align*}
+    \leq \frac{\affIntPart_1}{\affIntPart_0} \delta \Big( \pathVar(\tau) + \delta \Big) + \log\affInt\big(\pathVar(\tau)\big) \delta 
+  \end{gather*}
   Then these give us the following identity, revealing the rate function.
   \begin{align*}
     &\lim_{\delta\rightarrow0}\lim_{\epsilon\rightarrow0}\epsilon\log\mgPrb^\epsilon_\tau\big( J^\epsilon|_{[0,\tau]} \in \ball{\pathVar}{\delta} \big) \\
     &= \lim_{\delta\rightarrow0}\lim_{\epsilon\rightarrow0} \epsilon\log\Exp_{\Prb^\epsilon}\bigg( \exp\Big(\frac1\epsilon\int_0^\tau \log\affInt(J^\epsilon_{s-}) \rmd J^\epsilon_s + \frac1\epsilon\int_0^\tau \big(1 - \affInt(J^\epsilon_s) \big) \rmd s  \Big) 1_{J^\epsilon|_{[0,\tau]} \in \ball{\pathVar}{\delta}} \bigg) \\
     &= \begin{aligned}[t]
       & \int_0^\tau \log\affInt\big(\pathVar(s-)\big) \rmd\pathVar(s) + \int_0^\tau \Big(1 - \affInt\big(\pathVar(s)\big) \Big) \rmd s \\
-      &+\lim_{\delta\rightarrow0} \Big( \affIntPart_1 \delta \tau + \frac{\affIntPart_1}{\affIntPart_0} \delta \big( \pathVar(\tau) + \delta \big) + \log\affInt\big(\pathVar(\tau)\big) \delta \Big) 
-      +\lim_{\delta\rightarrow0}\lim_{\epsilon\rightarrow0} \epsilon \log \Prb\Big( \epsilon \N_{\cdot/\epsilon}|_{[0,\tau]} \in \ball{\pathVar}{\delta} \Big)
+      &+\lim_{\delta\rightarrow0} \Big( \affIntPart_1 \delta \tau + \frac{\affIntPart_1}{\affIntPart_0} \delta \big( \pathVar(\tau) + \delta \big) + \log\affInt\big(\pathVar(\tau)\big) \delta \Big) \\
+      &+\lim_{\delta\rightarrow0}\lim_{\epsilon\rightarrow0} \epsilon \log \Prb\Big( \epsilon \N_{\cdot/\epsilon}|_{[0,\tau]} \in \ball{\pathVar}{\delta} \Big)
     \end{aligned} \\
     &= \int_0^\tau \Big( \dot\pathVar(s) \log \affInt\big(\pathVar(s)\big) - \affInt\big(\pathVar(s)\big) + 1 \Big) \rmd s - \int_0^\tau \Big(\dot\pathVar(t) \log \dot\pathVar(t) - \dot\pathVar(t) + 1 \Big) \rmd s \\
     &= -\int_0^\tau \bigg( \dot\pathVar(s) \log\Big(\frac{\dot\pathVar(s)}{\affInt\big(\pathVar(s)\big)} \Big) - \dot\pathVar(s) + \affInt\big(\pathVar(s)\big) \bigg) \rmd s

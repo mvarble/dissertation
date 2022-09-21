@@ -3,14 +3,17 @@ The parameterization that establishes these distributions $(\Prb^\epsilon_\state
 To this end, $(\Xe)_{\epsilon>0}$ is a family of affine processes in which we are effectively regularizing $\X$ as $\epsilon \rightarrow 0$, and our large deviation principle explains this regularization.
 
 The principle is established with regarding $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$ as a family of measures $\Prb^\epsilon_\stateVar$ on the Borel space associated to our Skorokhod topology on $\pathSpace{[0,\infty)}{\stateSpace}$.
-This means that there exists a lower-semi-continuous function $\rf_\stateVar: \pathSpace{[0,\infty)}{\stateSpace} \rightarrow [0,\infty]$, known as a \emph{rate function}, with the characterizing property that any $\Gamma \in \scrB(\pathSpace{[0,\infty)}{\stateSpace})$ is such that the probabilities $\big(\Prb^\epsilon_\stateVar( \Xe \in \Gamma)\big)_{\epsilon>0}$
-have a first-order exponential asymptotic that corresponds to variational problems on $\rf_\stateVar$.
-\begin{equation*}
+This means that there exists a lower-semi-continuous function,
+\[
+  \rf_\stateVar: \pathSpace{[0,\infty)}{\stateSpace} \rightarrow [0,\infty],
+\]
+known as a \emph{rate function}, with the characterizing property that any target set $\Gamma \in \scrB(\pathSpace{[0,\infty)}{\stateSpace})$ is such that the probabilities $\big(\Prb^\epsilon_\stateVar( \Xe \in \Gamma)\big)_{\epsilon>0}$ have a first-order exponential asymptotic that corresponds to variational problems on $\rf_\stateVar$.
+\begin{align*}
   -\inf_{\pathVar \in \Gamma^\circ} \rf_\stateVar(\pathVar) 
-  \leq \liminf_{\epsilon\rightarrow0} \epsilon\log\Prb^\epsilon_\stateVar\big( \Xe \in \Gamma \big)
-  \leq \limsup_{\epsilon\rightarrow0} \epsilon\log\Prb^\epsilon_\stateVar\big( \Xe \in \Gamma \big)
+  &\leq \liminf_{\epsilon\rightarrow0} \epsilon\log\Prb^\epsilon_\stateVar\big( \Xe \in \Gamma \big) \\
+  &\leq \limsup_{\epsilon\rightarrow0} \epsilon\log\Prb^\epsilon_\stateVar\big( \Xe \in \Gamma \big) 
   \leq -\inf_{\pathVar \in \overline\Gamma} \rf_\stateVar(\pathVar) 
-\end{equation*}
+\end{align*}
 Having the full strength of the Borel space on $\pathSpace{[0,\infty)}{\stateSpace}$, our admissible sets $\Gamma$ can include a variety of tests on $\Xe$.
 For instance, suitable selection of $\Gamma$ allows us to derive asymptotics of probabilities associated with stopping times, path-integrals, and finite-dimensional distributions of $(\Xe)_{\epsilon>0}$.
 
@@ -69,7 +72,7 @@ Puhalskii has actively developed such approaches, and we manipulate a proof from
 For resources on large deviations on the Skorokhod space, see \cite{feng2006}, a resource which we use to get some of our results.
 
 Now that we have introduced the key ideas, the remainder of this chapter is organized as follows.
-\begin{enumerate}[leftmargin=20mm]
+\begin{enumerate}[leftmargin=24mm]
   \item[\,{\hyperref[large-deviations:asymptotics]{Section }}\ref{large-deviations:asymptotics}.]
     Describes our parameterization $(\Prb^\epsilon_\stateVar)_{\epsilon>0}$, 
   \item[\,{\hyperref[large-deviations:assumptions]{Section }}\ref{large-deviations:assumptions}.]

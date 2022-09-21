@@ -24,12 +24,12 @@
   Specifically we use \cite[Theorem III.3.24]{jacod2003} and verify that our proposed differential characteristics align with the identities of \cite[III.3.28]{jacod2003}.
   For any $\scrF$ predictable $H: \Omega \times \bbR_+ \times \vecSpace \rightarrow \bbR_+$, we apply \cite[Remark I.4.36]{jacod2003} to see that the following identities hold.
   \begin{align*}
-    \Exp_\Prb \big( (\mgDensity^\twistFunc H) \ast \jumpMeas^\X \big)
+    &\Exp_\Prb \big( (\mgDensity^\twistFunc H) \ast \jumpMeas^\X \big) \\
     &= \Exp_\Prb \int_{\bbR_+ \times \vecSpace} \mgDensity^\twistFunc_s H(\cdot, s, \markVar) \jumpMeas^\X(\rmd s, \rmd\markVar) \\
     &= \Exp_\Prb \int_{\bbR_+ \times \vecSpace} \exp\Big( \twistFunc(\leb, \X_-) \shortInt \X_s - \ode\big( \twistFunc(\leb, \X), \X \big) \shortInt \leb_s \Big) H(\cdot, s, \markVar) \jumpMeas^\X(\rmd s, \rmd\markVar) \\
     &= \Exp_\Prb \int_{\bbR_+ \times \vecSpace} \begin{aligned}[t]
       &\exp\Big( \twistFunc(\leb, \X_-) \shortInt \X_{s-} + \Delta\big(\twistFunc(\leb, \X_-) \shortInt \X\big)_s - \ode\big( \twistFunc(\leb, \X), \X \big) \shortInt \leb_s \Big)  \\
-      &\hspace{5cm} \cdot H(\cdot, s, \markVar) \jumpMeas^\X(\rmd s, \rmd\markVar) 
+      &\hspace{75mm} \cdot H(\cdot, s, \markVar) \jumpMeas^\X(\rmd s, \rmd\markVar) 
     \end{aligned} \\
     &= \Exp_\Prb \int_{\bbR_+ \times \vecSpace} \mgDensity^\twistFunc_{s-} e^\prj{\twistFunc(s, \X_{s-})}{\markVar} H(\cdot, s, \markVar) \jumpMeas^\X(\rmd s, \rmd\markVar)  \\
     &= \Exp_\Prb \int_{\bbR_+ \times \vecSpace} \mgDensity^\twistFunc_{s-} e^\prj{\twistFunc(s, \X_{s-})}{\markVar} H(\cdot, s, \markVar) \predproj{\jumpMeas^\X}(\rmd s, \rmd\markVar)  \\
@@ -45,7 +45,7 @@
     &= \mgDensity^\twistFunc_- \twistFunc(\leb, \X_-) \shortInt \X^\rmc_t
   \end{align*}
   Note that we applied our usual calculus operation \cite[Remark I.4.37]{jacod2003} above.
-  This identity gives us our desired predictable quadratic covariation when using the previously referenced calculus in addition to that from \cite[Theorem I.4.40]{jacod2003}.
+  Using this calculus operation once more, in addition to that in \cite[Theorem I.4.40]{jacod2003}, we get our desired predictable quadratic covariation.
   \begin{align*}
     \bprj{\mgDensity^{\twistFunc,\rmc}}{\X^{\rmc,j}}
     &= \Bprj{\mgDensity^\twistFunc_- \twistFunc(\leb, \X_-) \shortInt \X^\rmc}{\X^{\rmc,j}} \\

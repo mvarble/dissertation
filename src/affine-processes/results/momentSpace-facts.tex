@@ -36,13 +36,13 @@
       q(t_0,t_0,\vecVar) = \vecVar
     \end{array}\right.
   \end{equation*}
-  which is continuously differentiable with derivatives $\partial_{t_0} q(t,t_0,\vecVar) \in \vecSpace$ and $Dq(t,t_0,\vecVar) \in \bbL(\vecSpace)$ satisfying the following equations.
+  which is continuously differentiable with derivatives $\partial_{t_0} q(t,t_0,\vecVar) \in \vecSpace$ (second coordinate) and $Dq(t,t_0,\vecVar) \in \bbL(\vecSpace)$ (third coordinate) satisfying the following equations.
   \begin{align*}
     \partial_{t_0} q(t, t_0, \vecVar) 
     &= -f(t_0,\momentVar) + \int_{t_0}^t Df\big(s, q(s,t_0,\vecVar) \big) \partial_{t_0} q(s,t_0, \vecVar) \rmd s \\[0.5em]
     %
     D q(t,t_0,\vecVar) 
-    &= \operatorname{id}_\vecSpace + \int_{t_0}^t Df\big(s, q(s,t_0,\vecVar) \big) Dq(s, t_0, \vecVar) \rmd s
+    &= \id_\vecSpace + \int_{t_0}^t Df\big(s, q(s,t_0,\vecVar) \big) Dq(s, t_0, \vecVar) \rmd s
   \end{align*}
   In particular, for each $\vecVar \in B(\momentVar, \epsilon)$, we have $|\vecVar - \affPart(0,\momentVar)| = |\vecVar - \momentVar| < \epsilon$, and so $(0,\vecVar) \in S_\epsilon$; this allows us to disregard the middle coordinate and have $q: [0,\tau] \times B(\momentVar,\epsilon) \rightarrow \vecSpace$ such that $q(\cdot,\vecVar)$ is the unique solution to 
   \begin{equation*}
@@ -53,7 +53,7 @@
   \end{equation*}
   and the derivative in the second coordinate $Dq(t,\vecVar) \in \bbL(\vecSpace)$ satisfies the following equation.
   \begin{align*}
-    D q(t,\vecVar) &= \operatorname{id}_\vecSpace + \int_0^t D\odePart\big(q(s,\vecVar)\big)Dq(s, \vecVar) \rmd s
+    D q(t,\vecVar) &= \id_\vecSpace + \int_0^t D\odePart\big(q(s,\vecVar)\big)Dq(s, \vecVar) \rmd s
   \end{align*}
   From here, we may define $Q: [0,\tau] \times B(\momentVar,\epsilon) \times \stateSpace \rightarrow \bbR$ as follows.
   \begin{align*}
@@ -76,7 +76,10 @@
     D\aff(t,\momentVar,\stateVar)
     &= D\affPart_0(t,\momentVar) + D\affPart(t,\momentVar)\cdot\stateVar \\
     &= D q_0(t,\momentVar) + Dq(t,\momentVar)\cdot\stateVar \\
-    &= \int_0^t D\odePart_0\big(q(s,\momentVar)\big) Dq(s,\momentVar) \rmd s + \left(\operatorname{id}_\vecSpace + \int_0^t D\odePart\big(q(s,\momentVar)\big)D q(s,\momentVar) \rmd s\right)\cdot\stateVar \\
+    &= \begin{aligned}[t]
+      &\int_0^t D\odePart_0\big(q(s,\momentVar)\big) Dq(s,\momentVar) \rmd s \\
+      &\quad+ \left(\id_\vecSpace + \int_0^t D\odePart\big(q(s,\momentVar)\big)D q(s,\momentVar) \rmd s\right)\cdot\stateVar 
+    \end{aligned} \\
     &= \stateVar + \int_0^t \Big( D\odePart_0\big(q(s,\momentVar) \big) Dq(s,\momentVar) + \sum_{i=1}^d \stateVar_i D\odePart_i\big(q(s,\momentVar) \big) Dq(s,\momentVar) \Big) \rmd s \\
     &= \stateVar + \int_0^t D\Big( \odePart_0 + \sum_{i=1}^d \stateVar_i \odePart_i \Big)\big(q(s,\momentVar)\big) Dq(s,\momentVar)  \rmd s \\
     &= \stateVar + \int_0^t D\ode\big(q(s,\momentVar), \stateVar\big) Dq(s,\momentVar)  \rmd s \\
