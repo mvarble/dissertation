@@ -53,3 +53,28 @@ Top ideas:
     - ideas on where this might generally apply
 
 Extra: maybe put slides for something to point at when talking technical
+
+---------------------------------------------------------
+MORE NOTES:
+---------------------------------------------------------
+
+- Results page: bold DG
+
+- Puhalskii analogy
+  - left Prokhorov + convergence of fdds
+  - right LDP fdd+exponential tightness
+
+- DG measures:
+  - abstract fdd (no increment)
+  - abstract rate function
+  - no saddlpoint
+
+- Exponential martingales
+
+- Pros+Cons
+  - Increments
+    - more generality
+    - bad rate functions
+  - Martingales
+    - more interpretable
+    - technically challenging; difficult to generalize
