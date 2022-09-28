@@ -35,9 +35,13 @@ The blackboard notation will generally correspond to a topological space, includ
     \[
       \bprj{\vecVar}{\nabla f(\momentVar)} \defeq \Der f(\momentVar) \cdot \vecVar,
     \]
-    If there is some canonical ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote the $i$-th partial derivative by $\Der_i f \in \cpathSpace{\bbU}{\bbR}$.
+    If there is some canonical, ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote the $i$-th partial derivative by $\Der_i f \in \cpathSpace{\bbU}{\bbR}$.
     \[
-      \Der_i f(\momentVar) \defeq \Der f(\momentVar) \cdot \basisVec_i, \quad i = 1,\ldots, d
+      \Der_i f(\momentVar) \defeq \Der f(\momentVar) \cdot \basisVec_i, \quad i = 1,\ldots, \operatorname{dim}\vecSpace
+    \]
+    Lastly, for functions of the form $f: \bbR_+ \times \vecSpace \rightarrow \bbW$, we specifically denote partial in the first coordinate with a dot, to indicate derivatives in \emph{time}.
+    \[
+      \dot f(t, \momentVar) \defeq \frac{\partial}{\partial t} f(t, \momentVar) \defeq \lim_{\delta\rightarrow0} \frac{f(t+\delta, \momentVar)-f(t,\momentVar)}{\delta}
     \]
   \item
     For finite-dimensional normed vector space $\vecSpace$ and open $\bbU \subseteq \vecSpace$, the subspace $\ccpathSpace{2}{\bbU}{\bbR}$ of $f \in \ccpathSpace{1}{\bbU}{\bbR}$ in which we also have $\nabla f \in \ccpathSpace{1}{\bbU}{\vecSpace}$.
@@ -45,9 +49,9 @@ The blackboard notation will generally correspond to a topological space, includ
     \[
       \Hess f(\momentVar) \defeq \Der\big( \nabla f(u) \big)
     \]
-    If there is some canonical ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote the second-order $ij$-th partial derivative $\Der_{ij} f \in \cpathSpace{\bbU}{\bbR}$.
+    If there is some canonical, ordered basis $(\basisVec_1, \ldots, \basisVec_{\operatorname{dim}\vecSpace})$ of $\vecSpace$, denote the second-order $ij$-th partial derivative $\Der_{ij} f \in \cpathSpace{\bbU}{\bbR}$.
     \[
-      \Der_{ij} f(\momentVar) \defeq \bprj{\basisVec_i}{\Hess f(\momentVar) \cdot \basisVec_j}, \quad i,j = 1, \ldots, d
+      \Der_{ij} f(\momentVar) \defeq \bprj{\basisVec_i}{\Hess f(\momentVar) \cdot \basisVec_j}, \quad i,j = 1, \ldots, \operatorname{dim}\vecSpace
     \]
 \end{itemize}
 For any topological space $\stateSpace$ and subset $A \subseteq \stateSpace$, we denote $A^\circ$ and $\overline A$ its interior and closure, respectively.

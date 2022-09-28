@@ -36,13 +36,20 @@ Large deviations are best understood through moment generating functions, which 
 For an initial point $\stateVar_0 \in \stateSpace^\circ$, a large deviation principle holds for a family $(\Prb^\epsilon_{\stateVar_0})_{\epsilon>0}$ on the projective limit space (i.e.\ the product topology), so long as $0 \in \odeSpace^\circ$.
 However, in order to strengthen this result to the Skorokhod topology---a step which is necessary for interesting asymptotics and an integral-form of our rate function---we need the full strength of $\odeSpace = \vecSpace$.
 \begin{assumption}
-  We have $\odeSpace = \vecSpace$; equivalently, by Lemma \ref{lemma:odeSpace-rationale},
-  \begin{equation*}
-    \int_{|\markVar| > 1} e^\prj{\momentVar}{\markVar} \affJump(\stateVar, \rmd\markVar) < \infty, \quad \stateVar \in \stateSpace, ~ \momentVar \in \momentSpace
-  \end{equation*}
+  We have $\odeSpace = \vecSpace$.
 \end{assumption}
 \begin{remark}
   \begin{enumerate}[label=(\alph*)]
+    \item
+      By Lemma \ref{lemma:odeSpace-rationale} and Proposition \ref{proposition:light-tails-equivalence}, this assumption is equivalent to having any of the following statements for any $\momentVar \in \vecSpace$.
+      \begin{itemize}
+        \item
+          $\int_{|\markVar| > 1} e^\prj{\momentVar}{\markVar} \affJump(\stateVar, \rmd\markVar) < \infty$ for all $\stateVar \in \stateSpace$,
+        \item
+          There exists $\tau > 0$ such that $\Exp_{\Prb_\stateVar}\exp\prj{\momentVar}{\X_\tau} < \infty$ for all $\stateVar \in \stateSpace$,
+        \item
+          There exists $\tau > 0$ such that $\system(\ode, \tau, \momentVar)$ has a solution.
+      \end{itemize}
     \item
       It is easy to see in the proofs where we assume $\odeSpace = \vecSpace$ versus simply using $0 \in \odeSpace^\circ$.
     \item
