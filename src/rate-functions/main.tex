@@ -34,13 +34,13 @@ We also have local integrability of the following process by our finiteness assu
 Note that this is a stronger restriction than local integrability of the compensated jumps
 \begin{equation}
   \label{eq:jumps}
-  \V^\X \defeq \id_\vecSpace \ast \compensate{\jumpMeas^\X},
+  \X^\rmd \defeq \id_\vecSpace \ast \compensate{\jumpMeas^\X},
 \end{equation}
 which we already have from the special property of $\X$.
 
 % technical measure space stuff for joint process
-The remainder of this section will assume $\hat\X \defeq (\X, \X^\rmc, \V^\X, \N^\X)$ is specified from an affine process $\X$ with the properties discussed above.
-We will also factor our kernel $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$ even further to one $(\hat\Prb_{\hat\stateVar})_{\hat\stateVar\in\hat\stateSpace}$ derived from the regular conditional $\Prb_\stateVar$-distribution of $(\Prb_\stateVar, \scrF)$ time-homogeneous Markov process $(\X^\rmc, \V^\X, \N^\X)$.
+The remainder of this section will assume $\hat\X \defeq (\X, \X^\rmc, \X^\rmd, \N^\X)$ is specified from an affine process $\X$ with the properties discussed above.
+We will also factor our kernel $(\Prb_\stateVar)_{\stateVar\in\stateSpace}$ even further to one $(\hat\Prb_{\hat\stateVar})_{\hat\stateVar\in\hat\stateSpace}$ derived from the regular conditional $\Prb_\stateVar$-distribution of $(\Prb_\stateVar, \scrF)$ time-homogeneous Markov process $(\X^\rmc, \X^\rmd, \N^\X)$.
 We will see in the coming results that $\hat\X$ and its associated kernel $(\hat\Prb_{\hat\stateVar})_{\hat\stateVar\in\hat\stateSpace}$ and filtration $\scrF$ still satisfy the assumptions of Section \ref{large-deviations:assumptions} needed to apply Theorem \ref{theorem:ldp-integral}; furthermore, its coupling structure will allow us to derive a semi-closed form for (\ref{eq:rf-integral}).
 This is a process on 
 \begin{equation*}

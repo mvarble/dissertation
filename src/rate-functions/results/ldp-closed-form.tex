@@ -1,5 +1,5 @@
 \begin{theorem}
-  \label{eq:ldp-closed-form}
+  \label{theorem:ldp-closed-form}
   Let $\X$ be an affine process as introduced above with Assumption \ref{assumption:joint-affine} satisfied.
   Then $\hat\X$ is a base affine process with which we may parameterize $\hat\Xe$ with distribution as in Section \ref{large-deviations:asymptotics}.
   Fixing $\hat\stateVar \in \hat\stateSpace^\circ$ and denoting $\hat\Prb^\epsilon_{\hat\stateVar}$ the distribution associated with $\hat\Xe$ starting at $\hat\stateVar$, we have a large deviation principle for $(\hat\Prb^\epsilon_{\hat\stateVar})_{\epsilon>0}$.
@@ -29,6 +29,7 @@
   \end{itemize}
 \end{theorem}
 \begin{proof}
+  \label{proof:theorem:ldp-closed-form}
   Assumption \ref{assumption:joint-affine} is another way of rewriting the system in Proposition \ref{proposition:affine-resolution}, as in Remark \ref{remark:riccati-affine-formulation}.
   This makes $\hat\X$ an affine process, so Lemma \ref{lemma:joint-cone} and Proposition \ref{proposition:joint-characteristics} tell us that $\hat\X$ satisfies the assumptions of Section \ref{large-deviations:assumptions}.
   Thus, the parameterization $\hat\Xe$ is a family described by Theorem \ref{theorem:ldp-integral}, and so we have a large deviation principle for $(\hat\Prb^\epsilon_{\hat\stateVar})_{\epsilon>0}$.

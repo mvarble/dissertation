@@ -5,9 +5,15 @@ Furthermore, the magnificent papers above provide us so much information at the 
 Readers which have not found themselves familiar with massive texts like \cite{jacod2003} may not be able to decipher the results involving semimartingale characteristics in intuitive terms.
 It is for this reason that we found it beneficial to provide some calculus-heavy proofs that somehow \emph{demystify} these objects.
 In particular, we translate many of the results of \cite{jacod2003} to the special setting of \emph{jump-diffusions}---those semimartingales in which the characteristics are differentiable.
-While certainly less powerful than their general semimartingale brethren, jump-diffusions involve deterministic functions which make calculations far more intuitive.
+While certainly less powerful than their general semimartingale brethren, jump-diffusions involve deterministic functions $(\affDrift, \affDiff, \affJump)$ which make calculations far more intuitive.
 Furthermore, they can always be understood as weak solutions to stochastic differential equations involving a Brownian motion and a Poisson random measure, which gives them a somewhat \emph{generative} flavor.
-These results are mostly in Appendix \ref{jump-diffusions}---a choice which was made less because the information is unrelated to affine processes, and more that the extra generality of non-affine differential characteristics comes at little-to-no cost.
+In the case of affine processes, we may remove one more layer of abstraction, insisting that the functions each take an affine form in their respective vector spaces.
+\begin{align*}
+  \affDrift(\stateVar^1, \ldots, \stateVar^d) &= \affDriftPart_0 + \sum_{i=1}^d \stateVar^i \affDriftPart_i \\
+  \affDiff(\stateVar^1, \ldots, \stateVar^d) &= \affDiffPart_0 + \sum_{i=1}^d \stateVar^i \affDiffPart_i \\
+  \affJump(\stateVar^1, \ldots, \stateVar^d, \rmd\markVar) &= \affJumpPart_0(\rmd\markVar) + \sum_{i=1}^d \stateVar^i \affJumpPart_i(\rmd\markVar) 
+\end{align*}
+Any result which does not require this affine property is in Appendix \ref{jump-diffusions}---a choice which was made less because the information is unrelated to affine processes, and more that the extra generality of non-affine differential characteristics comes at little-to-no cost.
 In any case, we suggest the reader familiarize themselves with Appendix \ref{jump-diffusions} sooner than later, as we use this material very often throughout the chapters.
 The remainder of this chapter is organized as follows.
 
