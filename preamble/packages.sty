@@ -26,6 +26,7 @@
 
 % https://tex.stackexchange.com/questions/232051/numbering-equations-in-sections-and-sub-sections
 % equation counter includes chapter+section and resets within chapter
+\usepackage{chngcntr}
 \counterwithin{equation}{section}
 \let\oldsection\section
 \renewcommand{\section}{

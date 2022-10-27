@@ -1136,16 +1136,16 @@
 \setlength\paperwidth  {8.5in}
 
 %% change sizes and margins
-%\topmargin      0.25in
-%\oddsidemargin  0.5in
-%\evensidemargin 0.25in
-%\textheight     7.75in
-%\textwidth      5.75in
+%\oddsidemargin  0in
+%\evensidemargin 0in
+%\textwidth      8.5in
+\topmargin      0in
+\textheight     8in
 %\headsep        25pt
 %\headheight     12pt
 %\marginparsep  12pt
 %\marginparwidth    54pt
-%\footskip      0.5in
+\footskip      0.75in
 
 
 \endinput
